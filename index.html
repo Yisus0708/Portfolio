@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Jesus Cantillo — Backend + Applied AI</title>
+<meta name="description" content="Jesus Cantillo — Backend + Applied AI. Construyo cosas que funcionan, no demos." />
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230a0e14'/%3E%3Ctext x='50' y='68' font-size='54' font-family='Space Grotesk, sans-serif' font-weight='700' fill='%234fc3f7' text-anchor='middle'%3EJC%3C/text%3E%3C/svg%3E" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Fira+Code:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<canvas id="bg-canvas" aria-hidden="true"></canvas>
+<div class="grain" aria-hidden="true"></div>
+
+<a class="skip-link" href="#main">Saltar al contenido</a>
+
+<header class="topbar">
+  <a href="#home" class="brand">JC<span class="brand-dot">.</span></a>
+  <nav class="nav" aria-label="Navegación principal">
+    <a href="#projects">Proyectos</a>
+    <a href="#stack">Stack</a>
+    <a href="#stats">Stats</a>
+    <a href="#contact">Contacto</a>
+  </nav>
+</header>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <p class="eyebrow reveal">
+      <img class="views-badge" src="https://komarev.com/ghpvc/?username=Yisus0708&label=Profile%20views&color=2c5364&style=flat-square" alt="Contador de visitas del perfil" />
+    </p>
+
+    <h1 class="hero-title reveal" style="--d:.05s">
+      <span class="line">Jesus</span>
+      <span class="line accent">Cantillo</span>
+    </h1>
+
+    <p class="hero-role reveal" style="--d:.15s">Backend&nbsp;+&nbsp;Applied&nbsp;AI</p>
+
+    <p class="typed-wrap reveal" style="--d:.25s">
+      <span class="prompt">&gt;</span>
+      <span id="typed" class="typed"></span><span class="caret" aria-hidden="true"></span>
+    </p>
+
+    <blockquote class="hero-quote reveal" style="--d:.35s">
+      “The expert in anything was once a beginner who refused to give up.”
+    </blockquote>
+
+    <div class="hero-actions reveal" style="--d:.45s">
+      <a class="btn btn-primary" href="#projects">Ver proyectos</a>
+      <a class="btn btn-ghost" href="https://github.com/Yisus0708" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn btn-ghost" href="mailto:drgiagiu08@gmail.com">Contactar</a>
+    </div>
+
+    <a href="#projects" class="scroll-cue" aria-label="Desplazarse hacia abajo">
+      <span></span>
+    </a>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="section">
+    <h2 class="section-title reveal">Lo que he construido y funciona en producción</h2>
+
+    <div class="projects-grid">
+      <article class="card reveal">
+        <div class="card-head">
+          <span class="card-emoji">🧠</span>
+          <h3>Mentia</h3>
+        </div>
+        <p>Plataforma de aprendizaje con IA que revisa código de estudiantes en tiempo real.</p>
+        <div class="tags">
+          <span class="tag">FastAPI</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">Gemini</span>
+        </div>
+      </article>
+
+      <article class="card reveal" style="--d:.08s">
+        <div class="card-head">
+          <span class="card-emoji">🎙️</span>
+          <h3>MILA</h3>
+        </div>
+        <p>Asistente de voz para tu sistema: controla archivos y analiza tu PC.</p>
+        <div class="tags">
+          <span class="tag">PyQt6</span>
+          <span class="tag">Gemini</span>
+        </div>
+      </article>
+
+      <article class="card reveal" style="--d:.16s">
+        <div class="card-head">
+          <span class="card-emoji">🏥</span>
+          <h3>Medical records automation</h3>
+        </div>
+        <p>IA multimodal que lee PDFs desde Drive y exporta resultados a Excel.</p>
+        <div class="tags">
+          <span class="tag">Flask</span>
+          <span class="tag">Gemini API</span>
+          <span class="tag">Google Drive API</span>
+        </div>
+      </article>
+
+      <article class="card reveal" style="--d:.24s">
+        <div class="card-head">
+          <span class="card-emoji">🚗</span>
+          <h3>RAG sales agent</h3>
+        </div>
+        <p>Califica leads automáticamente para una concesionaria de autos.</p>
+        <div class="tags">
+          <span class="tag">Gemini</span>
+          <span class="tag">RAG</span>
+          <span class="tag">Prompt engineering</span>
+        </div>
+      </article>
+    </div>
+
+    <p class="section-quote reveal">None of this was a tutorial. These were real problems for real people.</p>
+  </section>
+
+  <!-- STACK -->
+  <section id="stack" class="section">
+    <h2 class="section-title reveal">Tech Stack &amp; Tools</h2>
+
+    <p class="reveal stack-icons">
+      <img src="https://skillicons.dev/icons?i=python,fastapi,flask,postgres,mysql,mongodb,js,react,tensorflow,git,vscode,docker&perline=6" alt="Python, FastAPI, Flask, PostgreSQL, MySQL, MongoDB, JavaScript, React, TensorFlow, Git, VS Code, Docker" />
+    </p>
+
+    <div class="badges reveal" style="--d:.1s">
+      <span class="badge">Gemini API</span>
+      <span class="badge">RAG Architecture</span>
+      <span class="badge">PostgreSQL</span>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section id="stats" class="section">
+    <h2 class="section-title reveal">GitHub Activity &amp; Stats</h2>
+
+    <div class="stats-grid reveal">
+      <img loading="lazy" height="165" alt="GitHub Stats"
+        src="https://github-readme-stats-eight-theta.vercel.app/api?username=Yisus0708&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0a0e14&title_color=4fc3f7&icon_color=4fc3f7" />
+      <img loading="lazy" height="165" alt="Top Languages"
+        src="https://github-readme-stats-eight-theta.vercel.app/api/top-langs/?username=Yisus0708&layout=compact&theme=tokyonight&hide_border=true&bg_color=0a0e14&title_color=4fc3f7" />
+    </div>
+
+    <p class="reveal streak-wrap">
+      <img loading="lazy" alt="Streak Stats"
+        src="https://github-readme-streak-stats.herokuapp.com/?user=Yisus0708&theme=tokyonight&hide_border=true&background=0A0E14&ring=4FC3F7&fire=4FC3F7" />
+    </p>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section contact">
+    <h2 class="section-title reveal">Conectemos</h2>
+    <p class="reveal contact-sub" style="--d:.05s">¿Un proyecto en mente o solo quieres saludar?</p>
+
+    <div class="contact-links reveal" style="--d:.1s">
+      <a class="contact-link" href="mailto:drgiagiu08@gmail.com">
+        <span class="ci">✉️</span> drgiagiu08@gmail.com
+      </a>
+      <a class="contact-link" href="https://github.com/Yisus0708" target="_blank" rel="noopener">
+        <span class="ci">🐙</span> github.com/Yisus0708
+      </a>
+      <a class="contact-link" href="https://www.instagram.com/jxsx__x0?igsh=NXpucXdqYjE5Zm9m" target="_blank" rel="noopener">
+        <span class="ci">📷</span> @jxsx__x0
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>Jesus Cantillo — Backend + Applied AI · <span id="year"></span></p>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
