@@ -1,187 +1,768 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Jesus Cantillo — Backend + Applied AI</title>
-<meta name="description" content="Jesus Cantillo — Backend + Applied AI. Construyo cosas que funcionan, no demos." />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jesus Cantillo — Backend &amp; Applied AI Engineer</title>
+  <meta name="description" content="Jesus Cantillo — Backend Developer & Applied AI Specialist. Construyo arquitecturas escalables, sistemas RAG y agentes de IA que funcionan en producción." />
+  <meta name="keywords" content="Jesus Cantillo, Backend Developer, Applied AI, Python, FastAPI, Gemini API, RAG, PostgreSQL, Machine Learning" />
+  <meta name="author" content="Jesus Cantillo" />
 
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230a0e14'/%3E%3Ctext x='50' y='68' font-size='54' font-family='Space Grotesk, sans-serif' font-weight='700' fill='%234fc3f7' text-anchor='middle'%3EJC%3C/text%3E%3C/svg%3E" />
+  <!-- Open Graph / Meta Social -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Jesus Cantillo — Backend &amp; Applied AI Engineer" />
+  <meta property="og:description" content="Construyo soluciones de IA aplicada y arquitecturas backend robustas que resuelven problemas reales." />
+  <meta property="og:url" content="https://github.com/Yisus0708" />
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Fira+Code:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2300f0ff'/%3E%3Cstop offset='100%25' stop-color='%233b82f6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='22' fill='%23050b14'/%3E%3Ctext x='50' y='68' font-size='52' font-family='Space Grotesk, sans-serif' font-weight='800' fill='url(%23g)' text-anchor='middle'%3EJC%3C/text%3E%3C/svg%3E" />
 
-<link rel="stylesheet" href="css/style.css" />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
-<canvas id="bg-canvas" aria-hidden="true"></canvas>
-<div class="grain" aria-hidden="true"></div>
+  <!-- Scroll Progress Indicator -->
+  <div class="scroll-progress-bar" id="scroll-progress" aria-hidden="true"></div>
 
-<a class="skip-link" href="#main">Saltar al contenido</a>
+  <!-- Ambient Glow Background & Canvas -->
+  <div class="ambient-glow glow-1" aria-hidden="true"></div>
+  <div class="ambient-glow glow-2" aria-hidden="true"></div>
+  <div class="ambient-glow glow-3" aria-hidden="true"></div>
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+  <div class="grain" aria-hidden="true"></div>
 
-<header class="topbar">
-  <a href="#home" class="brand">JC<span class="brand-dot">.</span></a>
-  <nav class="nav" aria-label="Navegación principal">
-    <a href="#projects">Proyectos</a>
-    <a href="#stack">Stack</a>
-    <a href="#stats">Stats</a>
-    <a href="#contact">Contacto</a>
-  </nav>
-</header>
+  <!-- Skip link for Accessibility -->
+  <a class="skip-link" href="#main">Saltar al contenido principal</a>
 
-<main id="main">
-
-  <!-- HERO -->
-  <section id="home" class="hero">
-    <p class="eyebrow reveal">
-      <img class="views-badge" src="https://komarev.com/ghpvc/?username=Yisus0708&label=Profile%20views&color=2c5364&style=flat-square" alt="Contador de visitas del perfil" />
-    </p>
-
-    <h1 class="hero-title reveal" style="--d:.05s">
-      <span class="line">Jesus</span>
-      <span class="line accent">Cantillo</span>
-    </h1>
-
-    <p class="hero-role reveal" style="--d:.15s">Backend&nbsp;+&nbsp;Applied&nbsp;AI</p>
-
-    <p class="typed-wrap reveal" style="--d:.25s">
-      <span class="prompt">&gt;</span>
-      <span id="typed" class="typed"></span><span class="caret" aria-hidden="true"></span>
-    </p>
-
-    <blockquote class="hero-quote reveal" style="--d:.35s">
-      “The expert in anything was once a beginner who refused to give up.”
-    </blockquote>
-
-    <div class="hero-actions reveal" style="--d:.45s">
-      <a class="btn btn-primary" href="#projects">Ver proyectos</a>
-      <a class="btn btn-ghost" href="https://github.com/Yisus0708" target="_blank" rel="noopener">GitHub</a>
-      <a class="btn btn-ghost" href="mailto:jesucantillo30@gmail.com">Contactar</a>
-    </div>
-
-    <a href="#projects" class="scroll-cue" aria-label="Desplazarse hacia abajo">
-      <span></span>
-    </a>
-  </section>
-
-  <!-- PROJECTS -->
-  <section id="projects" class="section">
-    <h2 class="section-title reveal">Lo que he construido y funciona en producción</h2>
-
-    <div class="projects-grid">
-      <article class="card reveal">
-        <div class="card-head">
-          <span class="card-emoji">🧠</span>
-          <h3>Mentia</h3>
-        </div>
-        <p>Plataforma de aprendizaje con IA que revisa código de estudiantes en tiempo real.</p>
-        <div class="tags">
-          <span class="tag">FastAPI</span>
-          <span class="tag">PostgreSQL</span>
-          <span class="tag">Gemini</span>
-        </div>
-      </article>
-
-      <article class="card reveal" style="--d:.08s">
-        <div class="card-head">
-          <span class="card-emoji">🎙️</span>
-          <h3>MILA</h3>
-        </div>
-        <p>Asistente de voz para tu sistema: controla archivos y analiza tu PC.</p>
-        <div class="tags">
-          <span class="tag">PyQt6</span>
-          <span class="tag">Gemini</span>
-        </div>
-      </article>
-
-      <article class="card reveal" style="--d:.16s">
-        <div class="card-head">
-          <span class="card-emoji">🏥</span>
-          <h3>Medical records automation</h3>
-        </div>
-        <p>IA multimodal que lee PDFs desde Drive y exporta resultados a Excel.</p>
-        <div class="tags">
-          <span class="tag">Flask</span>
-          <span class="tag">Gemini API</span>
-          <span class="tag">Google Drive API</span>
-        </div>
-      </article>
-
-      <article class="card reveal" style="--d:.24s">
-        <div class="card-head">
-          <span class="card-emoji">🚗</span>
-          <h3>RAG sales agent</h3>
-        </div>
-        <p>Califica leads automáticamente para una concesionaria de autos.</p>
-        <div class="tags">
-          <span class="tag">Gemini</span>
-          <span class="tag">RAG</span>
-          <span class="tag">Prompt engineering</span>
-        </div>
-      </article>
-    </div>
-
-    <p class="section-quote reveal">None of this was a tutorial. These were real problems for real people.</p>
-  </section>
-
-  <!-- STACK -->
-  <section id="stack" class="section">
-    <h2 class="section-title reveal">Tech Stack &amp; Tools</h2>
-
-    <p class="reveal stack-icons">
-      <img src="https://skillicons.dev/icons?i=python,fastapi,flask,postgres,mysql,mongodb,js,react,tensorflow,git,vscode,docker&perline=6" alt="Python, FastAPI, Flask, PostgreSQL, MySQL, MongoDB, JavaScript, React, TensorFlow, Git, VS Code, Docker" />
-    </p>
-
-    <div class="badges reveal" style="--d:.1s">
-      <span class="badge">Gemini API</span>
-      <span class="badge">RAG Architecture</span>
-      <span class="badge">PostgreSQL</span>
-    </div>
-  </section>
-
-  <!-- STATS -->
-  <section id="stats" class="section">
-    <h2 class="section-title reveal">GitHub Activity &amp; Stats</h2>
-
-    <div class="stats-grid reveal">
-      <img loading="lazy" height="165" alt="GitHub Stats"
-        src="https://github-readme-stats-eight-theta.vercel.app/api?username=Yisus0708&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0a0e14&title_color=4fc3f7&icon_color=4fc3f7" />
-      <img loading="lazy" height="165" alt="Top Languages"
-        src="https://github-readme-stats-eight-theta.vercel.app/api/top-langs/?username=Yisus0708&layout=compact&theme=tokyonight&hide_border=true&bg_color=0a0e14&title_color=4fc3f7" />
-    </div>
-
-    <p class="reveal streak-wrap">
-      <img loading="lazy" alt="Streak Stats"
-        src="https://github-readme-streak-stats.herokuapp.com/?user=Yisus0708&theme=tokyonight&hide_border=true&background=0A0E14&ring=4FC3F7&fire=4FC3F7" />
-    </p>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact" class="section contact">
-    <h2 class="section-title reveal">Conectemos</h2>
-    <p class="reveal contact-sub" style="--d:.05s">¿Un proyecto en mente o solo quieres saludar?</p>
-
-    <div class="contact-links reveal" style="--d:.1s">
-      <a class="contact-link" href="mailto:jesucantillo30@gmail.com">
-        <span class="ci">✉️</span> jesucantillo30@gmail.com
+  <!-- Header / Navigation Bar -->
+  <header class="topbar" id="topbar">
+    <div class="topbar-inner">
+      <a href="#home" class="brand" aria-label="Inicio">
+        <span class="brand-logo">JC</span>
+        <span class="brand-badge">v2.0</span>
       </a>
-      <a class="contact-link" href="https://github.com/Yisus0708" target="_blank" rel="noopener">
-        <span class="ci">🐙</span> github.com/Yisus0708
-      </a>
-      <a class="contact-link" href="https://www.instagram.com/jxsx__x0?igsh=NXpucXdqYjE5Zm9m" target="_blank" rel="noopener">
-        <span class="ci">📷</span> @jxsx__x0
-      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="nav" aria-label="Navegación principal">
+        <a href="#home" class="nav-link active">Inicio</a>
+        <a href="#projects" class="nav-link">Proyectos</a>
+        <a href="#about" class="nav-link">Enfoque</a>
+        <a href="#stack" class="nav-link">Stack</a>
+        <a href="#stats" class="nav-link">Stats</a>
+        <a href="#contact" class="nav-link">Contacto</a>
+      </nav>
+
+      <div class="topbar-actions">
+        <!-- Status Indicator Pill -->
+        <div class="status-pill" title="Disponible para colaborar en proyectos y oportunidades">
+          <span class="status-dot"></span>
+          <span class="status-text">Open to Work</span>
+        </div>
+
+        <a href="#contact" class="btn btn-sm btn-outline-glow nav-cta">Hablemos</a>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="mobile-nav">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
     </div>
-  </section>
+  </header>
 
-</main>
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+    <div class="mobile-nav-backdrop" id="mobile-nav-backdrop"></div>
+    <div class="mobile-nav-content">
+      <div class="mobile-nav-header">
+        <span class="brand-logo">JC<span class="accent-dot">.</span></span>
+        <button class="mobile-close" id="mobile-close" aria-label="Cerrar menú">&times;</button>
+      </div>
+      <nav class="mobile-links">
+        <a href="#home" class="mobile-link"><span>01.</span> Inicio</a>
+        <a href="#projects" class="mobile-link"><span>02.</span> Proyectos</a>
+        <a href="#about" class="mobile-link"><span>03.</span> Enfoque</a>
+        <a href="#stack" class="mobile-link"><span>04.</span> Tech Stack</a>
+        <a href="#stats" class="mobile-link"><span>05.</span> Estadísticas</a>
+        <a href="#contact" class="mobile-link"><span>06.</span> Contacto</a>
+      </nav>
+      <div class="mobile-nav-footer">
+        <a href="mailto:jesucantillo30@gmail.com" class="btn btn-primary btn-full">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          jesucantillo30@gmail.com
+        </a>
+      </div>
+    </div>
+  </div>
 
-<footer class="footer">
-  <p>Jesus Cantillo — Backend + Applied AI · <span id="year"></span></p>
-</footer>
+  <main id="main">
 
-<script src="js/main.js"></script>
+    <!-- HERO SECTION -->
+    <section id="home" class="hero">
+      <div class="hero-container">
+        
+        <div class="hero-content">
+          <!-- Live Views Badge + Tag -->
+          <div class="hero-meta reveal">
+            <div class="hero-tag">
+              <span class="tag-pulse"></span>
+              <span>Backend &amp; Applied AI Engineer</span>
+            </div>
+            <img class="views-badge" src="https://komarev.com/ghpvc/?username=Yisus0708&label=Profile%20views&color=00f0ff&style=flat-square" alt="Contador de visitas del perfil" loading="lazy" />
+          </div>
+
+          <!-- Main Hero Headline -->
+          <h1 class="hero-title reveal" style="--d: .05s">
+            <span class="greeting">Hola, soy</span>
+            <span class="name-gradient">Jesus Cantillo</span>
+          </h1>
+
+          <!-- Value Proposition -->
+          <p class="hero-desc reveal" style="--d: .15s">
+            Construyo arquitecturas backend de alto rendimiento, agentes autónomos y soluciones con IA que <strong>resuelven problemas reales</strong> y funcionan en producción, no solo en demos.
+          </p>
+
+          <!-- Typewriter Console Line -->
+          <div class="typed-box reveal" style="--d: .22s">
+            <div class="typed-header">
+              <span class="cmd-icon">⚡</span>
+              <span class="cmd-title">dev.philosophy</span>
+            </div>
+            <div class="typed-body">
+              <span class="prompt">&gt;</span>
+              <span id="typed" class="typed"></span><span class="caret" aria-hidden="true"></span>
+            </div>
+          </div>
+
+          <!-- Hero Action Buttons -->
+          <div class="hero-actions reveal" style="--d: .30s">
+            <a class="btn btn-primary" href="#projects">
+              <span>Explorar proyectos</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </a>
+            
+            <button class="btn btn-secondary copy-email-btn" data-email="jesucantillo30@gmail.com" title="Copiar correo">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              <span>Copiar Email</span>
+            </button>
+
+            <a class="btn btn-ghost" href="https://github.com/Yisus0708" target="_blank" rel="noopener" title="Ver perfil en GitHub">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              <span>GitHub</span>
+            </a>
+          </div>
+
+          <!-- Hero Quote -->
+          <blockquote class="hero-quote reveal" style="--d: .38s">
+            “The expert in anything was once a beginner who refused to give up.”
+          </blockquote>
+        </div>
+
+        <!-- Interactive AI Terminal Widget -->
+        <div class="hero-terminal reveal" style="--d: .2s">
+          <div class="terminal-card spotlight-card">
+            <div class="terminal-bar">
+              <div class="terminal-dots">
+                <span class="dot dot-red"></span>
+                <span class="dot dot-yellow"></span>
+                <span class="dot dot-green"></span>
+              </div>
+              <div class="terminal-title">jesus@backend-ai-core: ~</div>
+              <div class="terminal-status"><span class="live-dot"></span> LIVE</div>
+            </div>
+
+            <div class="terminal-tabs">
+              <button class="t-tab active" data-tab="cli">CLI Playground</button>
+              <button class="t-tab" data-tab="arch">Core Specs</button>
+              <button class="t-tab" data-tab="stack">Quick Stack</button>
+            </div>
+
+            <!-- TAB 1: Interactive Terminal -->
+            <div class="t-content active" id="tab-cli">
+              <div class="terminal-screen" id="terminal-screen">
+                <div class="t-line dim">Jesus Cantillo Core CLI [Version 2.4.0-release]</div>
+                <div class="t-line dim">Initialized with Gemini API &amp; FastAPI Runtime.</div>
+                <div class="t-line accent">Escribe un comando o haz clic en los accesos rápidos:</div>
+                <div class="t-line output" id="t-default-output">
+                  <span class="t-highlight">💡 Sugerencia:</span> Prueba comandos como <span class="badge-cmd">projects</span>, <span class="badge-cmd">skills</span>, <span class="badge-cmd">philosophy</span>, <span class="badge-cmd">hire</span> o <span class="badge-cmd">contact</span>.
+                </div>
+              </div>
+
+              <!-- Quick Command Chips -->
+              <div class="terminal-chips">
+                <button class="chip" data-cmd="projects">🚀 projects</button>
+                <button class="chip" data-cmd="skills">🧠 skills</button>
+                <button class="chip" data-cmd="philosophy">⚡ philosophy</button>
+                <button class="chip" data-cmd="hire">💼 hire</button>
+                <button class="chip" data-cmd="clear">🧹 clear</button>
+              </div>
+
+              <!-- Terminal Input Form -->
+              <form class="terminal-input-wrap" id="terminal-form" autocomplete="off">
+                <span class="t-prompt">visitor@jc:~$</span>
+                <input type="text" id="terminal-input" class="t-input" placeholder="Escribe 'help' o un comando..." aria-label="Terminal command input" />
+                <button type="submit" class="t-submit" aria-label="Ejecutar comando">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </button>
+              </form>
+            </div>
+
+            <!-- TAB 2: Core Architecture Specs -->
+            <div class="t-content" id="tab-arch">
+              <div class="specs-grid">
+                <div class="spec-item">
+                  <span class="spec-label">MAIN FOCUS</span>
+                  <span class="spec-val">Backend + Applied AI</span>
+                </div>
+                <div class="spec-item">
+                  <span class="spec-label">PRIMARY LANGUAGE</span>
+                  <span class="spec-val">Python 3.11+ / JavaScript</span>
+                </div>
+                <div class="spec-item">
+                  <span class="spec-label">LLM INTEGRATIONS</span>
+                  <span class="spec-val">Google Gemini (1.5 Pro / Flash)</span>
+                </div>
+                <div class="spec-item">
+                  <span class="spec-label">ARCHITECTURE</span>
+                  <span class="spec-val">Modular REST APIs &amp; RAG Pipelines</span>
+                </div>
+                <div class="spec-item">
+                  <span class="spec-label">DATABASES</span>
+                  <span class="spec-val">PostgreSQL, MongoDB, MySQL</span>
+                </div>
+                <div class="spec-item">
+                  <span class="spec-label">EXECUTION PRINCIPLE</span>
+                  <span class="spec-val">Production-Ready Code Only</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB 3: Quick Stack -->
+            <div class="t-content" id="tab-stack">
+              <div class="quick-stack-tags">
+                <span class="qst-badge"><span class="q-dot py"></span> Python</span>
+                <span class="qst-badge"><span class="q-dot fa"></span> FastAPI</span>
+                <span class="qst-badge"><span class="q-dot ge"></span> Gemini API</span>
+                <span class="qst-badge"><span class="q-dot fl"></span> Flask</span>
+                <span class="qst-badge"><span class="q-dot pg"></span> PostgreSQL</span>
+                <span class="qst-badge"><span class="q-dot rag"></span> RAG / Embeddings</span>
+                <span class="qst-badge"><span class="q-dot js"></span> JavaScript / React</span>
+                <span class="qst-badge"><span class="q-dot dk"></span> Docker</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Scroll cue down -->
+      <a href="#projects" class="scroll-cue" aria-label="Desplazarse hacia los proyectos">
+        <span class="mouse-icon">
+          <span class="wheel"></span>
+        </span>
+        <span class="scroll-text">Scroll</span>
+      </a>
+    </section>
+
+    <!-- METRICS HIGHLIGHT BAR -->
+    <section class="metrics-bar reveal">
+      <div class="metrics-container">
+        <div class="metric-card">
+          <div class="metric-number"><span class="counter" data-target="4">4</span><span>+</span></div>
+          <div class="metric-label">Proyectos Productivos</div>
+          <div class="metric-sub">Probados con usuarios reales</div>
+        </div>
+        <div class="metric-divider"></div>
+        <div class="metric-card">
+          <div class="metric-number"><span class="counter" data-target="100">100</span><span>%</span></div>
+          <div class="metric-label">Enfoque Pragmático</div>
+          <div class="metric-sub">Cero código de tutorial vacío</div>
+        </div>
+        <div class="metric-divider"></div>
+        <div class="metric-card">
+          <div class="metric-number"><span class="counter" data-target="10">10</span><span>+</span></div>
+          <div class="metric-label">Tecnologías Dominadas</div>
+          <div class="metric-sub">Backend, AI, DBs y DevOps</div>
+        </div>
+        <div class="metric-divider"></div>
+        <div class="metric-card">
+          <div class="metric-number"><span>24/7</span></div>
+          <div class="metric-label">Pasión por Crear</div>
+          <div class="metric-sub">Aprendizaje e iteración continua</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED PROJECTS SECTION -->
+    <section id="projects" class="section">
+      <div class="section-head reveal">
+        <span class="section-badge">PORTFOLIO</span>
+        <h2 class="section-title">Sistemas en Producción</h2>
+        <p class="section-sub">Software real diseñado para resolver necesidades concretas de personas y negocios.</p>
+      </div>
+
+      <!-- Filter Tabs -->
+      <div class="project-filters reveal" style="--d: .1s">
+        <button class="filter-btn active" data-filter="all">Todos (4)</button>
+        <button class="filter-btn" data-filter="ai">Applied AI &amp; LLMs</button>
+        <button class="filter-btn" data-filter="backend">Backend &amp; APIs</button>
+        <button class="filter-btn" data-filter="desktop">Desktop &amp; Automation</button>
+      </div>
+
+      <!-- Projects Bento Grid -->
+      <div class="projects-grid">
+        
+        <!-- PROJECT 1: MENTIA -->
+        <article class="card spotlight-card reveal" data-category="ai backend" style="--d: .05s">
+          <div class="card-glow" aria-hidden="true"></div>
+          <div class="card-top">
+            <div class="card-icon-wrap">
+              <span class="card-emoji">🧠</span>
+            </div>
+            <div class="card-badges">
+              <span class="badge-status status-prod">Producción</span>
+              <span class="badge-type">EdTech &amp; AI</span>
+            </div>
+          </div>
+
+          <h3 class="card-title">Mentia</h3>
+          <p class="card-desc">
+            Plataforma de aprendizaje inteligente con IA que analiza y retroalimenta código de estudiantes en tiempo real con sugerencias pedagógicas y diagnósticos de errores.
+          </p>
+
+          <div class="card-features">
+            <div class="feat-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Feedback sintáctico y lógico instantáneo</span>
+            </div>
+            <div class="feat-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Integración con Gemini API para análisis profundo</span>
+            </div>
+          </div>
+
+          <div class="tags">
+            <span class="tag">FastAPI</span>
+            <span class="tag">PostgreSQL</span>
+            <span class="tag">Gemini API</span>
+            <span class="tag">Python</span>
+          </div>
+
+          <div class="card-footer">
+            <a href="https://github.com/Yisus0708" target="_blank" rel="noopener" class="card-link">
+              <span>Ver en GitHub</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- PROJECT 2: MILA -->
+        <article class="card spotlight-card reveal" data-category="ai desktop" style="--d: .12s">
+          <div class="card-glow" aria-hidden="true"></div>
+          <div class="card-top">
+            <div class="card-icon-wrap">
+              <span class="card-emoji">🎙️</span>
+            </div>
+            <div class="card-badges">
+              <span class="badge-status status-prod">Producción</span>
+              <span class="badge-type">Desktop Assistant</span>
+            </div>
+          </div>
+
+          <h3 class="card-title">MILA</h3>
+          <p class="card-desc">
+            Asistente de voz multimodal para el sistema operativo: ejecuta comandos de voz, manipula archivos locales, realiza diagnósticos de hardware y asiste en flujos diarios.
+          </p>
+
+          <div class="card-features">
+            <div class="feat-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Control de archivos y procesos por voz</span>
+            </div>
+            <div class="feat-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Interfaz nativa reactiva con PyQt6</span>
+            </div>
+          </div>
+
+          <div class="tags">
+            <span class="tag">PyQt6</span>
+            <span class="tag">Gemini</span>
+            <span class="tag">Speech Recognition</span>
+            <span class="tag">OS Automation</span>
+          </div>
+
+          <div class="card-footer">
+            <a href="https://github.com/Yisus0708" target="_blank" rel="noopener" class="card-link">
+              <span>Ver en GitHub</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- PROJECT 3: MEDICAL RECORDS AUTOMATION -->
+        <article class="card spotlight-card reveal" data-category="ai backend desktop" style="--d: .19s">
+          <div class="card-glow" aria-hidden="true"></div>
+          <div class="card-top">
+            <div class="card-icon-wrap">
+              <span class="card-emoji">🏥</span>
+            </div>
+            <div class="card-badges">
+              <span class="badge-status status-prod">Producción</span>
+              <span class="badge-type">Multimodal ETL</span>
+            </div>
+          </div>
+
+          <h3 class="card-title">Medical Records Automation</h3>
+          <p class="card-desc">
+            Pipeline inteligente de extracción y procesamiento de historiales clínicos. Lee documentos PDF escaneados desde Google Drive, estructura los datos con IA y exporta a Excel/BD.
+          </p>
+
+          <div class="card-features">
+            <div class="feat-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Extracción OCR multimodal de alta precisión</span>
+            </div>
+            <div class="feat-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Ahorro del 85% en tiempo manual de digitación</span>
+            </div>
+          </div>
+
+          <div class="tags">
+            <span class="tag">Flask</span>
+            <span class="tag">Gemini API</span>
+            <span class="tag">Google Drive API</span>
+            <span class="tag">Pandas</span>
+          </div>
+
+          <div class="card-footer">
+            <a href="https://github.com/Yisus0708" target="_blank" rel="noopener" class="card-link">
+              <span>Ver en GitHub</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- PROJECT 4: RAG SALES AGENT -->
+        <article class="card spotlight-card reveal" data-category="ai backend" style="--d: .26s">
+          <div class="card-glow" aria-hidden="true"></div>
+          <div class="card-top">
+            <div class="card-icon-wrap">
+              <span class="card-emoji">🚗</span>
+            </div>
+            <div class="card-badges">
+              <span class="badge-status status-prod">Producción</span>
+              <span class="badge-type">RAG &amp; Conversational AI</span>
+            </div>
+          </div>
+
+          <h3 class="card-title">RAG Sales Agent</h3>
+          <p class="card-desc">
+            Agente conversacional de ventas con Retrieval-Augmented Generation (RAG). Califica leads en tiempo real, responde con catálogo de inventario actualizado y agenda citas comerciales.
+          </p>
+
+          <div class="card-features">
+            <div class="feat-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Búsqueda semántica sobre inventario de vehículos</span>
+            </div>
+            <div class="feat-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Clasificación automática de intención de compra</span>
+            </div>
+          </div>
+
+          <div class="tags">
+            <span class="tag">Gemini</span>
+            <span class="tag">RAG</span>
+            <span class="tag">Vector Search</span>
+            <span class="tag">Prompt Engineering</span>
+          </div>
+
+          <div class="card-footer">
+            <a href="https://github.com/Yisus0708" target="_blank" rel="noopener" class="card-link">
+              <span>Ver en GitHub</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            </a>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Real world quote highlight -->
+      <div class="section-quote-box reveal" style="--d: .1s">
+        <div class="quote-icon">“</div>
+        <p class="quote-text">None of this was a tutorial. These were real problems solved for real people.</p>
+      </div>
+    </section>
+
+    <!-- PHILOSOPHY / ABOUT BENTO SECTION -->
+    <section id="about" class="section">
+      <div class="section-head reveal">
+        <span class="section-badge">FILOSOFÍA DE INGENIERÍA</span>
+        <h2 class="section-title">¿Cómo construyo software?</h2>
+        <p class="section-sub">Mi valor principal no es saber sintaxis, sino transformar requerimientos complejos en arquitecturas funcionales y estables.</p>
+      </div>
+
+      <div class="bento-grid">
+        
+        <div class="bento-item spotlight-card reveal bento-wide" style="--d: .05s">
+          <div class="bento-icon">⚡</div>
+          <h3>Backend Sólido &amp; Rendimiento</h3>
+          <p>
+            Construyo APIs RESTful con FastAPI y Flask diseñadas para responder rápido y fallar con gracia. Esquemas de datos bien definidos, validaciones estrictas y modelado eficiente en bases de datos relacionales y no relacionales.
+          </p>
+          <div class="bento-chips">
+            <span>FastAPI</span>
+            <span>PostgreSQL</span>
+            <span>MySQL</span>
+            <span>MongoDB</span>
+            <span>REST APIs</span>
+          </div>
+        </div>
+
+        <div class="bento-item spotlight-card reveal" style="--d: .12s">
+          <div class="bento-icon">🧠</div>
+          <h3>Applied AI &amp; RAG</h3>
+          <p>
+            Voy más allá de llamadas simples a APIs: diseño pipelines de contexto con RAG, extracción multimodal sobre documentos escaneados y agentes que ejecutan tareas con herramientas del sistema.
+          </p>
+        </div>
+
+        <div class="bento-item spotlight-card reveal" style="--d: .19s">
+          <div class="bento-icon">🛡️</div>
+          <h3>Cero Fluff, 100% Producción</h3>
+          <p>
+            <em>"Done is better than perfect."</em> Priorizo la entrega continua, la usabilidad real y la mantenibilidad por encima de sobreingeniería innecesaria.
+          </p>
+        </div>
+
+        <div class="bento-item spotlight-card reveal bento-wide" style="--d: .26s">
+          <div class="bento-icon">🔄</div>
+          <h3>Automatización Integral de Procesos</h3>
+          <p>
+            Desde la extracción desatendida de documentos en Google Drive hasta la sincronización automatizada en hojas de cálculo y bases de datos. Reduzco fricciones operativas eliminando tareas manuales repetitivas.
+          </p>
+          <div class="bento-chips">
+            <span>Google APIs</span>
+            <span>Pandas</span>
+            <span>ETL Pipelines</span>
+            <span>Scripting Automatizado</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TECH STACK SECTION -->
+    <section id="stack" class="section">
+      <div class="section-head reveal">
+        <span class="section-badge">HERRAMIENTAS</span>
+        <h2 class="section-title">Tech Stack &amp; Ecosistema</h2>
+        <p class="section-sub">Tecnologías con las que trabajo activamente para construir soluciones robustas de principio a fin.</p>
+      </div>
+
+      <!-- Skill Icons Banner -->
+      <div class="stack-showcase reveal" style="--d: .08s">
+        <div class="stack-icons-wrapper spotlight-card">
+          <img src="https://skillicons.dev/icons?i=python,fastapi,flask,postgres,mysql,mongodb,js,react,tensorflow,git,vscode,docker&perline=6" alt="Iconos de tecnologías: Python, FastAPI, Flask, PostgreSQL, MySQL, MongoDB, JavaScript, React, TensorFlow, Git, VS Code, Docker" loading="lazy" />
+        </div>
+      </div>
+
+      <!-- Categorized Stack Grid -->
+      <div class="stack-categories-grid">
+        
+        <!-- Category 1: Backend & DBs -->
+        <div class="stack-cat-card spotlight-card reveal" style="--d: .05s">
+          <div class="cat-header">
+            <span class="cat-emoji">⚙️</span>
+            <h4>Backend &amp; Databases</h4>
+          </div>
+          <div class="cat-badges">
+            <div class="stack-pill"><span class="pill-dot"></span>Python (Avanzado)</div>
+            <div class="stack-pill"><span class="pill-dot"></span>FastAPI</div>
+            <div class="stack-pill"><span class="pill-dot"></span>Flask</div>
+            <div class="stack-pill"><span class="pill-dot"></span>PostgreSQL</div>
+            <div class="stack-pill"><span class="pill-dot"></span>MySQL</div>
+            <div class="stack-pill"><span class="pill-dot"></span>MongoDB</div>
+            <div class="stack-pill"><span class="pill-dot"></span>Docker</div>
+          </div>
+        </div>
+
+        <!-- Category 2: AI & LLMs -->
+        <div class="stack-cat-card spotlight-card reveal" style="--d: .12s">
+          <div class="cat-header">
+            <span class="cat-emoji">🧠</span>
+            <h4>Applied AI &amp; Machine Learning</h4>
+          </div>
+          <div class="cat-badges">
+            <div class="stack-pill"><span class="pill-dot"></span>Google Gemini API</div>
+            <div class="stack-pill"><span class="pill-dot"></span>RAG Systems</div>
+            <div class="stack-pill"><span class="pill-dot"></span>Vector Embeddings</div>
+            <div class="stack-pill"><span class="pill-dot"></span>Prompt Engineering</div>
+            <div class="stack-pill"><span class="pill-dot"></span>Multimodal Processing</div>
+            <div class="stack-pill"><span class="pill-dot"></span>TensorFlow (Bases)</div>
+          </div>
+        </div>
+
+        <!-- Category 3: Frontend & Tools -->
+        <div class="stack-cat-card spotlight-card reveal" style="--d: .19s">
+          <div class="cat-header">
+            <span class="cat-emoji">💻</span>
+            <h4>Frontend, Desktop &amp; Tools</h4>
+          </div>
+          <div class="cat-badges">
+            <div class="stack-pill"><span class="pill-dot"></span>JavaScript (ES6+)</div>
+            <div class="stack-pill"><span class="pill-dot"></span>React</div>
+            <div class="stack-pill"><span class="pill-dot"></span>PyQt6 Desktop</div>
+            <div class="stack-pill"><span class="pill-dot"></span>Git &amp; GitHub</div>
+            <div class="stack-pill"><span class="pill-dot"></span>Linux / Bash</div>
+            <div class="stack-pill"><span class="pill-dot"></span>Postman / REST Tools</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- GITHUB ACTIVITY & STATS -->
+    <section id="stats" class="section">
+      <div class="section-head reveal">
+        <span class="section-badge">ACTIVIDAD</span>
+        <h2 class="section-title">GitHub Activity &amp; Stats</h2>
+        <p class="section-sub">Constancia, commits y desarrollo de proyectos en el repositorio público.</p>
+      </div>
+
+      <div class="stats-wrapper">
+        <div class="stats-grid reveal" style="--d: .05s">
+          <div class="stat-img-card spotlight-card">
+            <img loading="lazy" height="175" alt="Estadísticas de GitHub de Jesus Cantillo"
+              src="https://github-readme-stats-eight-theta.vercel.app/api?username=Yisus0708&show_icons=true&theme=tokyonight&hide_border=true&bg_color=070f1e&title_color=00f0ff&icon_color=00f0ff&text_color=aebac6" />
+          </div>
+          <div class="stat-img-card spotlight-card">
+            <img loading="lazy" height="175" alt="Lenguajes más usados por Jesus Cantillo"
+              src="https://github-readme-stats-eight-theta.vercel.app/api/top-langs/?username=Yisus0708&layout=compact&theme=tokyonight&hide_border=true&bg_color=070f1e&title_color=00f0ff&text_color=aebac6" />
+          </div>
+        </div>
+
+        <div class="streak-wrap reveal" style="--d: .15s">
+          <div class="streak-img-card spotlight-card">
+            <img loading="lazy" alt="Racha de contribuciones en GitHub"
+              src="https://github-readme-streak-stats.herokuapp.com/?user=Yisus0708&theme=tokyonight&hide_border=true&background=070F1E&ring=00F0FF&fire=00F0FF&currStreakNum=00F0FF" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="section contact-section">
+      <div class="contact-card spotlight-card reveal">
+        <div class="contact-glow" aria-hidden="true"></div>
+        
+        <div class="section-head">
+          <span class="section-badge">CONECTEMOS</span>
+          <h2 class="section-title">¿Tienes un proyecto en mente?</h2>
+          <p class="section-sub">
+            Estoy disponible para crear arquitecturas backend, agentes de IA personalizados o colaborar en proyectos de alto impacto.
+          </p>
+        </div>
+
+        <!-- Contact Methods Grid -->
+        <div class="contact-grid">
+          
+          <!-- Email card -->
+          <div class="contact-item">
+            <div class="ci-icon">✉️</div>
+            <div class="ci-info">
+              <span class="ci-title">Correo electrónico</span>
+              <a href="mailto:jesucantillo30@gmail.com" class="ci-val">jesucantillo30@gmail.com</a>
+            </div>
+            <button class="btn btn-sm btn-ghost copy-email-btn" data-email="jesucantillo30@gmail.com" title="Copiar correo">
+              <span>Copiar</span>
+            </button>
+          </div>
+
+          <!-- GitHub card -->
+          <div class="contact-item">
+            <div class="ci-icon">🐙</div>
+            <div class="ci-info">
+              <span class="ci-title">GitHub Perfil</span>
+              <a href="https://github.com/Yisus0708" target="_blank" rel="noopener" class="ci-val">github.com/Yisus0708</a>
+            </div>
+            <a href="https://github.com/Yisus0708" target="_blank" rel="noopener" class="btn btn-sm btn-ghost">
+              <span>Visitar</span>
+            </a>
+          </div>
+
+          <!-- Instagram card -->
+          <div class="contact-item">
+            <div class="ci-icon">📷</div>
+            <div class="ci-info">
+              <span class="ci-title">Instagram</span>
+              <a href="https://www.instagram.com/jxsx__x0?igsh=NXpucXdqYjE5Zm9m" target="_blank" rel="noopener" class="ci-val">@jxsx__x0</a>
+            </div>
+            <a href="https://www.instagram.com/jxsx__x0?igsh=NXpucXdqYjE5Zm9m" target="_blank" rel="noopener" class="btn btn-sm btn-ghost">
+              <span>Seguir</span>
+            </a>
+          </div>
+
+        </div>
+
+        <!-- Big CTA -->
+        <div class="contact-cta">
+          <a href="mailto:jesucantillo30@gmail.com?subject=Propuesta%20de%20Proyecto%20/%20Oportunidad" class="btn btn-primary btn-lg">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span>Enviar mensaje directo</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <a href="#home" class="brand-logo">JC<span class="accent-dot">.</span></a>
+        <p>Jesus Cantillo — Backend &amp; Applied AI Engineer</p>
+      </div>
+
+      <div class="footer-middle">
+        <p>Diseñado con pasión por la tecnología y la IA · <span id="year"></span></p>
+      </div>
+
+      <div class="footer-right">
+        <a href="https://github.com/Yisus0708" target="_blank" rel="noopener" aria-label="GitHub">GitHub</a>
+        <span>·</span>
+        <a href="mailto:jesucantillo30@gmail.com" aria-label="Email">Email</a>
+        <span>·</span>
+        <a href="https://www.instagram.com/jxsx__x0?igsh=NXpucXdqYjE5Zm9m" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Back to Top Button -->
+  <button id="back-to-top" class="back-to-top" aria-label="Volver arriba">
+    <svg class="progress-ring" width="48" height="48" viewBox="0 0 48 48">
+      <circle class="progress-ring-bg" cx="24" cy="24" r="20" stroke-width="2.5" fill="none" />
+      <circle class="progress-ring-fill" cx="24" cy="24" r="20" stroke-width="2.5" fill="none" />
+    </svg>
+    <svg class="arrow-up" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+  <!-- Main JavaScript File -->
+  <script src="js/main.js"></script>
 </body>
 </html>
