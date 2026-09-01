@@ -293,10 +293,10 @@
   const typedEl = document.getElementById("typed");
   if (typedEl) {
     const lines = [
-      "I build things that work, not demos.",
+      "Construyo cosas que funcionan, no demos.",
       "while (learning) { build(something_real); }",
-      "FastAPI + Gemini API + High Performance.",
-      "Done is better than perfect.",
+      "FastAPI + Gemini API + Alto Rendimiento.",
+      "Hecho es mejor que perfecto.",
     ];
 
     if (reduceMotion) {
@@ -373,7 +373,7 @@
       <div class="t-line"><span class="badge-cmd">clear</span> : Limpiar la pantalla</div>
     `,
     about: () => `
-      <div class="t-line accent">Jesus Cantillo — Backend &amp; Applied AI Engineer</div>
+      <div class="t-line accent">Jesus Cantillo — Ingeniero Backend e IA Aplicada</div>
       <div class="t-line output">Especializado en diseñar APIs de alto rendimiento con FastAPI/Flask e integrar modelos de lenguaje avanzados (Gemini API) en flujos de producción.</div>
     `,
     projects: () => `
@@ -385,10 +385,10 @@
       <div class="t-line dim">👉 Explora más abajo en la sección de proyectos.</div>
     `,
     skills: () => `
-      <div class="t-line success">--- TECH STACK & SKILLS ---</div>
+      <div class="t-line success">--- STACK TECNOLÓGICO Y HABILIDADES ---</div>
       <div class="t-line output">⚡ <strong>Backend:</strong> Python, FastAPI, Flask, PostgreSQL, MySQL, MongoDB, Docker</div>
-      <div class="t-line output">🧠 <strong>AI/ML:</strong> Gemini API, RAG, Embeddings, Prompt Engineering, Multimodal</div>
-      <div class="t-line output">🛠 <strong>Tools:</strong> JavaScript, React, PyQt6, Git, Linux, Postman</div>
+      <div class="t-line output">🧠 <strong>IA/ML:</strong> Gemini API, RAG, Embeddings, Ingeniería de Prompts, Multimodal</div>
+      <div class="t-line output">🛠 <strong>Herramientas:</strong> JavaScript, React, PyQt6, Git, Linux, Postman</div>
     `,
     stack: () => cliCommands.skills(),
     philosophy: () => `
@@ -413,7 +413,7 @@
       return `<div class="t-line output">🕒 Hora local: ${now.toLocaleTimeString()} (${now.toLocaleDateString()})</div>`;
     },
     sudo: () => `<div class="t-line error">Permiso concedido temporalmente: ¡Bienvenido Superusuario! ✨</div>`,
-    quote: () => `<div class="t-line accent">“The expert in anything was once a beginner who refused to give up.”</div>`,
+    quote: () => `<div class="t-line accent">“Todo experto fue alguna vez un principiante que se negó a rendirse.”</div>`,
     clear: () => {
       if (terminalScreen) {
         terminalScreen.innerHTML = "";
