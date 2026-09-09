@@ -2083,6 +2083,8 @@ img {
   border-radius: var(--radius-full);
   transition: var(--transition-smooth);
   cursor: pointer;
+  flex-shrink: 0;
+  user-select: none;
 }
 
 .cmd-palette-trigger:hover {
@@ -2937,14 +2939,30 @@ dialog[open] {
   }
 }
 
+.mobile-cmd-btn {
+  background: transparent;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  color: var(--accent);
+  margin-top: 0.25rem;
+}
+
+@media (max-width: 1120px) {
+  .cmd-trigger-text {
+    display: none;
+  }
+}
+
 @media (max-width: 640px) {
   .cmd-trigger-text,
   .cmd-shortcut-tag {
     display: none;
   }
   .cmd-palette-trigger {
-    padding: 0.4rem 0.55rem;
-    border-radius: var(--radius-sm);
+    padding: 0.42rem 0.65rem;
+    border-radius: var(--radius-full);
   }
   .cmd-palette-dialog,
   .arch-modal-dialog {

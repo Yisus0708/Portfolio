@@ -689,6 +689,20 @@
   function playPip() { playTone(980, "sine", 0.03, 0.025); }
   function playTick() { playTone(1300, "sine", 0.015, 0.02); }
 
+  function playOpen() {
+    try {
+      playTone(480, "sine", 0.07, 0.04);
+      setTimeout(() => playTone(880, "sine", 0.09, 0.04), 45);
+    } catch (e) {}
+  }
+
+  function playClose() {
+    try {
+      playTone(880, "sine", 0.06, 0.035);
+      setTimeout(() => playTone(440, "sine", 0.08, 0.035), 40);
+    } catch (e) {}
+  }
+
   if (audioToggleBtn) {
     audioToggleBtn.addEventListener("click", () => {
       soundEnabled = !soundEnabled;
@@ -1031,14 +1045,30 @@
       archModalBody.innerHTML = diagramHtml + specsHtml + challengesHtml;
     }
 
-    playOpen();
-    archModal.showModal();
+    try { playOpen(); } catch (e) {}
+    try {
+      if (typeof archModal.showModal === "function") {
+        archModal.showModal();
+      } else {
+        archModal.setAttribute("open", "");
+      }
+    } catch (e) {
+      archModal.setAttribute("open", "");
+    }
   }
 
   function closeProjectModal() {
-    if (archModal && archModal.open) {
-      playClose();
-      archModal.close();
+    if (archModal && (archModal.open || archModal.hasAttribute("open"))) {
+      try { playClose(); } catch (e) {}
+      try {
+        if (typeof archModal.close === "function") {
+          archModal.close();
+        } else {
+          archModal.removeAttribute("open");
+        }
+      } catch (e) {
+        archModal.removeAttribute("open");
+      }
     }
   }
 
@@ -1083,11 +1113,19 @@
 
   function openCmdPalette() {
     if (!cmdDialog) return;
-    playOpen();
-    cmdDialog.showModal();
+    try { playOpen(); } catch (e) {}
+    try {
+      if (typeof cmdDialog.showModal === "function") {
+        cmdDialog.showModal();
+      } else {
+        cmdDialog.setAttribute("open", "");
+      }
+    } catch (e) {
+      cmdDialog.setAttribute("open", "");
+    }
     if (cmdInput) {
       cmdInput.value = "";
-      cmdInput.focus();
+      setTimeout(() => cmdInput.focus(), 50);
     }
     if (cmdResults) {
       cmdResults.querySelectorAll(".cmd-item, .cmd-group-label").forEach((el) => el.classList.remove("hidden"));
@@ -1097,13 +1135,28 @@
   }
 
   function closeCmdPalette() {
-    if (cmdDialog && cmdDialog.open) {
-      playClose();
-      cmdDialog.close();
+    if (cmdDialog && (cmdDialog.open || cmdDialog.hasAttribute("open"))) {
+      try { playClose(); } catch (e) {}
+      try {
+        if (typeof cmdDialog.close === "function") {
+          cmdDialog.close();
+        } else {
+          cmdDialog.removeAttribute("open");
+        }
+      } catch (e) {
+        cmdDialog.removeAttribute("open");
+      }
     }
   }
 
   if (cmdTrigger) cmdTrigger.addEventListener("click", openCmdPalette);
+  const mobileCmdTrigger = document.getElementById("mobile-cmd-trigger");
+  if (mobileCmdTrigger) {
+    mobileCmdTrigger.addEventListener("click", () => {
+      closeMobileNav();
+      setTimeout(openCmdPalette, 150);
+    });
+  }
   if (cmdCloseBtn) cmdCloseBtn.addEventListener("click", closeCmdPalette);
   if (cmdDialog) {
     cmdDialog.addEventListener("click", (e) => {
