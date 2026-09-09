@@ -590,7 +590,7 @@
   }, { passive: true });
 
   /* ==========================================================================
-     12. HERO TERMINAL AI ASSISTANT TAB (GEMINI 1.5 SIMULATOR)
+     12. HERO TERMINAL AI ASSISTANT TAB (MILA)
      ========================================================================== */
   const aiChatScreen = document.getElementById("ai-chat-screen");
   const aiChatForm = document.getElementById("ai-chat-form");
