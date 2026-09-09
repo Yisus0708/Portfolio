@@ -59,10 +59,23 @@
       </nav>
 
       <div class="topbar-actions">
+        <!-- Command Palette Trigger Button (Ctrl+K) -->
+        <button class="cmd-palette-trigger" id="cmd-palette-trigger" aria-label="Abrir paleta de comandos (Ctrl+K)" title="Paleta de comandos (Ctrl+K)">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <span class="cmd-trigger-text">Buscar...</span>
+          <kbd class="cmd-kbd">⌘K</kbd>
+        </button>
+
+        <!-- Audio FX Toggle Button -->
+        <button class="audio-fx-toggle" id="audio-fx-toggle" aria-label="Alternar efectos de sonido Sci-Fi" title="Efectos de sonido (desactivado)">
+          <svg class="audio-icon-off" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+          <svg class="audio-icon-on hidden" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+        </button>
+
         <!-- Status Indicator Pill -->
         <div class="status-pill" title="Disponible para colaborar en proyectos y oportunidades">
           <span class="status-dot"></span>
-          <span class="status-text">Disponible para trabajar</span>
+          <span class="status-text">Disponible</span>
         </div>
 
         <a href="#contact" class="btn btn-sm btn-outline-glow nav-cta">Hablemos</a>
@@ -180,6 +193,7 @@
 
             <div class="terminal-tabs">
               <button class="t-tab active" data-tab="cli">Consola CLI</button>
+              <button class="t-tab" data-tab="ai-chat"><span class="tab-dot-ai"></span> Asistente IA</button>
               <button class="t-tab" data-tab="arch">Especificaciones</button>
               <button class="t-tab" data-tab="stack">Stack Rápido</button>
             </div>
@@ -210,6 +224,42 @@
                 <input type="text" id="terminal-input" class="t-input" placeholder="Escribe 'help' o un comando..." aria-label="Terminal command input" />
                 <button type="submit" class="t-submit" aria-label="Ejecutar comando">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </button>
+              </form>
+            </div>
+
+            <!-- TAB: Interactive AI Chatbot Simulation -->
+            <div class="t-content" id="tab-ai-chat">
+              <div class="ai-chat-header">
+                <div class="ai-status-badge">
+                  <span class="ai-dot"></span> GEMINI 1.5 FLASH AGENT
+                </div>
+                <div class="ai-sub">Consulta sobre su experiencia, arquitectura RAG y backend</div>
+              </div>
+
+              <div class="ai-chat-screen" id="ai-chat-screen">
+                <div class="ai-bubble-wrap bot">
+                  <span class="ai-avatar">🤖</span>
+                  <div class="ai-bubble">
+                    ¡Hola! Soy el agente virtual de Jesus. Puedo detallar su experiencia en <strong>FastAPI</strong>, diseño de <strong>pipelines RAG</strong>, integración de <strong>Gemini API</strong> o resolver dudas para reclutadores técnicos. ¿Qué te gustaría consultar?
+                  </div>
+                </div>
+              </div>
+
+              <!-- Quick Prompt Chips -->
+              <div class="ai-prompts-chips">
+                <button type="button" class="ai-chip" data-prompt="¿Cómo diseñas un pipeline RAG en producción?">🧠 Pipeline RAG</button>
+                <button type="button" class="ai-chip" data-prompt="¿Por qué prefieres FastAPI sobre otros frameworks?">⚡ FastAPI vs Otros</button>
+                <button type="button" class="ai-chip" data-prompt="¿Cómo manejas la seguridad y rate limiting de LLMs?">🛡️ Seguridad en IA</button>
+                <button type="button" class="ai-chip" data-prompt="¿Por qué deberíamos contratar a Jesus para nuestro equipo?">💼 ¿Por qué contratarlo?</button>
+              </div>
+
+              <!-- AI Input Form -->
+              <form class="terminal-input-wrap ai-input-wrap" id="ai-chat-form" autocomplete="off">
+                <span class="ai-prompt-lbl">ai@prompt:</span>
+                <input type="text" id="ai-chat-input" class="t-input" placeholder="Pregunta algo sobre su perfil o arquitectura..." aria-label="Pregunta al Asistente IA" />
+                <button type="submit" class="t-submit" aria-label="Enviar pregunta">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
                 </button>
               </form>
             </div>
@@ -357,9 +407,13 @@
           </div>
 
           <div class="card-footer">
+            <button class="btn-card-action open-arch-modal" data-project="mentia" type="button" aria-label="Ver arquitectura técnica de Mentia">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+              <span>Arquitectura</span>
+            </button>
             <a href="https://github.com/Yisus0708" target="_blank" rel="noopener" class="card-link">
-              <span>Ver en GitHub</span>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              <span>GitHub</span>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
             </a>
           </div>
         </article>
@@ -401,9 +455,13 @@
           </div>
 
           <div class="card-footer">
+            <button class="btn-card-action open-arch-modal" data-project="mila" type="button" aria-label="Ver arquitectura técnica de MILA">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+              <span>Arquitectura</span>
+            </button>
             <a href="https://github.com/Yisus0708" target="_blank" rel="noopener" class="card-link">
-              <span>Ver en GitHub</span>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              <span>GitHub</span>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
             </a>
           </div>
         </article>
@@ -445,9 +503,13 @@
           </div>
 
           <div class="card-footer">
+            <button class="btn-card-action open-arch-modal" data-project="medical" type="button" aria-label="Ver arquitectura técnica de Medical Records Automation">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+              <span>Arquitectura</span>
+            </button>
             <a href="https://github.com/Yisus0708" target="_blank" rel="noopener" class="card-link">
-              <span>Ver en GitHub</span>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              <span>GitHub</span>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
             </a>
           </div>
         </article>
@@ -489,9 +551,13 @@
           </div>
 
           <div class="card-footer">
+            <button class="btn-card-action open-arch-modal" data-project="rag-sales" type="button" aria-label="Ver arquitectura técnica de RAG Sales Agent">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+              <span>Arquitectura</span>
+            </button>
             <a href="https://github.com/Yisus0708" target="_blank" rel="noopener" class="card-link">
-              <span>Ver en GitHub</span>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              <span>GitHub</span>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
             </a>
           </div>
         </article>
@@ -560,6 +626,72 @@
           </div>
         </div>
 
+      </div>
+
+      <!-- Interactive Architecture Flow Visualizer -->
+      <div class="pipeline-card spotlight-card reveal" style="--d: .15s">
+        <div class="pipeline-header">
+          <div class="pipeline-badge">
+            <span class="pipeline-pulse"></span>
+            ARQUITECTURA DE PRODUCCIÓN
+          </div>
+          <h3 class="pipeline-title">El Ciclo de una Solicitud de Alto Rendimiento</h3>
+          <p class="pipeline-sub">Haz clic en cada etapa del pipeline para explorar las decisiones de diseño e ingeniería que garantizan estabilidad y baja latencia.</p>
+        </div>
+
+        <div class="pipeline-flow" role="tablist" aria-label="Etapas del pipeline de ingeniería">
+          <button class="flow-step active" data-step="gateway" role="tab" aria-selected="true">
+            <div class="step-num">01</div>
+            <div class="step-icon">🛡️</div>
+            <div class="step-label">FastAPI Gateway</div>
+            <div class="step-meta">&lt; 20ms · Async I/O</div>
+          </button>
+
+          <div class="flow-connector" aria-hidden="true">
+            <div class="flow-pulse"></div>
+          </div>
+
+          <button class="flow-step" data-step="rag" role="tab" aria-selected="false">
+            <div class="step-num">02</div>
+            <div class="step-icon">🔍</div>
+            <div class="step-label">RAG &amp; Vector DB</div>
+            <div class="step-meta">pgvector · Caching</div>
+          </button>
+
+          <div class="flow-connector" aria-hidden="true">
+            <div class="flow-pulse"></div>
+          </div>
+
+          <button class="flow-step" data-step="llm" role="tab" aria-selected="false">
+            <div class="step-num">03</div>
+            <div class="step-icon">🧠</div>
+            <div class="step-label">Gemini Engine</div>
+            <div class="step-meta">Structured Output</div>
+          </button>
+
+          <div class="flow-connector" aria-hidden="true">
+            <div class="flow-pulse"></div>
+          </div>
+
+          <button class="flow-step" data-step="storage" role="tab" aria-selected="false">
+            <div class="step-num">04</div>
+            <div class="step-icon">🗄️</div>
+            <div class="step-label">PostgreSQL / Cache</div>
+            <div class="step-meta">ACID · Transaccional</div>
+          </button>
+        </div>
+
+        <div class="pipeline-detail-panel" id="pipeline-detail-panel">
+          <div class="pdp-badge" id="pdp-badge">Etapa 01: Gateway de Entrada &amp; Enrutamiento</div>
+          <h4 class="pdp-title" id="pdp-title">FastAPI Asíncrono con Pydantic y Rate Limiting</h4>
+          <p class="pdp-text" id="pdp-text">Cada solicitud entrante se valida mediante esquemas estrictos de Pydantic v2 para garantizar tipos correctos antes de tocar la lógica de negocio. Se aplican políticas de rate limiting por IP/token y manejo centralizado de excepciones con respuestas HTTP semánticas estándar RFC 7807.</p>
+          <div class="pdp-tags" id="pdp-tags">
+            <span>Non-blocking async/await</span>
+            <span>Validación en microsegundos</span>
+            <span>CORS &amp; JWT Seguro</span>
+            <span>OpenAPI Docs Automática</span>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -716,12 +848,37 @@
 
         </div>
 
-        <!-- Big CTA -->
+        <!-- Interactive Quick Message Generator -->
+        <div class="contact-composer">
+          <div class="composer-title">
+            <span class="composer-icon">⚡</span>
+            <span>Generador de mensaje rápido: selecciona tu interés</span>
+          </div>
+          <div class="composer-chips">
+            <button type="button" class="composer-chip active" data-intent="hiring">💼 Oferta Laboral</button>
+            <button type="button" class="composer-chip" data-intent="project">🚀 Proyecto Backend</button>
+            <button type="button" class="composer-chip" data-intent="ai">🧠 Consultoría IA / RAG</button>
+            <button type="button" class="composer-chip" data-intent="coffee">☕ Networking / Charla</button>
+          </div>
+          <div class="composer-preview">
+            <div class="composer-header">
+              <span class="composer-subject-label">Asunto:</span>
+              <span class="composer-subject" id="composer-subject">Oportunidad Laboral — Ingeniero Backend / IA</span>
+            </div>
+            <p class="composer-body" id="composer-body">"Hola Jesus, revisé tu portafolio y proyectos en FastAPI e integración con Gemini. Nos gustaría conversar sobre una vacante/oportunidad en nuestro equipo técnico."</p>
+          </div>
+        </div>
+
+        <!-- Big CTA with Copy Option -->
         <div class="contact-cta">
-          <a href="mailto:jesucantillo30@gmail.com?subject=Propuesta%20de%20Proyecto%20/%20Oportunidad" class="btn btn-primary btn-lg">
+          <a id="contact-direct-btn" href="mailto:jesucantillo30@gmail.com?subject=Oportunidad%20Laboral%20%E2%80%94%20Ingeniero%20Backend%20/%20IA&body=Hola%20Jesus,%20revis%C3%A9%20tu%20portafolio%20y%20proyectos%20en%20FastAPI%20e%20integraci%C3%B3n%20con%20Gemini.%20Nos%20gustar%C3%ADa%20conversar%20sobre%20una%20vacante/oportunidad%20en%20nuestro%20equipo%20t%C3%A9cnico." class="btn btn-primary btn-lg">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             <span>Enviar mensaje directo</span>
           </a>
+          <button type="button" id="copy-draft-btn" class="btn btn-secondary btn-lg" title="Copiar texto del mensaje para enviar desde tu cliente de correo favorito">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            <span>Copiar borrador</span>
+          </button>
         </div>
       </div>
     </section>
@@ -761,6 +918,183 @@
 
   <!-- Toast Notification Container -->
   <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+  <!-- Custom Futuristic Cursor Follower (Enabled on desktop pointers) -->
+  <div class="custom-cursor-dot" id="cursor-dot" aria-hidden="true"></div>
+  <div class="custom-cursor-ring" id="cursor-ring" aria-hidden="true"></div>
+
+  <!-- COMMAND PALETTE MODAL (Ctrl+K / Cmd+K) -->
+  <dialog id="cmd-palette-dialog" class="cmd-palette-dialog" aria-label="Paleta de Comandos y Búsqueda">
+    <div class="cmd-dialog-content">
+      <div class="cmd-dialog-header">
+        <svg class="cmd-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" id="cmd-palette-input" class="cmd-input" placeholder="Escribe un comando o busca secciones, proyectos o stack..." autocomplete="off" />
+        <button type="button" class="cmd-close-btn" id="cmd-close-btn" aria-label="Cerrar paleta de comandos">&times;</button>
+      </div>
+
+      <div class="cmd-dialog-body" id="cmd-palette-results">
+        <!-- Results will be dynamically filtered or navigated -->
+        <div class="cmd-group-label">Acciones Rápidas</div>
+        
+        <div class="cmd-item" data-action="copy-email">
+          <div class="cmd-item-left">
+            <span class="cmd-icon-box">✉️</span>
+            <div>
+              <div class="cmd-item-title">Copiar Correo Electrónico</div>
+              <div class="cmd-item-desc">jesucantillo30@gmail.com</div>
+            </div>
+          </div>
+          <span class="cmd-kbd">Copiar</span>
+        </div>
+
+        <div class="cmd-item" data-action="toggle-audio">
+          <div class="cmd-item-left">
+            <span class="cmd-icon-box">🔊</span>
+            <div>
+              <div class="cmd-item-title">Alternar Efectos de Sonido Sci-Fi</div>
+              <div class="cmd-item-desc" id="cmd-sound-status">Activar / desactivar audio Web API</div>
+            </div>
+          </div>
+          <span class="cmd-kbd">Audio</span>
+        </div>
+
+        <div class="cmd-item" data-action="open-ai">
+          <div class="cmd-item-left">
+            <span class="cmd-icon-box">🤖</span>
+            <div>
+              <div class="cmd-item-title">Abrir Asistente IA de Jesus</div>
+              <div class="cmd-item-desc">Pregunta sobre arquitectura y RAG en la terminal</div>
+            </div>
+          </div>
+          <span class="cmd-kbd">Terminal</span>
+        </div>
+
+        <div class="cmd-group-label">Proyectos en Producción</div>
+
+        <div class="cmd-item" data-action="open-arch" data-project="mentia">
+          <div class="cmd-item-left">
+            <span class="cmd-icon-box">🧠</span>
+            <div>
+              <div class="cmd-item-title">Mentia — Arquitectura &amp; Flow</div>
+              <div class="cmd-item-desc">FastAPI + Gemini API + EdTech de código</div>
+            </div>
+          </div>
+          <span class="cmd-kbd">Specs</span>
+        </div>
+
+        <div class="cmd-item" data-action="open-arch" data-project="mila">
+          <div class="cmd-item-left">
+            <span class="cmd-icon-box">🎙️</span>
+            <div>
+              <div class="cmd-item-title">MILA — Asistente de Voz para SO</div>
+              <div class="cmd-item-desc">PyQt6 + Gemini + Automatización local</div>
+            </div>
+          </div>
+          <span class="cmd-kbd">Specs</span>
+        </div>
+
+        <div class="cmd-item" data-action="open-arch" data-project="medical">
+          <div class="cmd-item-left">
+            <span class="cmd-icon-box">🏥</span>
+            <div>
+              <div class="cmd-item-title">Medical Records Automation</div>
+              <div class="cmd-item-desc">Pipeline ETL multimodal de PDFs escaneados</div>
+            </div>
+          </div>
+          <span class="cmd-kbd">Specs</span>
+        </div>
+
+        <div class="cmd-item" data-action="open-arch" data-project="rag-sales">
+          <div class="cmd-item-left">
+            <span class="cmd-icon-box">🚗</span>
+            <div>
+              <div class="cmd-item-title">RAG Sales Agent</div>
+              <div class="cmd-item-desc">Búsqueda vectorial sobre inventario y cualificación</div>
+            </div>
+          </div>
+          <span class="cmd-kbd">Specs</span>
+        </div>
+
+        <div class="cmd-group-label">Navegación Rápida</div>
+
+        <div class="cmd-item" data-action="nav" data-target="#projects">
+          <div class="cmd-item-left">
+            <span class="cmd-icon-box">📁</span>
+            <div class="cmd-item-title">Ir a Proyectos</div>
+          </div>
+          <span class="cmd-kbd">#projects</span>
+        </div>
+
+        <div class="cmd-item" data-action="nav" data-target="#about">
+          <div class="cmd-item-left">
+            <span class="cmd-icon-box">⚡</span>
+            <div class="cmd-item-title">Ir a Filosofía &amp; Pipeline</div>
+          </div>
+          <span class="cmd-kbd">#about</span>
+        </div>
+
+        <div class="cmd-item" data-action="nav" data-target="#stack">
+          <div class="cmd-item-left">
+            <span class="cmd-icon-box">🛠️</span>
+            <div class="cmd-item-title">Ir a Stack Tecnológico</div>
+          </div>
+          <span class="cmd-kbd">#stack</span>
+        </div>
+
+        <div class="cmd-item" data-action="nav" data-target="#contact">
+          <div class="cmd-item-left">
+            <span class="cmd-icon-box">📬</span>
+            <div class="cmd-item-title">Ir a Contacto Directo</div>
+          </div>
+          <span class="cmd-kbd">#contact</span>
+        </div>
+
+        <div class="cmd-group-label">Enlaces Externos</div>
+
+        <div class="cmd-item" data-action="link" data-url="https://github.com/Yisus0708">
+          <div class="cmd-item-left">
+            <span class="cmd-icon-box">🐙</span>
+            <div class="cmd-item-title">Visitar GitHub (@Yisus0708)</div>
+          </div>
+          <span class="cmd-kbd">Externo</span>
+        </div>
+      </div>
+
+      <div class="cmd-dialog-footer">
+        <div class="cmd-hint"><span>↑↓</span> para navegar</div>
+        <div class="cmd-hint"><span>↵</span> para seleccionar</div>
+        <div class="cmd-hint"><span>ESC</span> para cerrar</div>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- ARCHITECTURE & DEEP-DIVE MODAL DIALOG -->
+  <dialog id="arch-modal" class="arch-modal-dialog" aria-label="Detalles de Arquitectura Técnica">
+    <div class="arch-modal-content">
+      <div class="arch-modal-header">
+        <div class="arch-title-group">
+          <span class="arch-emoji" id="arch-modal-emoji">🧠</span>
+          <div>
+            <h3 class="arch-modal-title" id="arch-modal-title">Mentia — Arquitectura de Sistema</h3>
+            <div class="arch-modal-subtitle" id="arch-modal-subtitle">FastAPI · Gemini API · PostgreSQL · AST Parser</div>
+          </div>
+        </div>
+        <button type="button" class="arch-close-btn" id="arch-close-btn" aria-label="Cerrar modal">&times;</button>
+      </div>
+
+      <div class="arch-modal-body" id="arch-modal-body">
+        <!-- Content inserted dynamically by JavaScript -->
+      </div>
+
+      <div class="arch-modal-footer">
+        <a href="https://github.com/Yisus0708" target="_blank" rel="noopener" class="btn btn-primary" id="arch-github-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          <span>Ver Repositorio en GitHub</span>
+        </a>
+        <button type="button" class="btn btn-secondary" id="arch-modal-close-action">Cerrar</button>
+      </div>
+    </div>
+  </dialog>
 
   <!-- Main JavaScript File -->
   <script src="js/main.js"></script>

@@ -498,120 +498,804 @@
   });
 
   /* ==========================================================================
-     11. BACKGROUND INTERACTIVE PARTICLE CANVAS
+     11. WEB AUDIO API SCI-FI SOUND FX
      ========================================================================== */
-  const canvas = document.getElementById("bg-canvas");
-  if (!canvas || reduceMotion) return;
+  let audioCtx = null;
+  let soundEnabled = localStorage.getItem("jc_sound_fx") === "on";
 
-  const ctx = canvas.getContext("2d");
-  let width, height, dpr;
-  let particles = [];
-  let mouse = { x: null, y: null, radius: 140 };
+  const audioToggleBtn = document.getElementById("audio-fx-toggle");
+  const audioIconOff = document.querySelector(".audio-icon-off");
+  const audioIconOn = document.querySelector(".audio-icon-on");
 
-  const CYAN_RGB = "0, 240, 255";
-  const BLUE_RGB = "56, 189, 248";
-  const INDIGO_RGB = "129, 140, 248";
+  function updateAudioButtonUI() {
+    if (!audioToggleBtn) return;
+    if (soundEnabled) {
+      audioToggleBtn.classList.add("active");
+      if (audioIconOff) audioIconOff.classList.add("hidden");
+      if (audioIconOn) audioIconOn.classList.remove("hidden");
+      audioToggleBtn.title = "Efectos de sonido (activado - clic para silenciar)";
+    } else {
+      audioToggleBtn.classList.remove("active");
+      if (audioIconOff) audioIconOff.classList.remove("hidden");
+      if (audioIconOn) audioIconOn.classList.add("hidden");
+      audioToggleBtn.title = "Efectos de sonido (desactivado - clic para activar)";
+    }
+    const cmdSoundStatus = document.getElementById("cmd-sound-status");
+    if (cmdSoundStatus) {
+      cmdSoundStatus.textContent = soundEnabled ? "Estado actual: Activado (🔊)" : "Estado actual: Desactivado (🔇)";
+    }
+  }
+  updateAudioButtonUI();
 
-  function resizeCanvas() {
-    dpr = Math.min(window.devicePixelRatio || 1, 2);
-    width = window.innerWidth;
-    height = window.innerHeight;
-    canvas.width = width * dpr;
-    canvas.height = height * dpr;
-    canvas.style.width = width + "px";
-    canvas.style.height = height + "px";
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-    const count = Math.min(85, Math.max(35, Math.floor((width * height) / 18000)));
-    particles = Array.from({ length: count }, () => createParticle());
+  function playTone(freq, type, duration, gainStart = 0.04) {
+    if (!soundEnabled) return;
+    try {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioCtx.state === "suspended") {
+        audioCtx.resume();
+      }
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = type;
+      osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+      gain.gain.setValueAtTime(gainStart, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start();
+      osc.stop(audioCtx.currentTime + duration);
+    } catch (e) {
+      // Audio context might require explicit interaction
+    }
   }
 
-  function createParticle() {
-    const palette = [CYAN_RGB, BLUE_RGB, INDIGO_RGB];
-    return {
-      x: Math.random() * width,
-      y: Math.random() * height,
-      vx: (Math.random() - 0.5) * 0.45,
-      vy: (Math.random() - 0.5) * 0.45,
-      r: Math.random() * 1.6 + 0.6,
-      color: palette[Math.floor(Math.random() * palette.length)],
-      pulseSpeed: Math.random() * 0.03 + 0.01,
-      alpha: Math.random() * 0.5 + 0.3,
-    };
+  function playPip() { playTone(980, "sine", 0.035, 0.035); }
+  function playTick() { playTone(1300, "sine", 0.018, 0.025); }
+  function playOpen() {
+    playTone(480, "sine", 0.07, 0.04);
+    setTimeout(() => playTone(880, "sine", 0.09, 0.04), 45);
+  }
+  function playClose() {
+    playTone(880, "sine", 0.06, 0.035);
+    setTimeout(() => playTone(440, "sine", 0.08, 0.035), 40);
   }
 
-  function renderCanvas() {
-    ctx.clearRect(0, 0, width, height);
+  if (audioToggleBtn) {
+    audioToggleBtn.addEventListener("click", () => {
+      soundEnabled = !soundEnabled;
+      localStorage.setItem("jc_sound_fx", soundEnabled ? "on" : "off");
+      updateAudioButtonUI();
+      if (soundEnabled) {
+        playOpen();
+        showToast("🔊 Efectos de sonido activados");
+      } else {
+        showToast("🔇 Efectos de sonido silenciados");
+      }
+    });
+  }
 
-    const linkDistance = Math.min(145, width / 7);
+  // Add click sound to interactive buttons
+  document.addEventListener("click", (e) => {
+    const target = e.target.closest("button, .btn, .nav-link, .chip, .t-tab, .composer-chip");
+    if (target) {
+      playPip();
+    }
+  }, { passive: true });
 
-    for (let i = 0; i < particles.length; i++) {
-      const p = particles[i];
+  /* ==========================================================================
+     12. HERO TERMINAL AI ASSISTANT TAB (GEMINI 1.5 SIMULATOR)
+     ========================================================================== */
+  const aiChatScreen = document.getElementById("ai-chat-screen");
+  const aiChatForm = document.getElementById("ai-chat-form");
+  const aiChatInput = document.getElementById("ai-chat-input");
+  const aiPromptChips = document.querySelectorAll(".ai-prompts-chips .ai-chip");
 
-      p.x += p.vx;
-      p.y += p.vy;
+  const aiKnowledge = {
+    rag: `Para diseñar un pipeline RAG en producción aplico una arquitectura en 4 capas:
+1. <strong>Preprocesamiento:</strong> Chunking con solapamiento semántico (500 tokens con overlap de 50) preservando headers de Markdown y metadatos estructurados.
+2. <strong>Indexación:</strong> Generación de embeddings con Gemini <em>text-embedding-004</em> almacenados en <strong>PostgreSQL + pgvector</strong> con índices HNSW para búsqueda coseno a escala de milisegundos.
+3. <strong>Filtrado & Caching:</strong> Caché semántico en memoria para preguntas frecuentes (ahorrando hasta 65% de costo en tokens).
+4. <strong>Generación Conectada:</strong> Inyección dinámica del Top-K contexto relevante con esquemas JSON estrictos para garantizar respuestas fundamentadas y sin alucinaciones.`,
 
-      // Wrap boundaries
-      if (p.x < -10) p.x = width + 10;
-      if (p.x > width + 10) p.x = -10;
-      if (p.y < -10) p.y = height + 10;
-      if (p.y > height + 10) p.y = -10;
+    fastapi: `Elijo <strong>FastAPI</strong> sobre Django o Flask para APIs de alto rendimiento por 4 razones técnicas:
+• <strong>Concurrencia Asíncrona nativa:</strong> Maneja miles de requests concurrentes con <code>async/await</code> sin bloquear el event loop (crucial para llamadas a LLMs con tiempos de respuesta variables).
+• <strong>Tipado y Validación con Pydantic v2:</strong> Validaciones compiladas en Rust que reducen la latencia de serialización en un 80%.
+• <strong>Documentación OpenAPI automática:</strong> Generación instantánea de contratos Swagger e interfaces interactivas.
+• <strong>Inyección de Dependencias:</strong> Arquitectura limpia para sesiones de BD, autenticación JWT y rate limiting modular.`,
 
-      // Mouse interactive force
-      if (mouse.x !== null && mouse.y !== null) {
-        const dx = p.x - mouse.x;
-        const dy = p.y - mouse.y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < mouse.radius) {
-          const force = (mouse.radius - dist) / mouse.radius;
-          p.x += (dx / dist) * force * 0.8;
-          p.y += (dy / dist) * force * 0.8;
-        }
+    seguridad: `La seguridad en aplicaciones con IA requiere una estrategia multicapa:
+• <strong>Defensa contra Prompt Injection:</strong> Separación estricta entre System Instructions del sistema y datos de usuario en delimitadores XML/Markdown aislados.
+• <strong>Structured Outputs:</strong> Forzar respuestas en esquemas JSON tipados para evitar ejecución de payloads o desvíos conversacionales.
+• <strong>Control de Presupuesto y Tokens:</strong> Rate limiting por usuario con Redis (token bucket algorithm) y ventanas de timeout de 8 segundos.
+• <strong>Privacidad de Datos:</strong> Sanitización de PII (Información Personal Identificable) antes de interactuar con APIs externas.`,
+
+    contratar: `¿Por qué elegirme para su equipo?
+1. <strong>Enfoque en Producción:</strong> Cero proyectos de juguete o tutoriales vacíos. Todo mi portafolio (Mentia, MILA, automatización de historiales médicos) son soluciones creadas para usuarios reales.
+2. <strong>Especialización dual:</strong> Domino tanto la ingeniería backend robusta (PostgreSQL, FastAPI, Docker) como la integración práctica de Inteligencia Artificial (Gemini API, RAG, embeddings).
+3. <strong>Autonomía y Ejecución:</strong> Capacidad comprobada para llevar una idea desde el diseño arquitectónico hasta la implementación y puesta en marcha con código limpio, tipado y mantenible.`,
+
+    default: `Como ingeniero de software me enfoco en diseñar sistemas backend escalables e integrar modelos de lenguaje en flujos productivos de negocio. Puedes probar consultando sobre <strong>"Pipeline RAG"</strong>, <strong>"FastAPI vs Otros"</strong>, <strong>"Seguridad en IA"</strong> o escribir directamente al correo <a href="mailto:jesucantillo30@gmail.com" style="color:#00f0ff">jesucantillo30@gmail.com</a>.`
+  };
+
+  function appendAiMessage(htmlContent, isUser = false) {
+    if (!aiChatScreen) return;
+    const wrap = document.createElement("div");
+    wrap.className = `ai-bubble-wrap ${isUser ? "user" : "bot"}`;
+    wrap.innerHTML = isUser
+      ? `<div class="ai-bubble">${htmlContent}</div>`
+      : `<span class="ai-avatar">🤖</span><div class="ai-bubble">${htmlContent}</div>`;
+    aiChatScreen.appendChild(wrap);
+    aiChatScreen.scrollTop = aiChatScreen.scrollHeight;
+  }
+
+  function handleAiQuery(query) {
+    if (!query.trim()) return;
+    appendAiMessage(query, true);
+    playPip();
+
+    // Show thinking indicator
+    const thinkingWrap = document.createElement("div");
+    thinkingWrap.className = "ai-bubble-wrap bot thinking-indicator";
+    thinkingWrap.innerHTML = `<span class="ai-avatar">🤖</span><div class="ai-bubble"><span class="tab-dot-ai"></span> Analizando arquitectura...</div>`;
+    aiChatScreen.appendChild(thinkingWrap);
+    aiChatScreen.scrollTop = aiChatScreen.scrollHeight;
+
+    setTimeout(() => {
+      if (thinkingWrap.parentNode) thinkingWrap.parentNode.removeChild(thinkingWrap);
+
+      const qLower = query.toLowerCase();
+      let response = aiKnowledge.default;
+
+      if (qLower.includes("rag") || qLower.includes("recuper") || qLower.includes("vector") || qLower.includes("embedding")) {
+        response = aiKnowledge.rag;
+      } else if (qLower.includes("fastapi") || qLower.includes("django") || qLower.includes("flask") || qLower.includes("framework")) {
+        response = aiKnowledge.fastapi;
+      } else if (qLower.includes("seguridad") || qLower.includes("rate") || qLower.includes("injection") || qLower.includes("proteger")) {
+        response = aiKnowledge.seguridad;
+      } else if (qLower.includes("contrat") || qLower.includes("equipo") || qLower.includes("por que") || qLower.includes("por qué") || qLower.includes("elegir")) {
+        response = aiKnowledge.contratar;
       }
 
-      // Draw particle connections
-      for (let j = i + 1; j < particles.length; j++) {
-        const q = particles[j];
-        const dx = p.x - q.x;
-        const dy = p.y - q.y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
+      appendAiMessage(response, false);
+      playTick();
+    }, 550);
+  }
 
-        if (dist < linkDistance) {
-          const lineAlpha = (1 - dist / linkDistance) * 0.22;
-          ctx.strokeStyle = `rgba(${p.color}, ${lineAlpha})`;
-          ctx.lineWidth = 0.8;
-          ctx.beginPath();
-          ctx.moveTo(p.x, p.y);
-          ctx.lineTo(q.x, q.y);
-          ctx.stroke();
-        }
+  if (aiChatForm && aiChatInput) {
+    aiChatForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const text = aiChatInput.value;
+      if (text.trim()) {
+        handleAiQuery(text);
+        aiChatInput.value = "";
       }
+    });
+  }
 
-      // Draw particle node
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(${p.color}, ${p.alpha})`;
-      ctx.fill();
+  aiPromptChips.forEach((chip) => {
+    chip.addEventListener("click", () => {
+      const promptText = chip.getAttribute("data-prompt");
+      if (promptText) {
+        handleAiQuery(promptText);
+      }
+    });
+  });
+
+  /* ==========================================================================
+     13. ARCHITECTURE PIPELINE FLOW VISUALIZER (ABOUT SECTION)
+     ========================================================================== */
+  const pipelineSteps = document.querySelectorAll(".flow-step");
+  const pdpBadge = document.getElementById("pdp-badge");
+  const pdpTitle = document.getElementById("pdp-title");
+  const pdpText = document.getElementById("pdp-text");
+  const pdpTags = document.getElementById("pdp-tags");
+
+  const pipelineSpecs = {
+    gateway: {
+      badge: "Etapa 01: Gateway de Entrada & Enrutamiento",
+      title: "FastAPI Asíncrono con Pydantic v2 y Rate Limiting",
+      text: "Cada solicitud entrante se valida mediante esquemas estrictos de Pydantic v2 garantizando tipos de datos válidos antes de alcanzar la lógica de negocio. Se aplican políticas de rate limiting por IP/token con Redis y manejo centralizado de excepciones con respuestas HTTP semánticas estándar RFC 7807.",
+      tags: ["Non-blocking async/await", "Validación en microsegundos", "CORS & JWT Seguro", "OpenAPI Docs Automática"]
+    },
+    rag: {
+      badge: "Etapa 02: Búsqueda Semántica & Context Assembly",
+      title: "Recuperación Vectorial Híbrida sobre PostgreSQL / pgvector",
+      text: "En lugar de enviar prompts ciegos, el sistema realiza búsqueda semántica mediante pgvector con índice HNSW y filtrado contextual. Las consultas repetidas se resuelven contra un caché semántico en memoria reduciendo un 65% el consumo de tokens y recortando la latencia por debajo de 15ms.",
+      tags: ["pgvector HNSW", "Embeddings Gemini", "Caché Semántico", "Re-ranking de Contexto"]
+    },
+    llm: {
+      badge: "Etapa 03: Inferencia & Orquestación con Gemini 1.5",
+      title: "Motor de Inferencia con Structured Outputs Tipados",
+      text: "El modelo de lenguaje opera bajo esquemas de salida JSON tipados para erradicar alucinaciones sintácticas. Se ajustan dinámicamente parámetros de temperatura (0.1 - 0.3) y ventanas de contexto de hasta 1M de tokens para razonamiento multimodal sobre documentos extensos.",
+      tags: ["Structured JSON Output", "Gemini 1.5 Flash / Pro", "Guardrails de Seguridad", "Retry con Exponential Backoff"]
+    },
+    storage: {
+      badge: "Etapa 04: Persistencia Transaccional & Telemetría",
+      title: "Persistencia Transaccional ACID & Monitoreo",
+      text: "Los resultados, registros de auditoría y métricas operativas se persisten en PostgreSQL con SQLAlchemy y pool de conexiones asyncpg. Las trazas de latencia y uso de cuotas se auditan continuamente para garantizar estabilidad 24/7 en producción.",
+      tags: ["PostgreSQL ACID", "Asyncpg Connection Pool", "Auditoría de Inferencia", "Health Checks & Logs"]
+    }
+  };
+
+  pipelineSteps.forEach((step) => {
+    step.addEventListener("click", () => {
+      pipelineSteps.forEach((s) => {
+        s.classList.remove("active");
+        s.setAttribute("aria-selected", "false");
+      });
+      step.classList.add("active");
+      step.setAttribute("aria-selected", "true");
+
+      const stepKey = step.getAttribute("data-step");
+      const data = pipelineSpecs[stepKey];
+      if (data && pdpBadge && pdpTitle && pdpText && pdpTags) {
+        pdpBadge.textContent = data.badge;
+        pdpTitle.textContent = data.title;
+        pdpText.textContent = data.text;
+        pdpTags.innerHTML = data.tags.map((tag) => `<span>${tag}</span>`).join("");
+      }
+    });
+  });
+
+  /* ==========================================================================
+     14. PROJECT ARCHITECTURE DEEP-DIVE MODAL MANAGER
+     ========================================================================== */
+  const archModal = document.getElementById("arch-modal");
+  const archModalEmoji = document.getElementById("arch-modal-emoji");
+  const archModalTitle = document.getElementById("arch-modal-title");
+  const archModalSubtitle = document.getElementById("arch-modal-subtitle");
+  const archModalBody = document.getElementById("arch-modal-body");
+  const archGithubLink = document.getElementById("arch-github-link");
+  const archCloseBtn = document.getElementById("arch-close-btn");
+  const archModalCloseAction = document.getElementById("arch-modal-close-action");
+  const openArchButtons = document.querySelectorAll(".open-arch-modal");
+
+  const projectArchitectures = {
+    mentia: {
+      emoji: "🧠",
+      title: "Mentia — Arquitectura de Sistema",
+      subtitle: "FastAPI · Gemini API · PostgreSQL · AST Parser",
+      github: "https://github.com/Yisus0708",
+      diagram: [
+        { name: "IDE / Web Client", role: "Envío de código en vivo" },
+        { name: "FastAPI Gateway", role: "Auth, Rate Limit & Async I/O" },
+        { name: "AST Parser", role: "Análisis Sintáctico Estático" },
+        { name: "Gemini 1.5 Flash", role: "Diagnóstico Pedagógico" },
+        { name: "PostgreSQL DB", role: "Historial de Aprendizaje" }
+      ],
+      specs: [
+        { k: "Latencia Promedio", v: "< 420 ms (streaming habilitado)" },
+        { k: "Estrategia LLM", v: "Gemini 1.5 Flash con System Instructions especializadas" },
+        { k: "Base de Datos", v: "PostgreSQL con SQLAlchemy Async" },
+        { k: "Validación", v: "Pydantic v2 para contratos de entrada/salida" }
+      ],
+      challenges: [
+        "Eliminación de alucinaciones en recomendaciones de código forzando esquema de salida JSON estructurado.",
+        "Prevención de sobrecostos de inferencia mediante filtrado sintáctico previo con AST en Python antes de llamar al LLM.",
+        "Manejo de picos concurrentes de estudiantes mediante arquitectura asíncrona no bloqueante."
+      ]
+    },
+    mila: {
+      emoji: "🎙️",
+      title: "MILA — Asistente de Voz para SO",
+      subtitle: "PyQt6 · Reconocimiento por Voz · Gemini API · Subprocess Controller",
+      github: "https://github.com/Yisus0708",
+      diagram: [
+        { name: "Mic Input Stream", role: "Captura de audio local" },
+        { name: "Speech-to-Text", role: "Conversión de voz a comando" },
+        { name: "Gemini Agent", role: "Clasificación de Intención" },
+        { name: "PyQt6 Controller", role: "Ejecución de automatizaciones" },
+        { name: "OS Subprocesses", role: "Control de archivos & apps" }
+      ],
+      specs: [
+        { k: "Interfaz", v: "PyQt6 Nativa con renderizado reactivo" },
+        { k: "Motor de Intención", v: "Google Gemini con Function Calling" },
+        { k: "Seguridad", v: "Sandbox de ejecución de comandos del SO" },
+        { k: "Latencia de Respuesta", v: "< 600 ms desde fin de voz" }
+      ],
+      challenges: [
+        "Evitar congelamiento de la GUI de PyQt6 aislando la captura de voz y las llamadas de API en QThreads independientes.",
+        "Validación estricta de rutas de archivos antes de ejecutar cualquier operación de lectura o escritura en el disco.",
+        "Compatibilidad fluida con comandos del sistema operativo local Windows/Linux."
+      ]
+    },
+    medical: {
+      emoji: "🏥",
+      title: "Medical Records Automation — Pipeline ETL",
+      subtitle: "Flask · Gemini Multimodal Vision · Google Drive API · Pandas",
+      github: "https://github.com/Yisus0708",
+      diagram: [
+        { name: "Google Drive API", role: "Monitoreo y descarga de PDFs" },
+        { name: "PDF Splitter & Prep", role: "Extracción de páginas clave" },
+        { name: "Gemini Multimodal", role: "OCR Vision de alta fidelidad" },
+        { name: "Normalizer (Pandas)", role: "Limpieza y estructura tabular" },
+        { name: "DB / Excel Export", role: "Entrega a personal médico" }
+      ],
+      specs: [
+        { k: "Ahorro de Tiempo", v: "85% reducción en digitación manual" },
+        { k: "Tasa de Acierto OCR", v: "> 98.4% en tipografía médica compleja" },
+        { k: "Procesamiento", v: "Batching desatendido en background" },
+        { k: "Formatos Soportados", v: "PDF escaneado, TIFF, PNG clínico" }
+      ],
+      challenges: [
+        "Normalización de terminología clínica ambigua mediante diccionario de mapeo médico.",
+        "Manejo de documentos clínicos de baja resolución o escaneos inclinados aprovechando la visión multimodal de Gemini.",
+        "Cero fugas de información sensible garantizando almacenamiento transitorio efímero."
+      ]
+    },
+    "rag-sales": {
+      emoji: "🚗",
+      title: "RAG Sales Agent — IA Conversacional",
+      subtitle: "Gemini 1.5 · pgvector · Búsqueda Semántica · Lead Qualification",
+      github: "https://github.com/Yisus0708",
+      diagram: [
+        { name: "Chat Webhook", role: "Mensaje entrante del cliente" },
+        { name: "Embeddings Generator", role: "Vectorización de la consulta" },
+        { name: "pgvector Index", role: "Búsqueda Top-K en inventario" },
+        { name: "Gemini Context RAG", role: "Generación de respuesta persuasiva" },
+        { name: "CRM Webhook", role: "Lead cualificado & cita agendada" }
+      ],
+      specs: [
+        { k: "Índice Vectorial", v: "pgvector con HNSW (Cosine Distance)" },
+        { k: "Velocidad de Búsqueda", v: "< 18 ms sobre miles de ítems" },
+        { k: "Cualificación de Leads", v: "Extracción automática de presupuesto e interés" },
+        { k: "Tasa de Conversión", v: "Aumento del 34% en citas comerciales" }
+      ],
+      challenges: [
+        "Manejo de inventario altamente dinámico con sincronización continua de embeddings vectoriales.",
+        "Diseño de prompts de ventas que respondan con veracidad sobre disponibilidad y precios reales sin inventar datos.",
+        "Detección oportuna del momento de cierre para transferir el lead calificado a un agente humano."
+      ]
+    }
+  };
+
+  function openProjectModal(projectKey) {
+    const data = projectArchitectures[projectKey];
+    if (!data || !archModal) return;
+
+    if (archModalEmoji) archModalEmoji.textContent = data.emoji;
+    if (archModalTitle) archModalTitle.textContent = data.title;
+    if (archModalSubtitle) archModalSubtitle.textContent = data.subtitle;
+    if (archGithubLink) archGithubLink.href = data.github;
+
+    if (archModalBody) {
+      const diagramHtml = `
+        <div class="arch-section-title"><span>Flow de Arquitectura &amp; Datos</span></div>
+        <div class="arch-diagram-box">
+          <div class="arch-flow-diagram">
+            ${data.diagram.map((node, i) => `
+              <div class="arch-node">
+                <div class="arch-node-name">${node.name}</div>
+                <div class="arch-node-role">${node.role}</div>
+              </div>
+              ${i < data.diagram.length - 1 ? '<div class="arch-arrow">➔</div>' : ''}
+            `).join("")}
+          </div>
+        </div>
+      `;
+
+      const specsHtml = `
+        <div class="arch-section-title"><span>Métricas de Ingeniería</span></div>
+        <div class="arch-specs-grid">
+          ${data.specs.map((s) => `
+            <div class="arch-spec-card">
+              <div class="arch-spec-k">${s.k}</div>
+              <div class="arch-spec-v">${s.v}</div>
+            </div>
+          `).join("")}
+        </div>
+      `;
+
+      const challengesHtml = `
+        <div class="arch-section-title"><span>Desafíos Técnicos Resueltos</span></div>
+        <div class="arch-ch-list">
+          ${data.challenges.map((ch) => `
+            <div class="arch-ch-item">
+              <span class="arch-ch-icon">✔</span>
+              <span>${ch}</span>
+            </div>
+          `).join("")}
+        </div>
+      `;
+
+      archModalBody.innerHTML = diagramHtml + specsHtml + challengesHtml;
     }
 
+    playOpen();
+    archModal.showModal();
+  }
+
+  function closeProjectModal() {
+    if (archModal && archModal.open) {
+      playClose();
+      archModal.close();
+    }
+  }
+
+  openArchButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const proj = btn.getAttribute("data-project");
+      if (proj) openProjectModal(proj);
+    });
+  });
+
+  if (archCloseBtn) archCloseBtn.addEventListener("click", closeProjectModal);
+  if (archModalCloseAction) archModalCloseAction.addEventListener("click", closeProjectModal);
+  if (archModal) {
+    archModal.addEventListener("click", (e) => {
+      if (e.target === archModal) closeProjectModal();
+    });
+  }
+
+  /* ==========================================================================
+     15. COMMAND PALETTE (CTRL+K / CMD+K) CONTROLLER
+     ========================================================================== */
+  const cmdDialog = document.getElementById("cmd-palette-dialog");
+  const cmdInput = document.getElementById("cmd-palette-input");
+  const cmdTrigger = document.getElementById("cmd-palette-trigger");
+  const cmdCloseBtn = document.getElementById("cmd-close-btn");
+  const cmdResults = document.getElementById("cmd-palette-results");
+  let cmdItems = [];
+  let selectedIndex = 0;
+
+  function refreshCmdItems() {
+    if (!cmdResults) return;
+    cmdItems = Array.from(cmdResults.querySelectorAll(".cmd-item:not(.hidden)"));
+    if (selectedIndex >= cmdItems.length) selectedIndex = 0;
+    cmdItems.forEach((item, idx) => {
+      if (idx === selectedIndex) {
+        item.classList.add("selected");
+      } else {
+        item.classList.remove("selected");
+      }
+    });
+  }
+
+  function openCmdPalette() {
+    if (!cmdDialog) return;
+    playOpen();
+    cmdDialog.showModal();
+    if (cmdInput) {
+      cmdInput.value = "";
+      cmdInput.focus();
+    }
+    if (cmdResults) {
+      cmdResults.querySelectorAll(".cmd-item, .cmd-group-label").forEach((el) => el.classList.remove("hidden"));
+    }
+    selectedIndex = 0;
+    refreshCmdItems();
+  }
+
+  function closeCmdPalette() {
+    if (cmdDialog && cmdDialog.open) {
+      playClose();
+      cmdDialog.close();
+    }
+  }
+
+  if (cmdTrigger) cmdTrigger.addEventListener("click", openCmdPalette);
+  if (cmdCloseBtn) cmdCloseBtn.addEventListener("click", closeCmdPalette);
+  if (cmdDialog) {
+    cmdDialog.addEventListener("click", (e) => {
+      if (e.target === cmdDialog) closeCmdPalette();
+    });
+  }
+
+  // Keyboard shortcut Ctrl+K / Cmd+K
+  window.addEventListener("keydown", (e) => {
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") {
+      e.preventDefault();
+      if (cmdDialog && cmdDialog.open) {
+        closeCmdPalette();
+      } else {
+        openCmdPalette();
+      }
+    }
+  });
+
+  // Filter items in command palette
+  if (cmdInput && cmdResults) {
+    cmdInput.addEventListener("input", (e) => {
+      const q = e.target.value.toLowerCase().trim();
+      const allItems = cmdResults.querySelectorAll(".cmd-item");
+      allItems.forEach((item) => {
+        const text = item.textContent.toLowerCase();
+        if (!q || text.includes(q)) {
+          item.classList.remove("hidden");
+        } else {
+          item.classList.add("hidden");
+        }
+      });
+      selectedIndex = 0;
+      refreshCmdItems();
+    });
+
+    cmdInput.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowDown") {
+        e.preventDefault();
+        playTick();
+        if (cmdItems.length > 0) {
+          selectedIndex = (selectedIndex + 1) % cmdItems.length;
+          refreshCmdItems();
+          cmdItems[selectedIndex].scrollIntoView({ block: "nearest" });
+        }
+      } else if (e.key === "ArrowUp") {
+        e.preventDefault();
+        playTick();
+        if (cmdItems.length > 0) {
+          selectedIndex = (selectedIndex - 1 + cmdItems.length) % cmdItems.length;
+          refreshCmdItems();
+          cmdItems[selectedIndex].scrollIntoView({ block: "nearest" });
+        }
+      } else if (e.key === "Enter") {
+        e.preventDefault();
+        if (cmdItems[selectedIndex]) {
+          cmdItems[selectedIndex].click();
+        }
+      }
+    });
+  }
+
+  // Command palette execution handler
+  if (cmdResults) {
+    cmdResults.addEventListener("click", (e) => {
+      const item = e.target.closest(".cmd-item");
+      if (!item) return;
+
+      const action = item.getAttribute("data-action");
+      closeCmdPalette();
+
+      if (action === "copy-email") {
+        const email = "jesucantillo30@gmail.com";
+        navigator.clipboard?.writeText(email).then(() => {
+          showToast("¡Email copiado al portapapeles!");
+        }).catch(() => showToast("Email: " + email));
+      } else if (action === "toggle-audio") {
+        if (audioToggleBtn) audioToggleBtn.click();
+      } else if (action === "open-ai") {
+        const aiTab = document.querySelector('.t-tab[data-tab="ai-chat"]');
+        if (aiTab) aiTab.click();
+        window.location.hash = "#home";
+      } else if (action === "open-arch") {
+        const proj = item.getAttribute("data-project");
+        if (proj) openProjectModal(proj);
+      } else if (action === "nav") {
+        const target = item.getAttribute("data-target");
+        if (target) {
+          const el = document.querySelector(target);
+          if (el) el.scrollIntoView({ behavior: "smooth" });
+        }
+      } else if (action === "link") {
+        const url = item.getAttribute("data-url");
+        if (url) window.open(url, "_blank");
+      }
+    });
+  }
+
+  /* ==========================================================================
+     16. CONTACT MESSAGE COMPOSER
+     ========================================================================== */
+  const composerChips = document.querySelectorAll(".composer-chip");
+  const composerSubject = document.getElementById("composer-subject");
+  const composerBody = document.getElementById("composer-body");
+  const contactDirectBtn = document.getElementById("contact-direct-btn");
+  const copyDraftBtn = document.getElementById("copy-draft-btn");
+
+  const contactTemplates = {
+    hiring: {
+      subject: "Oportunidad Laboral — Ingeniero Backend / IA",
+      body: "Hola Jesus, revisé tu portafolio y proyectos en FastAPI e integración con Gemini. Nos gustaría conversar sobre una vacante/oportunidad en nuestro equipo técnico."
+    },
+    project: {
+      subject: "Propuesta de Proyecto — Arquitectura Backend & APIs",
+      body: "Hola Jesus, tengo un proyecto en mente que requiere una arquitectura backend sólida, diseño de base de datos y APIs RESTful. ¿Podríamos agendar una videollamada para revisar detalles?"
+    },
+    ai: {
+      subject: "Consultoría / Implementación de IA & RAG",
+      body: "Hola Jesus, queremos implementar un sistema de IA (RAG / embeddings / automatización con LLMs) para nuestra empresa y nos interesa tu experiencia técnica."
+    },
+    coffee: {
+      subject: "Conexión Técnica / Saludo de Networking",
+      body: "Hola Jesus, vi tu trabajo en GitHub y tus proyectos con Gemini y FastAPI. Me gustaría conectar en networking para futuros proyectos o intercambiar ideas técnicas."
+    }
+  };
+
+  composerChips.forEach((chip) => {
+    chip.addEventListener("click", () => {
+      composerChips.forEach((c) => c.classList.remove("active"));
+      chip.classList.add("active");
+
+      const intent = chip.getAttribute("data-intent") || "hiring";
+      const tmpl = contactTemplates[intent];
+      if (tmpl && composerSubject && composerBody && contactDirectBtn) {
+        composerSubject.textContent = tmpl.subject;
+        composerBody.textContent = `"${tmpl.body}"`;
+
+        const encodedSubject = encodeURIComponent(tmpl.subject);
+        const encodedBody = encodeURIComponent(tmpl.body);
+        contactDirectBtn.href = `mailto:jesucantillo30@gmail.com?subject=${encodedSubject}&body=${encodedBody}`;
+      }
+    });
+  });
+
+  if (copyDraftBtn) {
+    copyDraftBtn.addEventListener("click", () => {
+      const subj = composerSubject ? composerSubject.textContent : "";
+      const body = composerBody ? composerBody.textContent.replace(/^"|"$/g, "") : "";
+      const fullText = `Asunto: ${subj}\n\n${body}`;
+
+      navigator.clipboard?.writeText(fullText).then(() => {
+        showToast("¡Borrador de mensaje copiado!");
+      }).catch(() => {
+        showToast("Mensaje listo para enviar");
+      });
+    });
+  }
+
+  /* ==========================================================================
+     17. CUSTOM FUTURISTIC CURSOR FOLLOWER
+     ========================================================================== */
+  const cursorDot = document.getElementById("cursor-dot");
+  const cursorRing = document.getElementById("cursor-ring");
+
+  if (cursorDot && cursorRing && window.matchMedia("(pointer: fine)").matches && !reduceMotion) {
+    let mousePos = { x: -100, y: -100 };
+    let ringPos = { x: -100, y: -100 };
+
+    window.addEventListener("pointermove", (e) => {
+      mousePos.x = e.clientX;
+      mousePos.y = e.clientY;
+      cursorDot.style.opacity = "1";
+      cursorRing.style.opacity = "1";
+      cursorDot.style.transform = `translate(${mousePos.x - 3}px, ${mousePos.y - 3}px)`;
+    }, { passive: true });
+
+    window.addEventListener("pointerleave", () => {
+      cursorDot.style.opacity = "0";
+      cursorRing.style.opacity = "0";
+    });
+
+    // Smooth lerp for ring
+    function renderCursor() {
+      ringPos.x += (mousePos.x - ringPos.x) * 0.22;
+      ringPos.y += (mousePos.y - ringPos.y) * 0.22;
+      cursorRing.style.transform = `translate(${ringPos.x - 16}px, ${ringPos.y - 16}px)`;
+      requestAnimationFrame(renderCursor);
+    }
+    requestAnimationFrame(renderCursor);
+
+    // Expand ring on hover
+    document.addEventListener("pointerover", (e) => {
+      const isInteractive = e.target.closest("a, button, input, .spotlight-card, .chip, .flow-step, .cmd-item");
+      if (isInteractive) {
+        cursorRing.classList.add("active");
+      } else {
+        cursorRing.classList.remove("active");
+      }
+    }, { passive: true });
+  }
+
+  /* ==========================================================================
+     18. BACKGROUND INTERACTIVE PARTICLE CANVAS
+     ========================================================================== */
+  function initBackgroundCanvas() {
+    const canvas = document.getElementById("bg-canvas");
+    if (!canvas || reduceMotion) return;
+
+    const ctx = canvas.getContext("2d");
+    let width, height, dpr;
+    let particles = [];
+    let mouse = { x: null, y: null, radius: 140 };
+
+    const CYAN_RGB = "0, 240, 255";
+    const BLUE_RGB = "56, 189, 248";
+    const INDIGO_RGB = "129, 140, 248";
+
+    function resizeCanvas() {
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      canvas.style.width = width + "px";
+      canvas.style.height = height + "px";
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      const count = Math.min(85, Math.max(35, Math.floor((width * height) / 18000)));
+      particles = Array.from({ length: count }, () => createParticle());
+    }
+
+    function createParticle() {
+      const palette = [CYAN_RGB, BLUE_RGB, INDIGO_RGB];
+      return {
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.45,
+        vy: (Math.random() - 0.5) * 0.45,
+        r: Math.random() * 1.6 + 0.6,
+        color: palette[Math.floor(Math.random() * palette.length)],
+        pulseSpeed: Math.random() * 0.03 + 0.01,
+        alpha: Math.random() * 0.5 + 0.3,
+      };
+    }
+
+    function renderCanvas() {
+      ctx.clearRect(0, 0, width, height);
+
+      const linkDistance = Math.min(145, width / 7);
+
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+
+        p.x += p.vx;
+        p.y += p.vy;
+
+        // Wrap boundaries
+        if (p.x < -10) p.x = width + 10;
+        if (p.x > width + 10) p.x = -10;
+        if (p.y < -10) p.y = height + 10;
+        if (p.y > height + 10) p.y = -10;
+
+        // Mouse interactive force
+        if (mouse.x !== null && mouse.y !== null) {
+          const dx = p.x - mouse.x;
+          const dy = p.y - mouse.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < mouse.radius) {
+            const force = (mouse.radius - dist) / mouse.radius;
+            p.x += (dx / dist) * force * 0.8;
+            p.y += (dy / dist) * force * 0.8;
+          }
+        }
+
+        // Draw particle connections
+        for (let j = i + 1; j < particles.length; j++) {
+          const q = particles[j];
+          const dx = p.x - q.x;
+          const dy = p.y - q.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < linkDistance) {
+            const lineAlpha = (1 - dist / linkDistance) * 0.22;
+            ctx.strokeStyle = `rgba(${p.color}, ${lineAlpha})`;
+            ctx.lineWidth = 0.8;
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(q.x, q.y);
+            ctx.stroke();
+          }
+        }
+
+        // Draw particle node
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${p.color}, ${p.alpha})`;
+        ctx.fill();
+      }
+
+      requestAnimationFrame(renderCanvas);
+    }
+
+    window.addEventListener("resize", resizeCanvas, { passive: true });
+    window.addEventListener(
+      "pointermove",
+      (e) => {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+      },
+      { passive: true }
+    );
+
+    window.addEventListener("pointerleave", () => {
+      mouse.x = null;
+      mouse.y = null;
+    });
+
+    resizeCanvas();
     requestAnimationFrame(renderCanvas);
   }
 
-  window.addEventListener("resize", resizeCanvas, { passive: true });
-  window.addEventListener(
-    "pointermove",
-    (e) => {
-      mouse.x = e.clientX;
-      mouse.y = e.clientY;
-    },
-    { passive: true }
-  );
-
-  window.addEventListener("pointerleave", () => {
-    mouse.x = null;
-    mouse.y = null;
-  });
-
-  resizeCanvas();
-  requestAnimationFrame(renderCanvas);
+  initBackgroundCanvas();
 })();
