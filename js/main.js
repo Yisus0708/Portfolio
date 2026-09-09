@@ -368,10 +368,15 @@
       <div class="t-line"><span class="badge-cmd">philosophy</span> : Filosofía de ingeniería y desarrollo</div>
       <div class="t-line"><span class="badge-cmd">about</span> : Quién soy y qué hago</div>
       <div class="t-line"><span class="badge-cmd">contact</span> : Información de contacto directo</div>
-      <div class="t-line"><span class="badge-cmd">hire</span> : ¿Por qué trabajar conmigo?</div>
+      <div class="t-line"><span class="badge-cmd">mila</span> : Iniciar asistente virtual de voz/IA</div>
       <div class="t-line"><span class="badge-cmd">time</span> : Hora actual del sistema</div>
       <div class="t-line"><span class="badge-cmd">clear</span> : Limpiar la pantalla</div>
     `,
+    mila: () => {
+      const milaTab = document.querySelector('.t-tab[data-tab="ai-chat"]');
+      if (milaTab) milaTab.click();
+      return `<div class="t-line accent">🎙️ Activando interfaz del Asistente MILA...</div>`;
+    },
     about: () => `
       <div class="t-line accent">Jesus Cantillo — Ingeniero Backend e IA Aplicada</div>
       <div class="t-line output">Especializado en diseñar APIs de alto rendimiento con FastAPI/Flask e integrar modelos de lenguaje avanzados (Gemini API) en flujos de producción.</div>
@@ -611,12 +616,12 @@
 • <strong>Control de Presupuesto y Tokens:</strong> Rate limiting por usuario con Redis (token bucket algorithm) y ventanas de timeout de 8 segundos.
 • <strong>Privacidad de Datos:</strong> Sanitización de PII (Información Personal Identificable) antes de interactuar con APIs externas.`,
 
-    contratar: `¿Por qué elegirme para su equipo?
-1. <strong>Enfoque en Producción:</strong> Cero proyectos de juguete o tutoriales vacíos. Todo mi portafolio (Mentia, MILA, automatización de historiales médicos) son soluciones creadas para usuarios reales.
-2. <strong>Especialización dual:</strong> Domino tanto la ingeniería backend robusta (PostgreSQL, FastAPI, Docker) como la integración práctica de Inteligencia Artificial (Gemini API, RAG, embeddings).
+    contratar: `¿Por qué elegir a Jesus Cantillo para su equipo?
+1. <strong>Enfoque en Producción:</strong> Cero proyectos de juguete o tutoriales vacíos. Todo su portafolio (Mentia, MILA, automatización de historiales médicos) son soluciones creadas para usuarios reales.
+2. <strong>Especialización dual:</strong> Domina tanto la ingeniería backend robusta (PostgreSQL, FastAPI, Docker) como la integración práctica de Inteligencia Artificial (Gemini API, RAG, embeddings).
 3. <strong>Autonomía y Ejecución:</strong> Capacidad comprobada para llevar una idea desde el diseño arquitectónico hasta la implementación y puesta en marcha con código limpio, tipado y mantenible.`,
 
-    default: `Como ingeniero de software me enfoco en diseñar sistemas backend escalables e integrar modelos de lenguaje en flujos productivos de negocio. Puedes probar consultando sobre <strong>"Pipeline RAG"</strong>, <strong>"FastAPI vs Otros"</strong>, <strong>"Seguridad en IA"</strong> o escribir directamente al correo <a href="mailto:jesucantillo30@gmail.com" style="color:#00f0ff">jesucantillo30@gmail.com</a>.`
+    default: `¡Hola! Soy <strong>MILA</strong>, el asistente virtual de Jesus Cantillo. Puedo detallar su arquitectura técnica, experiencia en FastAPI y flujos con IA. Puedes consultar sobre <strong>"Pipeline RAG"</strong>, <strong>"FastAPI vs Otros"</strong>, <strong>"Seguridad en IA"</strong> o escribir directamente al correo <a href="mailto:jesucantillo30@gmail.com" style="color:#00f0ff">jesucantillo30@gmail.com</a>.`
   };
 
   function appendAiMessage(htmlContent, isUser = false) {
@@ -625,7 +630,7 @@
     wrap.className = `ai-bubble-wrap ${isUser ? "user" : "bot"}`;
     wrap.innerHTML = isUser
       ? `<div class="ai-bubble">${htmlContent}</div>`
-      : `<span class="ai-avatar">🤖</span><div class="ai-bubble">${htmlContent}</div>`;
+      : `<span class="ai-avatar">🎙️</span><div class="ai-bubble">${htmlContent}</div>`;
     aiChatScreen.appendChild(wrap);
     aiChatScreen.scrollTop = aiChatScreen.scrollHeight;
   }
@@ -638,7 +643,7 @@
     // Show thinking indicator
     const thinkingWrap = document.createElement("div");
     thinkingWrap.className = "ai-bubble-wrap bot thinking-indicator";
-    thinkingWrap.innerHTML = `<span class="ai-avatar">🤖</span><div class="ai-bubble"><span class="tab-dot-ai"></span> Analizando arquitectura...</div>`;
+    thinkingWrap.innerHTML = `<span class="ai-avatar">🎙️</span><div class="ai-bubble"><span class="tab-dot-ai"></span> MILA está procesando la consulta...</div>`;
     aiChatScreen.appendChild(thinkingWrap);
     aiChatScreen.scrollTop = aiChatScreen.scrollHeight;
 
@@ -660,7 +665,7 @@
 
       appendAiMessage(response, false);
       playTick();
-    }, 550);
+    }, 500);
   }
 
   if (aiChatForm && aiChatInput) {
@@ -1135,50 +1140,7 @@
   }
 
   /* ==========================================================================
-     17. CUSTOM FUTURISTIC CURSOR FOLLOWER
-     ========================================================================== */
-  const cursorDot = document.getElementById("cursor-dot");
-  const cursorRing = document.getElementById("cursor-ring");
-
-  if (cursorDot && cursorRing && window.matchMedia("(pointer: fine)").matches && !reduceMotion) {
-    let mousePos = { x: -100, y: -100 };
-    let ringPos = { x: -100, y: -100 };
-
-    window.addEventListener("pointermove", (e) => {
-      mousePos.x = e.clientX;
-      mousePos.y = e.clientY;
-      cursorDot.style.opacity = "1";
-      cursorRing.style.opacity = "1";
-      cursorDot.style.transform = `translate(${mousePos.x - 3}px, ${mousePos.y - 3}px)`;
-    }, { passive: true });
-
-    window.addEventListener("pointerleave", () => {
-      cursorDot.style.opacity = "0";
-      cursorRing.style.opacity = "0";
-    });
-
-    // Smooth lerp for ring
-    function renderCursor() {
-      ringPos.x += (mousePos.x - ringPos.x) * 0.22;
-      ringPos.y += (mousePos.y - ringPos.y) * 0.22;
-      cursorRing.style.transform = `translate(${ringPos.x - 16}px, ${ringPos.y - 16}px)`;
-      requestAnimationFrame(renderCursor);
-    }
-    requestAnimationFrame(renderCursor);
-
-    // Expand ring on hover
-    document.addEventListener("pointerover", (e) => {
-      const isInteractive = e.target.closest("a, button, input, .spotlight-card, .chip, .flow-step, .cmd-item");
-      if (isInteractive) {
-        cursorRing.classList.add("active");
-      } else {
-        cursorRing.classList.remove("active");
-      }
-    }, { passive: true });
-  }
-
-  /* ==========================================================================
-     18. BACKGROUND INTERACTIVE PARTICLE CANVAS
+     17. BACKGROUND INTERACTIVE PARTICLE CANVAS
      ========================================================================== */
   function initBackgroundCanvas() {
     const canvas = document.getElementById("bg-canvas");

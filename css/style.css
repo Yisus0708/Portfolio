@@ -2069,37 +2069,61 @@ img {
    ADVANCED INTERACTIVE DESIGN SYSTEM (V2.5 UPGRADE)
    ========================================================================== */
 
-/* ---------- Topbar Command Palette & Audio FX Triggers ---------- */
+/* ---------- Topbar Search Bar & Audio FX Triggers ---------- */
 .cmd-palette-trigger {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid var(--border-line);
+  gap: 0.55rem;
+  background: rgba(10, 19, 34, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   color: var(--text-muted);
-  font-family: var(--font-mono);
-  font-size: 0.74rem;
-  padding: 0.35rem 0.65rem;
-  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  padding: 0.38rem 0.85rem;
+  border-radius: var(--radius-full);
   transition: var(--transition-smooth);
+  cursor: pointer;
 }
 
 .cmd-palette-trigger:hover {
   background: rgba(0, 240, 255, 0.08);
-  border-color: rgba(0, 240, 255, 0.35);
+  border-color: rgba(0, 240, 255, 0.4);
+  box-shadow: 0 0 16px rgba(0, 240, 255, 0.14);
+}
+
+.cmd-trigger-icon {
+  color: var(--accent);
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+
+.cmd-palette-trigger:hover .cmd-trigger-icon {
+  transform: scale(1.1);
+}
+
+.cmd-trigger-text {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.cmd-palette-trigger:hover .cmd-trigger-text {
   color: var(--white);
 }
 
-.cmd-kbd {
+.cmd-shortcut-tag {
   display: inline-block;
   font-family: var(--font-mono);
-  font-size: 0.65rem;
-  font-weight: 700;
-  padding: 0.15rem 0.35rem;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 4px;
+  font-size: 0.64rem;
+  font-weight: 600;
   color: var(--accent);
+  background: rgba(0, 240, 255, 0.08);
+  border: 1px solid rgba(0, 240, 255, 0.25);
+  padding: 0.12rem 0.45rem;
+  border-radius: 4px;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
 }
 
 .audio-fx-toggle {
@@ -2546,47 +2570,6 @@ img {
   flex-wrap: wrap;
 }
 
-/* ---------- Custom Futuristic Cursor Follower ---------- */
-.custom-cursor-dot,
-.custom-cursor-ring {
-  position: fixed;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  border-radius: 50%;
-  z-index: 9999;
-  opacity: 0;
-  transition: opacity 0.25s ease, transform 0.15s ease-out;
-}
-
-.custom-cursor-dot {
-  width: 6px;
-  height: 6px;
-  background: var(--accent);
-  box-shadow: 0 0 8px var(--accent);
-}
-
-.custom-cursor-ring {
-  width: 32px;
-  height: 32px;
-  border: 1.5px solid rgba(0, 240, 255, 0.5);
-  box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
-  transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease, opacity 0.25s ease;
-}
-
-.custom-cursor-ring.active {
-  width: 48px;
-  height: 48px;
-  border-color: var(--accent);
-  background: rgba(0, 240, 255, 0.08);
-}
-
-@media (pointer: coarse), (hover: none) {
-  .custom-cursor-dot,
-  .custom-cursor-ring {
-    display: none !important;
-  }
-}
 
 /* ---------- Native Dialog Modals (Command Palette & Architecture) ---------- */
 dialog {
@@ -2955,11 +2938,13 @@ dialog[open] {
 }
 
 @media (max-width: 640px) {
-  .cmd-trigger-text {
+  .cmd-trigger-text,
+  .cmd-shortcut-tag {
     display: none;
   }
   .cmd-palette-trigger {
-    padding: 0.35rem 0.5rem;
+    padding: 0.4rem 0.55rem;
+    border-radius: var(--radius-sm);
   }
   .cmd-palette-dialog,
   .arch-modal-dialog {

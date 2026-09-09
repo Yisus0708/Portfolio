@@ -59,11 +59,11 @@
       </nav>
 
       <div class="topbar-actions">
-        <!-- Command Palette Trigger Button (Ctrl+K) -->
-        <button class="cmd-palette-trigger" id="cmd-palette-trigger" aria-label="Abrir paleta de comandos (Ctrl+K)" title="Paleta de comandos (Ctrl+K)">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-          <span class="cmd-trigger-text">Buscar...</span>
-          <kbd class="cmd-kbd">⌘K</kbd>
+        <!-- Search & Command Palette Trigger -->
+        <button class="cmd-palette-trigger" id="cmd-palette-trigger" aria-label="Buscar en el portafolio (Ctrl+K)" title="Buscar (Ctrl+K)">
+          <svg class="cmd-trigger-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <span class="cmd-trigger-text">Buscar en portafolio...</span>
+          <span class="cmd-shortcut-tag">Ctrl + K</span>
         </button>
 
         <!-- Audio FX Toggle Button -->
@@ -193,7 +193,7 @@
 
             <div class="terminal-tabs">
               <button class="t-tab active" data-tab="cli">Consola CLI</button>
-              <button class="t-tab" data-tab="ai-chat"><span class="tab-dot-ai"></span> Asistente IA</button>
+              <button class="t-tab" data-tab="ai-chat"><span class="tab-dot-ai"></span> Asistente MILA</button>
               <button class="t-tab" data-tab="arch">Especificaciones</button>
               <button class="t-tab" data-tab="stack">Stack Rápido</button>
             </div>
@@ -232,16 +232,16 @@
             <div class="t-content" id="tab-ai-chat">
               <div class="ai-chat-header">
                 <div class="ai-status-badge">
-                  <span class="ai-dot"></span> GEMINI 1.5 FLASH AGENT
+                  <span class="ai-dot"></span> ASISTENTE MILA · GEMINI 1.5
                 </div>
-                <div class="ai-sub">Consulta sobre su experiencia, arquitectura RAG y backend</div>
+                <div class="ai-sub">Asistente virtual de Jesus Cantillo · Arquitectura &amp; IA</div>
               </div>
 
               <div class="ai-chat-screen" id="ai-chat-screen">
                 <div class="ai-bubble-wrap bot">
-                  <span class="ai-avatar">🤖</span>
+                  <span class="ai-avatar">🎙️</span>
                   <div class="ai-bubble">
-                    ¡Hola! Soy el agente virtual de Jesus. Puedo detallar su experiencia en <strong>FastAPI</strong>, diseño de <strong>pipelines RAG</strong>, integración de <strong>Gemini API</strong> o resolver dudas para reclutadores técnicos. ¿Qué te gustaría consultar?
+                    ¡Hola! Soy <strong>MILA</strong>, el asistente inteligente desarrollado por Jesus Cantillo. Puedo detallar su experiencia en <strong>FastAPI</strong>, diseño de <strong>pipelines RAG</strong>, integración de <strong>Gemini API</strong> o resolver dudas técnicas para reclutadores. ¿Qué te gustaría consultar?
                   </div>
                 </div>
               </div>
@@ -256,8 +256,8 @@
 
               <!-- AI Input Form -->
               <form class="terminal-input-wrap ai-input-wrap" id="ai-chat-form" autocomplete="off">
-                <span class="ai-prompt-lbl">ai@prompt:</span>
-                <input type="text" id="ai-chat-input" class="t-input" placeholder="Pregunta algo sobre su perfil o arquitectura..." aria-label="Pregunta al Asistente IA" />
+                <span class="ai-prompt-lbl">mila@chat:</span>
+                <input type="text" id="ai-chat-input" class="t-input" placeholder="Pregunta algo sobre su perfil o arquitectura..." aria-label="Pregunta al Asistente MILA" />
                 <button type="submit" class="t-submit" aria-label="Enviar pregunta">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
                 </button>
@@ -919,10 +919,6 @@
   <!-- Toast Notification Container -->
   <div id="toast-container" class="toast-container" aria-live="polite"></div>
 
-  <!-- Custom Futuristic Cursor Follower (Enabled on desktop pointers) -->
-  <div class="custom-cursor-dot" id="cursor-dot" aria-hidden="true"></div>
-  <div class="custom-cursor-ring" id="cursor-ring" aria-hidden="true"></div>
-
   <!-- COMMAND PALETTE MODAL (Ctrl+K / Cmd+K) -->
   <dialog id="cmd-palette-dialog" class="cmd-palette-dialog" aria-label="Paleta de Comandos y Búsqueda">
     <div class="cmd-dialog-content">
@@ -960,13 +956,13 @@
 
         <div class="cmd-item" data-action="open-ai">
           <div class="cmd-item-left">
-            <span class="cmd-icon-box">🤖</span>
+            <span class="cmd-icon-box">🎙️</span>
             <div>
-              <div class="cmd-item-title">Abrir Asistente IA de Jesus</div>
+              <div class="cmd-item-title">Abrir Asistente MILA</div>
               <div class="cmd-item-desc">Pregunta sobre arquitectura y RAG en la terminal</div>
             </div>
           </div>
-          <span class="cmd-kbd">Terminal</span>
+          <span class="cmd-kbd">MILA</span>
         </div>
 
         <div class="cmd-group-label">Proyectos en Producción</div>
