@@ -503,14 +503,150 @@
   });
 
   /* ==========================================================================
-     11. WEB AUDIO API SCI-FI SOUND FX
+     11. CYBERPUNK AMBIENT MUSIC & SOUND FX (WEB AUDIO API SYNTHESIZER)
      ========================================================================== */
   let audioCtx = null;
+  let ambientMasterGain = null;
+  let ambientFilter = null;
+  let ambientRunning = false;
+  let chordTimer = null;
+  let melodyTimer = null;
+  let currentChordIndex = 0;
   let soundEnabled = localStorage.getItem("jc_sound_fx") === "on";
 
   const audioToggleBtn = document.getElementById("audio-fx-toggle");
   const audioIconOff = document.querySelector(".audio-icon-off");
   const audioIconOn = document.querySelector(".audio-icon-on");
+
+  // Atmospheric Cyberpunk Lo-Fi Chords
+  const ambientChords = [
+    [146.83, 174.61, 220.00, 261.63, 329.63], // Dm9
+    [116.54, 146.83, 174.61, 220.00],         // Bbmaj7
+    [98.00, 116.54, 146.83, 174.61, 220.00],  // Gm9
+    [130.81, 164.81, 196.00, 246.94, 293.66]  // Cadd9
+  ];
+
+  // Ambient Pentatonic Melody Notes (Hz)
+  const melodyNotes = [293.66, 329.63, 392.00, 440.00, 523.25, 587.33, 659.25];
+
+  function initAudioEngine() {
+    if (!audioCtx) {
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      
+      // Warm analog low-pass filter
+      ambientFilter = audioCtx.createBiquadFilter();
+      ambientFilter.type = "lowpass";
+      ambientFilter.frequency.setValueAtTime(820, audioCtx.currentTime);
+      ambientFilter.Q.setValueAtTime(1.8, audioCtx.currentTime);
+
+      // Master ambient gain node
+      ambientMasterGain = audioCtx.createGain();
+      ambientMasterGain.gain.setValueAtTime(0, audioCtx.currentTime);
+
+      ambientFilter.connect(ambientMasterGain);
+      ambientMasterGain.connect(audioCtx.destination);
+    }
+    if (audioCtx.state === "suspended") {
+      audioCtx.resume();
+    }
+  }
+
+  function playPadChord(freqs, duration) {
+    if (!ambientRunning || !audioCtx) return;
+    const now = audioCtx.currentTime;
+
+    freqs.forEach((freq, idx) => {
+      try {
+        const osc = audioCtx.createOscillator();
+        const voiceGain = audioCtx.createGain();
+
+        osc.type = idx % 2 === 0 ? "triangle" : "sine";
+        // Subtle detune for lush analog chorus warmth
+        const detune = (idx - 2) * 6;
+        osc.detune.setValueAtTime(detune, now);
+        osc.frequency.setValueAtTime(freq, now);
+
+        // Smooth breathing envelope
+        voiceGain.gain.setValueAtTime(0.0001, now);
+        voiceGain.gain.linearRampToValueAtTime(0.022, now + 1.6);
+        voiceGain.gain.setValueAtTime(0.022, now + duration - 1.8);
+        voiceGain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
+
+        osc.connect(voiceGain);
+        voiceGain.connect(ambientFilter);
+
+        osc.start(now);
+        osc.stop(now + duration);
+      } catch (e) {}
+    });
+  }
+
+  function playMelodyNote() {
+    if (!ambientRunning || !audioCtx) return;
+    const now = audioCtx.currentTime;
+    const noteFreq = melodyNotes[Math.floor(Math.random() * melodyNotes.length)];
+
+    try {
+      const osc = audioCtx.createOscillator();
+      const noteGain = audioCtx.createGain();
+
+      osc.type = "sine";
+      osc.frequency.setValueAtTime(noteFreq, now);
+
+      noteGain.gain.setValueAtTime(0.0001, now);
+      noteGain.gain.linearRampToValueAtTime(0.016, now + 0.08);
+      noteGain.gain.exponentialRampToValueAtTime(0.0001, now + 1.8);
+
+      osc.connect(noteGain);
+      noteGain.connect(ambientFilter);
+
+      osc.start(now);
+      osc.stop(now + 1.9);
+    } catch (e) {}
+
+    // Schedule next melody note randomly
+    if (ambientRunning) {
+      const nextTime = 1600 + Math.random() * 2200;
+      melodyTimer = setTimeout(playMelodyNote, nextTime);
+    }
+  }
+
+  function startAmbientMusic() {
+    if (ambientRunning) return;
+    initAudioEngine();
+    ambientRunning = true;
+
+    // Fade in master volume
+    const now = audioCtx.currentTime;
+    ambientMasterGain.gain.cancelScheduledValues(now);
+    ambientMasterGain.gain.setValueAtTime(ambientMasterGain.gain.value, now);
+    ambientMasterGain.gain.linearRampToValueAtTime(0.85, now + 1.5);
+
+    function stepChord() {
+      if (!ambientRunning) return;
+      const chord = ambientChords[currentChordIndex];
+      playPadChord(chord, 5.2);
+      currentChordIndex = (currentChordIndex + 1) % ambientChords.length;
+      chordTimer = setTimeout(stepChord, 4600);
+    }
+
+    stepChord();
+    melodyTimer = setTimeout(playMelodyNote, 1200);
+  }
+
+  function stopAmbientMusic() {
+    if (!ambientRunning) return;
+    ambientRunning = false;
+    clearTimeout(chordTimer);
+    clearTimeout(melodyTimer);
+
+    if (audioCtx && ambientMasterGain) {
+      const now = audioCtx.currentTime;
+      ambientMasterGain.gain.cancelScheduledValues(now);
+      ambientMasterGain.gain.setValueAtTime(ambientMasterGain.gain.value, now);
+      ambientMasterGain.gain.linearRampToValueAtTime(0.0001, now + 0.8);
+    }
+  }
 
   function updateAudioButtonUI() {
     if (!audioToggleBtn) return;
@@ -518,29 +654,25 @@
       audioToggleBtn.classList.add("active");
       if (audioIconOff) audioIconOff.classList.add("hidden");
       if (audioIconOn) audioIconOn.classList.remove("hidden");
-      audioToggleBtn.title = "Efectos de sonido (activado - clic para silenciar)";
+      audioToggleBtn.title = "Música ambiental (reproduciendo - clic para pausar)";
     } else {
       audioToggleBtn.classList.remove("active");
       if (audioIconOff) audioIconOff.classList.remove("hidden");
       if (audioIconOn) audioIconOn.classList.add("hidden");
-      audioToggleBtn.title = "Efectos de sonido (desactivado - clic para activar)";
+      audioToggleBtn.title = "Música ambiental (clic para reproducir)";
     }
     const cmdSoundStatus = document.getElementById("cmd-sound-status");
     if (cmdSoundStatus) {
-      cmdSoundStatus.textContent = soundEnabled ? "Estado actual: Activado (🔊)" : "Estado actual: Desactivado (🔇)";
+      cmdSoundStatus.textContent = soundEnabled ? "Estado: Reproduciendo (🎵)" : "Estado: En silencio (🔇)";
     }
   }
   updateAudioButtonUI();
 
-  function playTone(freq, type, duration, gainStart = 0.04) {
+  // Subtle SFX for buttons
+  function playTone(freq, type, duration, gainStart = 0.03) {
     if (!soundEnabled) return;
     try {
-      if (!audioCtx) {
-        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-      }
-      if (audioCtx.state === "suspended") {
-        audioCtx.resume();
-      }
+      initAudioEngine();
       const osc = audioCtx.createOscillator();
       const gain = audioCtx.createGain();
       osc.type = type;
@@ -551,21 +683,11 @@
       gain.connect(audioCtx.destination);
       osc.start();
       osc.stop(audioCtx.currentTime + duration);
-    } catch (e) {
-      // Audio context might require explicit interaction
-    }
+    } catch (e) {}
   }
 
-  function playPip() { playTone(980, "sine", 0.035, 0.035); }
-  function playTick() { playTone(1300, "sine", 0.018, 0.025); }
-  function playOpen() {
-    playTone(480, "sine", 0.07, 0.04);
-    setTimeout(() => playTone(880, "sine", 0.09, 0.04), 45);
-  }
-  function playClose() {
-    playTone(880, "sine", 0.06, 0.035);
-    setTimeout(() => playTone(440, "sine", 0.08, 0.035), 40);
-  }
+  function playPip() { playTone(980, "sine", 0.03, 0.025); }
+  function playTick() { playTone(1300, "sine", 0.015, 0.02); }
 
   if (audioToggleBtn) {
     audioToggleBtn.addEventListener("click", () => {
@@ -573,10 +695,11 @@
       localStorage.setItem("jc_sound_fx", soundEnabled ? "on" : "off");
       updateAudioButtonUI();
       if (soundEnabled) {
-        playOpen();
-        showToast("🔊 Efectos de sonido activados");
+        startAmbientMusic();
+        showToast("🎵 Música ambiental cyberpunk activada");
       } else {
-        showToast("🔇 Efectos de sonido silenciados");
+        stopAmbientMusic();
+        showToast("🔇 Música ambiental pausada");
       }
     });
   }
@@ -584,7 +707,7 @@
   // Add click sound to interactive buttons
   document.addEventListener("click", (e) => {
     const target = e.target.closest("button, .btn, .nav-link, .chip, .t-tab, .composer-chip");
-    if (target) {
+    if (target && target !== audioToggleBtn) {
       playPip();
     }
   }, { passive: true });
