@@ -4,7 +4,7 @@
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   /* ==========================================================================
-     1. PRELOADER SCREEN (camilamarrugo.com pattern)
+     1. PANTALLA DE CARGA / PRELOADER (Inspirado en camilamarrugo.com)
      ========================================================================== */
   const preloader = document.getElementById("site-preloader");
   const preloaderBar = document.getElementById("preloader-bar");
@@ -28,12 +28,11 @@
     dismissPreloader();
   } else {
     window.addEventListener("load", dismissPreloader);
-    // Fallback safety timeout
     setTimeout(dismissPreloader, 2500);
   }
 
   /* ==========================================================================
-     2. SLIDE-OUT MENU DRAWER (camilamarrugo.com pattern)
+     2. CAJÓN DE NAVEGACIÓN DESPLEGABLE / MENU DRAWER (Inspirado en camilamarrugo.com)
      ========================================================================== */
   const navMenuBtn = document.getElementById("nav-menu-btn");
   const menuDrawer = document.getElementById("menu-drawer");
@@ -77,7 +76,7 @@
   });
 
   /* ==========================================================================
-     3. FLOATING NEXT-SECTION INDICATOR (camilamarrugo.com signature)
+     3. INDICADOR FLOTANTE DE SIGUIENTE SECCIÓN (Sello distintivo de camilamarrugo.com)
      ========================================================================== */
   const nextIndicator = document.getElementById("next-section-indicator");
   const nextIndicatorBtn = document.getElementById("next-indicator-btn");
@@ -101,7 +100,6 @@
     const windowH = window.innerHeight;
     const docH = document.documentElement.scrollHeight;
 
-    // Near the very bottom: Hide or loop
     if (scrollY + windowH >= docH - 120) {
       if (nextIndicatorText) nextIndicatorText.textContent = "Volver al Inicio";
       currentTargetId = "#hero";
@@ -136,7 +134,7 @@
   }
 
   /* ==========================================================================
-     4. NAVBAR SCROLLED STATE, PROGRESS BAR & BACK TO TOP
+     4. CABECERA, BARRA DE PROGRESO Y BOTÓN VOLVER ARRIBA
      ========================================================================== */
   const topbar = document.getElementById("topbar");
   const scrollProgressBar = document.getElementById("scroll-progress");
@@ -154,12 +152,10 @@
     const docHeight = document.documentElement.scrollHeight - window.innerHeight;
     const scrollPercent = docHeight > 0 ? (scrollY / docHeight) : 0;
 
-    // Scroll progress bar
     if (scrollProgressBar) {
       scrollProgressBar.style.width = `${scrollPercent * 100}%`;
     }
 
-    // Topbar blur toggle
     if (topbar) {
       if (scrollY > 40) {
         topbar.classList.add("scrolled");
@@ -168,7 +164,6 @@
       }
     }
 
-    // Back to top visibility
     if (backToTopBtn && progressRingFill) {
       if (scrollY > 450) {
         backToTopBtn.classList.add("visible");
@@ -179,7 +174,6 @@
       }
     }
 
-    // Update floating indicator
     updateNextSection();
   }
 
@@ -193,7 +187,7 @@
   }
 
   /* ==========================================================================
-     5. TOAST NOTIFICATION SYSTEM
+     5. SISTEMA DE NOTIFICACIONES TOAST
      ========================================================================== */
   const toastContainer = document.getElementById("toast-container");
 
@@ -209,7 +203,7 @@
   }
 
   /* ==========================================================================
-     6. COPY EMAIL BUTTONS
+     6. BOTONES PARA COPIAR CORREO ELECTRÓNICO
      ========================================================================== */
   const copyEmailBtns = document.querySelectorAll(".copy-email-btn");
   copyEmailBtns.forEach((btn) => {
@@ -224,14 +218,14 @@
   });
 
   /* ==========================================================================
-     7. TYPEWRITER PHILOSOPHY (Dev Philosophy)
+     7. ESCRITURA ANIMADA / FILOSOFÍA DE DESARROLLO
      ========================================================================== */
   const typedEl = document.getElementById("typed");
   if (typedEl) {
     const quotes = [
-      "while(learning) { build(something_real); }",
-      "Done is better than perfect.",
-      "I build things that work, not demos.",
+      "while(aprendiendo) { construir(algo_real); }",
+      "Hecho es mejor que perfecto.",
+      "Construyo software que funciona en producción, no solo demos.",
       "Arquitecturas escalables. Cero tutoriales vacíos."
     ];
     let qIdx = 0;
@@ -263,7 +257,7 @@
   }
 
   /* ==========================================================================
-     8. AMBIENT AUDIO SYNTHESIZER (Web Audio API)
+     8. MÚSICA AMBIENTAL SUAVE (Web Audio API)
      ========================================================================== */
   const audioToggle = document.getElementById("audio-fx-toggle");
   const audioIconOff = document.querySelector(".audio-icon-off");
@@ -285,7 +279,7 @@
     const chords = [130.81, 164.81, 196.00, 246.94]; // C3, E3, G3, B3
     const masterGain = audioCtx.createGain();
     masterGain.gain.setValueAtTime(0.001, audioCtx.currentTime);
-    masterGain.gain.exponentialRampToValueAtTime(0.04, audioCtx.currentTime + 3);
+    masterGain.gain.exponentialRampToValueAtTime(0.035, audioCtx.currentTime + 3);
     masterGain.connect(audioCtx.destination);
 
     synthNodes = chords.map((freq, i) => {
@@ -337,7 +331,7 @@
   if (audioToggle) audioToggle.addEventListener("click", toggleAudio);
 
   /* ==========================================================================
-     9. PROJECT FILTER TABS
+     9. FILTROS DE PROYECTOS
      ========================================================================== */
   const filterBtns = document.querySelectorAll(".filter-btn");
   const projectCards = document.querySelectorAll(".project-card");
@@ -362,7 +356,7 @@
   });
 
   /* ==========================================================================
-     10. PROJECT ARCHITECTURES DATA & DEEP-DIVE MODAL
+     10. DATOS DE ARQUITECTURA DE PROYECTOS & MODAL DE FICHA TÉCNICA
      ========================================================================== */
   const archModal = document.getElementById("arch-modal");
   const archModalEmoji = document.getElementById("arch-modal-emoji");
@@ -378,20 +372,20 @@
     mila: {
       emoji: "🎙️",
       title: "M.I.L.A — Mi Inteligencia de Lenguaje Avanzada",
-      subtitle: "PyQt6 · Reconocimiento por Voz · Visión · Gemini API · Automatización del SO",
+      subtitle: "PyQt6 · Reconocimiento por Voz · Visión Artificial · Gemini API · Automatización del SO",
       github: "https://github.com/Yisus0708/MILA",
       diagram: [
-        { name: "Audio Stream", role: "Captura de micrófono" },
-        { name: "Speech Recognition", role: "Voz a texto en milisegundos" },
-        { name: "Gemini / Ollama", role: "Clasificación de intención" },
-        { name: "PyQt6 Controller", role: "Renderizado reactivo en QThread" },
-        { name: "OS Subprocesses", role: "Manipulación de archivos y apps" }
+        { name: "Flujo de Audio", role: "Captura de micrófono" },
+        { name: "Reconocimiento de Voz", role: "Voz a texto en milisegundos" },
+        { name: "Motor Gemini / Ollama", role: "Clasificación de intención" },
+        { name: "Controlador PyQt6", role: "Renderizado reactivo en QThread" },
+        { name: "Subprocesos del SO", role: "Manipulación de archivos y apps" }
       ],
       specs: [
-        { k: "Arquitectura GUI", v: "PyQt6 desacoplada con QThreads concurrentes" },
-        { k: "Modelos Soportados", v: "Google Gemini 1.5 + Inferencia local con Ollama" },
-        { k: "Latencia de Comando", v: "< 600ms desde detección de silencio" },
-        { k: "Seguridad de Ejecución", v: "Sanitización estricta de rutas y comandos CLI" }
+        { k: "Arquitectura de la GUI", v: "PyQt6 desacoplada con QThreads concurrentes" },
+        { k: "Modelos Compatibles", v: "Google Gemini 1.5 + Inferencia local con Ollama" },
+        { k: "Latencia de Respuesta", v: "< 600 ms tras detección de fin de voz" },
+        { k: "Seguridad de Ejecución", v: "Sanitización estricta de rutas y comandos de consola" }
       ],
       challenges: [
         "Aislamiento de tareas de audio e inferencia en hilos independientes para evitar cualquier congelamiento en la UI de PyQt6.",
@@ -401,21 +395,21 @@
     },
     arquitectura: {
       emoji: "🎓",
-      title: "School Grades Pipeline — Medallion Architecture",
-      subtitle: "Python 3.10+ · PostgreSQL · Capas Bronze, Silver y Gold · ETL End-to-End",
+      title: "Pipeline de Calificaciones — Arquitectura Medallion",
+      subtitle: "Python 3.10+ · PostgreSQL · Capas Bronze, Silver y Gold · ETL de Extremo a Extremo",
       github: "https://github.com/Yisus0708/arquitectura",
       diagram: [
-        { name: "Raw Ingestion", role: "Extracción de registros escolares" },
-        { name: "Bronze Layer", role: "Almacenamiento crudo e inmutable" },
-        { name: "Silver Layer", role: "Limpieza, deduplicación y tipado" },
-        { name: "Gold Layer", role: "Vistas analíticas y rendimiento" },
-        { name: "PostgreSQL DB", role: "Persistencia transaccional ACID" }
+        { name: "Ingesta Cruda", role: "Extracción de registros escolares" },
+        { name: "Capa Bronze", role: "Almacenamiento crudo e inmutable" },
+        { name: "Capa Silver", role: "Limpieza, deduplicación y tipado" },
+        { name: "Capa Gold", role: "Vistas analíticas de rendimiento" },
+        { name: "Base de Datos PostgreSQL", role: "Persistencia transaccional ACID" }
       ],
       specs: [
-        { k: "Patrón de Diseño", v: "Medallion Architecture (Bronze &rarr; Silver &rarr; Gold)" },
-        { k: "Motor de Base de Datos", v: "PostgreSQL con esquemas particionados" },
-        { k: "ORM / Pipeline", v: "Python 3.10+, SQLAlchemy y scripts ETL modulares" },
-        { k: "Control de Calidad", v: "Validación de constraints escolares y pruebas de integridad" }
+        { k: "Patrón de Diseño", v: "Arquitectura Medallion (Bronze &rarr; Silver &rarr; Gold)" },
+        { k: "Motor de Base de Datos", v: "PostgreSQL con esquemas estructurados" },
+        { k: "ORM y Pipeline", v: "Python 3.10+, SQLAlchemy y scripts ETL modulares" },
+        { k: "Control de Calidad", v: "Validación de restricciones escolares y pruebas de integridad" }
       ],
       challenges: [
         "Normalización de notas y registros académicos heterogéneos sin pérdida de trazabilidad histórica.",
@@ -426,20 +420,20 @@
     vivaidiomas: {
       emoji: "🏛️",
       title: "VivaIdiomas Colombia — Asistente RAG Local",
-      subtitle: "FastAPI · LangChain · Ollama (100% Local) · ChromaDB · Python Backend",
+      subtitle: "FastAPI · LangChain · Ollama (100% Local) · ChromaDB · Backend en Python",
       github: "https://github.com/Yisus0708/vivaidiomas-rag",
       diagram: [
-        { name: "Web / Chat Client", role: "Consulta del aspirante" },
-        { name: "FastAPI Gateway", role: "Enrutamiento asíncrono y streaming" },
-        { name: "ChromaDB Store", role: "Búsqueda vectorial Top-K de pensum" },
-        { name: "Ollama LLM", role: "Generación de respuesta 100% local" },
-        { name: "Response Stream", role: "Entrega interactiva con latencia mínima" }
+        { name: "Cliente Web / Chat", role: "Consulta del aspirante" },
+        { name: "Gateway FastAPI", role: "Enrutamiento asíncrono y streaming" },
+        { name: "Base Vectorial ChromaDB", role: "Búsqueda vectorial Top-K de pensum" },
+        { name: "Modelo Ollama Local", role: "Generación de respuesta 100% local" },
+        { name: "Flujo de Respuesta", role: "Entrega interactiva con latencia mínima" }
       ],
       specs: [
         { k: "Privacidad", v: "100% Local — Cero datos enviados a servicios en la nube" },
-        { k: "Vector Store", v: "ChromaDB con embeddings semánticos en español" },
-        { k: "Orquestación", v: "LangChain + FastAPI Async con Server-Sent Events" },
-        { k: "Frontend", v: "Vanilla JS reactivo con CSS3 de alta fidelidad" }
+        { k: "Base Vectorial", v: "ChromaDB con embeddings semánticos en español" },
+        { k: "Orquestación", v: "LangChain + FastAPI Asíncrono con Server-Sent Events" },
+        { k: "Interfaz Web", v: "Vanilla JS reactivo con CSS3 de alta fidelidad" }
       ],
       challenges: [
         "Indexación semántica precisa de cursos, niveles y precios para responder sin inventar información institucional.",
@@ -449,21 +443,21 @@
     },
     "ocr-pdf": {
       emoji: "📄",
-      title: "Smart OCR & Semantic PDF Intelligence",
-      subtitle: "Python 3.12 · PyMuPDF · Tesseract OCR · Grounding Espacial · QA Conversacional",
+      title: "OCR Inteligente & PDF Semántico",
+      subtitle: "Python 3.12 · PyMuPDF · Tesseract OCR · Búsqueda Espacial · Chat QA Visual",
       github: "https://github.com/Yisus0708/OCR-PDF",
       diagram: [
-        { name: "PDF Uploader", role: "Recepción de documentos clínicos/legales" },
+        { name: "Carga de Documentos", role: "Recepción de PDFs clínicos y legales" },
         { name: "PyMuPDF + OCR", role: "Extracción con coordenadas Bounding Box" },
-        { name: "Vector Indexer", role: "Embeddings por fragmento espacial" },
-        { name: "Chat Engine", role: "Preguntas y respuestas fundamentadas" },
-        { name: "Visual Grounding", role: "Resaltado exacto sobre el documento" }
+        { name: "Indexador Vectorial", role: "Embeddings por fragmento espacial" },
+        { name: "Motor Conversacional", role: "Preguntas y respuestas fundamentadas" },
+        { name: "Grounding Visual", role: "Resaltado exacto sobre el documento" }
       ],
       specs: [
         { k: "Grounding Visual", v: "Búsqueda espacial con Bounding Boxes coordenadas exactas" },
         { k: "Extracción", v: "PyMuPDF para PDFs digitales + Tesseract para escaneos" },
         { k: "Asistente QA", v: "Chat conversacional con citas visuales auditables" },
-        { k: "Entorno", v: "Python 3.12 100% local" }
+        { k: "Entorno de Ejecución", v: "Python 3.12 100% local" }
       ],
       challenges: [
         "Alineación precisa entre el texto extraído por OCR y sus coordenadas físicas en el lienzo del PDF.",
@@ -477,14 +471,14 @@
       subtitle: "Python Puro · NumPy · Matemáticas de IA · Grafos Computacionales Propios",
       github: "https://github.com/Yisus0708/neuronforge",
       diagram: [
-        { name: "Input Vectors", role: "Datos de entrenamiento crudos" },
-        { name: "Layer Tensors", role: "Matrices de pesos y bias inicializados" },
-        { name: "Forward Pass", role: "Activaciones (ReLU, Sigmoid, Softmax)" },
-        { name: "Backpropagation", role: "Cálculo analítico del gradiente" },
-        { name: "Optimizer", role: "Descenso de gradiente (SGD, Adam)" }
+        { name: "Vectores de Entrada", role: "Datos de entrenamiento crudos" },
+        { name: "Capas de Tensores", role: "Matrices de pesos y bias inicializados" },
+        { name: "Propagación Directa", role: "Activaciones (ReLU, Sigmoid, Softmax)" },
+        { name: "Propagación Hacia Atrás", role: "Cálculo analítico del gradiente" },
+        { name: "Optimizador", role: "Descenso de gradiente (SGD, Adam)" }
       ],
       specs: [
-        { k: "Filosofía", v: "Cero librerías externas de deep learning (ni PyTorch ni TensorFlow)" },
+        { k: "Filosofía", v: "Cero librerías externas de deep learning (sin PyTorch ni TensorFlow)" },
         { k: "Fundamentos", v: "Álgebra lineal, cálculo diferencial multivariable y NumPy" },
         { k: "Transparencia", v: "Visualización paso a paso de matrices de gradientes" },
         { k: "Origen", v: "Desarrollado en Barranquilla, Colombia (2026)" }
@@ -498,19 +492,19 @@
     mentia: {
       emoji: "🧠",
       title: "Mentia — Plataforma EdTech de Revisión de Código",
-      subtitle: "FastAPI · Gemini API · PostgreSQL · AST Parser de Python",
+      subtitle: "FastAPI · Gemini API · PostgreSQL · Analizador Sintáctico AST",
       github: "https://github.com/Yisus0708",
       diagram: [
-        { name: "IDE / Web Client", role: "Envío de código en vivo" },
-        { name: "FastAPI Gateway", role: "Auth, Rate Limit & Async I/O" },
-        { name: "AST Parser", role: "Análisis Sintáctico Estático" },
-        { name: "Gemini 1.5 Flash", role: "Diagnóstico Pedagógico Contextual" },
-        { name: "PostgreSQL DB", role: "Historial de Aprendizaje & Métricas" }
+        { name: "Cliente Web / IDE", role: "Envío de código en vivo" },
+        { name: "Gateway FastAPI", role: "Autenticación, Rate Limit e I/O Asíncrono" },
+        { name: "Analizador AST", role: "Análisis Sintáctico Estático de Código" },
+        { name: "Modelo Gemini 1.5", role: "Diagnóstico Pedagógico Contextual" },
+        { name: "Base de Datos PostgreSQL", role: "Historial de Aprendizaje y Métricas" }
       ],
       specs: [
         { k: "Latencia Promedio", v: "< 420 ms con streaming habilitado" },
         { k: "Estrategia LLM", v: "Gemini 1.5 Flash con System Instructions especializadas" },
-        { k: "Base de Datos", v: "PostgreSQL con SQLAlchemy Async" },
+        { k: "Base de Datos", v: "PostgreSQL con SQLAlchemy Asíncrono" },
         { k: "Validación", v: "Pydantic v2 para contratos de entrada/salida tipados" }
       ],
       challenges: [
@@ -521,21 +515,21 @@
     },
     medical: {
       emoji: "🏥",
-      title: "Medical Records Automation — Pipeline ETL Clínico",
-      subtitle: "Flask · Gemini Multimodal Vision · Google Drive API · Pandas",
+      title: "Automatización de Historias Clínicas — Pipeline ETL",
+      subtitle: "Flask · Visión Multimodal con Gemini · API de Google Drive · Pandas",
       github: "https://github.com/Yisus0708",
       diagram: [
-        { name: "Google Drive API", role: "Monitoreo y descarga de PDFs" },
-        { name: "PDF Splitter & Prep", role: "Extracción de páginas clave" },
-        { name: "Gemini Multimodal", role: "OCR Vision de alta fidelidad" },
-        { name: "Normalizer (Pandas)", role: "Limpieza y estructura tabular" },
-        { name: "DB / Excel Export", role: "Entrega a personal médico" }
+        { name: "API de Google Drive", role: "Monitoreo y descarga de PDFs clínicos" },
+        { name: "Procesador de PDFs", role: "Extracción y segmentación de páginas" },
+        { name: "Visión Multimodal", role: "OCR Vision de alta fidelidad con Gemini" },
+        { name: "Normalizador Pandas", role: "Limpieza y estructura tabular de datos" },
+        { name: "Exportación a Base de Datos", role: "Entrega a personal médico en Excel/BD" }
       ],
       specs: [
-        { k: "Ahorro de Tiempo", v: "85% reducción en digitación manual" },
+        { k: "Ahorro de Tiempo", v: "85% reducción en digitación manual de expedientes" },
         { k: "Tasa de Acierto OCR", v: "> 98.4% en tipografía médica compleja" },
-        { k: "Procesamiento", v: "Batching desatendido en background" },
-        { k: "Formatos", v: "PDF escaneado, TIFF, PNG clínico" }
+        { k: "Modo de Procesamiento", v: "Lotes desatendidos en segundo plano" },
+        { k: "Formatos Compatibles", v: "PDF escaneado, TIFF, PNG clínico" }
       ],
       challenges: [
         "Normalización de terminología clínica ambigua mediante diccionario de mapeo médico.",
@@ -549,17 +543,17 @@
       subtitle: "JavaScript · Node.js · Express · Gemini API · CSS3 Moderno",
       github: "https://github.com/Yisus0708/FamilyBot",
       diagram: [
-        { name: "Web App Mobile", role: "Interfaz compartida por la familia" },
-        { name: "Express Server", role: "API de rutas y lógica de estado" },
-        { name: "Gemini AI Assistant", role: "Planificación de compras y gastos" },
-        { name: "Storage Service", role: "Persistencia de tareas y presupuestos" },
-        { name: "Notification Hub", role: "Recordatorios de agenda semanal" }
+        { name: "Aplicación Web Móvil", role: "Interfaz compartida por los miembros" },
+        { name: "Servidor Express", role: "API de rutas y lógica de estado" },
+        { name: "Asistente Gemini AI", role: "Planificación de compras y gastos" },
+        { name: "Servicio de Datos", role: "Persistencia de tareas y presupuestos" },
+        { name: "Centro de Notificaciones", role: "Recordatorios de agenda semanal" }
       ],
       specs: [
-        { k: "Módulos", v: "Horarios, gastos compartidos, tareas, mascotas y compras" },
-        { k: "Asistente IA", v: "Recomendaciones de recetas y optimización de presupuesto" },
-        { k: "Ecosistema", v: "Node.js + Express + Gemini API" },
-        { k: "Diseño", v: "Responsive mobile-first" }
+        { k: "Módulos Integrados", v: "Horarios, gastos compartidos, tareas, mascotas y compras" },
+        { k: "Asistente con IA", v: "Recomendaciones de recetas y optimización de presupuesto" },
+        { k: "Ecosistema Técnico", v: "Node.js + Express + Gemini API" },
+        { k: "Diseño Responsivo", v: "Enfoque prioritario para dispositivos móviles" }
       ],
       challenges: [
         "Diseño de interfaz simple e intuitiva accesible para todas las edades de la familia.",
@@ -580,7 +574,7 @@
 
     if (archModalBody) {
       const diagramHtml = `
-        <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--gold-primary); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px;">Flujo de Arquitectura &amp; Datos</div>
+        <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--gold-primary); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px;">Flujo de Arquitectura y Datos</div>
         <div class="arch-flow-diagram">
           ${data.diagram.map((node, i) => `
             <div class="arch-node">
@@ -656,7 +650,7 @@
   }
 
   /* ==========================================================================
-     11. INTERACTIVE TERMINAL CLI & MILA CHATBOT
+     11. CONSOLA CLI & ASISTENTE VIRTUAL MILA
      ========================================================================== */
   const terminalScreen = document.getElementById("terminal-screen");
   const terminalForm = document.getElementById("terminal-form");
@@ -687,30 +681,38 @@
 
   function handleTerminalCommand(raw) {
     const cmd = raw.trim().toLowerCase();
-    appendTerminalLine(`<span class="t-prompt">visitor@jc:~$</span> ${raw}`, "command");
+    appendTerminalLine(`<span class="t-prompt">visitante@jc:~$</span> ${raw}`, "command");
 
     switch (cmd) {
       case "help":
-        appendTerminalLine("Comandos disponibles:<br>&bull; <span class='badge-cmd'>projects</span> — Lista proyectos en producción.<br>&bull; <span class='badge-cmd'>skills</span> — Muestra tecnologías dominadas.<br>&bull; <span class='badge-cmd'>philosophy</span> — Filosofía de ingeniería y entrega.<br>&bull; <span class='badge-cmd'>hire</span> — ¿Por qué contratar a Jesus?<br>&bull; <span class='badge-cmd'>contact</span> — Métodos de contacto directo.<br>&bull; <span class='badge-cmd'>clear</span> — Limpia la consola.");
+      case "ayuda":
+        appendTerminalLine("Comandos disponibles:<br>&bull; <span class='badge-cmd'>proyectos</span> (o <span class='badge-cmd'>projects</span>) — Lista proyectos en producción.<br>&bull; <span class='badge-cmd'>habilidades</span> (o <span class='badge-cmd'>skills</span>) — Muestra tecnologías dominadas.<br>&bull; <span class='badge-cmd'>filosofia</span> — Filosofía de ingeniería y entrega.<br>&bull; <span class='badge-cmd'>contratar</span> (o <span class='badge-cmd'>hire</span>) — ¿Por qué incorporar a Jesus?<br>&bull; <span class='badge-cmd'>contacto</span> — Métodos de contacto directo.<br>&bull; <span class='badge-cmd'>limpiar</span> (o <span class='badge-cmd'>clear</span>) — Limpia la consola.");
         break;
       case "projects":
-        appendTerminalLine("🚀 <strong>Proyectos destacados:</strong><br>1. <strong>MILA</strong>: Asistente multimodal de escritorio (PyQt6 + Gemini).<br>2. <strong>School Grades Pipeline</strong>: Medallion Architecture Bronze/Silver/Gold ETL.<br>3. <strong>VivaIdiomas Colombia RAG</strong>: Asistente RAG local con Ollama y FastAPI.<br>4. <strong>Smart OCR &amp; PDF</strong>: Digitalización espacial con Bounding Boxes.<br>5. <strong>NeuronForge</strong>: Motor de redes neuronales desde fundamentos matemáticos.");
+      case "proyectos":
+        appendTerminalLine("🚀 <strong>Proyectos destacados:</strong><br>1. <strong>MILA</strong>: Asistente multimodal de escritorio (PyQt6 + Gemini).<br>2. <strong>Pipeline de Calificaciones</strong>: Arquitectura Medallion Bronze/Silver/Gold ETL.<br>3. <strong>VivaIdiomas Colombia RAG</strong>: Asistente RAG local con Ollama y FastAPI.<br>4. <strong>OCR Inteligente &amp; PDF</strong>: Digitalización espacial con Bounding Boxes.<br>5. <strong>NeuronForge</strong>: Motor de redes neuronales desde fundamentos matemáticos.");
         break;
       case "skills":
-        appendTerminalLine("🧠 <strong>Stack Tecnológico:</strong><br>&bull; <em>Backend:</em> Python 3.12, FastAPI, Flask, PostgreSQL, SQLAlchemy, REST APIs.<br>&bull; <em>IA &amp; RAG:</em> LangChain, Ollama (100% Local), Gemini API, ChromaDB, Embeddings.<br>&bull; <em>Data &amp; Sistemas:</em> Medallion Architecture, Pandas, NumPy, Docker, PyQt6, Linux.");
+      case "habilidades":
+        appendTerminalLine("🧠 <strong>Stack Tecnológico:</strong><br>&bull; <em>Backend:</em> Python 3.12, FastAPI, Flask, PostgreSQL, SQLAlchemy, REST APIs.<br>&bull; <em>IA &amp; RAG:</em> LangChain, Ollama (100% Local), Gemini API, ChromaDB, Embeddings.<br>&bull; <em>Datos &amp; Sistemas:</em> Arquitectura Medallion, Pandas, NumPy, Docker, PyQt6, Linux.");
         break;
       case "philosophy":
+      case "filosofia":
+      case "filosofía":
         appendTerminalLine("⚡ <em>'Hecho es mejor que perfecto.'</em><br>No construyo demos para tutoriales; diseño software que funciona en entornos reales con restricciones de latencia, seguridad y concurrencia.");
         break;
       case "hire":
+      case "contratar":
         appendTerminalLine("💼 <strong>Propuesta de valor:</strong><br>&bull; Autonomía para liderar desde el diseño de datos hasta APIs en producción.<br>&bull; Capacidad probada de integrar IA local (Ollama) garantizando privacidad.<br>&bull; Enfoque pragmático orientado a resolver dolores de negocio medibles.");
         break;
       case "contact":
+      case "contacto":
         appendTerminalLine("✉️ Correo: <a href='mailto:jesucantillo30@gmail.com' style='color: var(--gold-primary); text-decoration: underline;'>jesucantillo30@gmail.com</a><br>🐙 GitHub: <a href='https://github.com/Yisus0708' target='_blank' style='color: var(--gold-primary); text-decoration: underline;'>github.com/Yisus0708</a><br>🇨🇴 Ubicación: Barranquilla, Colombia");
         break;
       case "clear":
+      case "limpiar":
         terminalScreen.innerHTML = "";
-        appendTerminalLine("Consola reiniciada. Escribe <span class='badge-cmd'>help</span> para comandos.");
+        appendTerminalLine("Consola reiniciada. Escribe <span class='badge-cmd'>help</span> para ver comandos.");
         break;
       default:
         appendTerminalLine(`Comando no reconocido: '<strong>${cmd}</strong>'. Prueba escribiendo <span class='badge-cmd'>help</span>.`, "dim");
@@ -735,7 +737,7 @@
     });
   });
 
-  /* MILA AI Chatbot Simulation */
+  /* Simulación del Asistente Virtual MILA */
   const aiChatScreen = document.getElementById("ai-chat-screen");
   const aiChatForm = document.getElementById("ai-chat-form");
   const aiChatInput = document.getElementById("ai-chat-input");
@@ -744,7 +746,7 @@
   const milaKnowledge = [
     {
       keywords: ["medallion", "pipeline", "datos", "arquitectura", "calificaciones"],
-      response: "En el proyecto <strong>School Grades Pipeline</strong> implementó la arquitectura <strong>Medallion</strong> con tres capas bien diferenciadas: <em>Bronze</em> para almacenamiento crudo e inmutable, <em>Silver</em> para limpieza, deduplicación y tipado estricto, y <em>Gold</em> con agregaciones y vistas para analítica predictiva en PostgreSQL."
+      response: "En el proyecto <strong>Pipeline de Calificaciones</strong> implementó la arquitectura <strong>Medallion</strong> con tres capas bien diferenciadas: <em>Bronze</em> para almacenamiento crudo e inmutable, <em>Silver</em> para limpieza, deduplicación y tipado estricto, y <em>Gold</em> con agregaciones y vistas para analítica predictiva en PostgreSQL."
     },
     {
       keywords: ["rag", "ollama", "local", "privacidad", "vivaidiomas"],
@@ -819,7 +821,7 @@
   });
 
   /* ==========================================================================
-     12. COMMAND PALETTE (Ctrl+K / Cmd+K)
+     12. PALETA DE COMANDOS (Ctrl+K / Cmd+K)
      ========================================================================== */
   const cmdDialog = document.getElementById("cmd-palette-dialog");
   const cmdTrigger = document.getElementById("cmd-palette-trigger");
@@ -916,7 +918,7 @@
   });
 
   /* ==========================================================================
-     13. QUICK MESSAGE COMPOSER
+     13. COMPOSITOR DE MENSAJES RÁPIDOS
      ========================================================================== */
   const composerChips = document.querySelectorAll(".composer-chip");
   const composerSubject = document.getElementById("composer-subject");
@@ -927,7 +929,7 @@
   const messageTemplates = {
     hiring: {
       subject: "Oportunidad Laboral — Ingeniero Backend / IA",
-      body: "Hola Jesus, revisé tu portafolio y proyectos en FastAPI, Medallion Architecture y RAG. Nos gustaría conversar sobre una oportunidad en nuestro equipo técnico."
+      body: "Hola Jesus, revisé tu portafolio y proyectos en FastAPI, Arquitectura Medallion y RAG. Nos gustaría conversar sobre una oportunidad en nuestro equipo técnico."
     },
     project: {
       subject: "Propuesta de Proyecto — Arquitectura de Datos / Medallion",
@@ -976,7 +978,7 @@
   }
 
   /* ==========================================================================
-     14. INTERSECTION OBSERVER FOR REVEAL ANIMATIONS
+     14. INTERSECTION OBSERVER PARA ANIMACIONES DE REVELACIÓN
      ========================================================================== */
   const revealElements = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window) {
@@ -998,7 +1000,7 @@
   }
 
   /* ==========================================================================
-     15. AMBIENT BACKGROUND CANVAS (Soft golden/cyan particulate)
+     15. LIENZO DE PARTÍCULAS AMBIENTALES
      ========================================================================== */
   const bgCanvas = document.getElementById("bg-canvas");
   if (bgCanvas && !reduceMotion) {

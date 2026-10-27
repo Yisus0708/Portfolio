@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jesus Cantillo — Backend &amp; Applied AI Engineer · Portfolio</title>
-  <meta name="description" content="Portfolio de Jesus Cantillo — Ingeniero Backend y Especialista en IA Aplicada. Arquitecturas Medallion, sistemas RAG locales, pipelines ETL y agentes de software en producción." />
-  <meta name="keywords" content="Jesus Cantillo, Yisus0708, Backend Engineer, IA Aplicada, RAG, Ollama, LangChain, FastAPI, Medallion Architecture, Python, PostgreSQL, MILA" />
+  <title>Jesus Cantillo — Ingeniero Backend e IA Aplicada · Portafolio</title>
+  <meta name="description" content="Portafolio de Jesus Cantillo — Ingeniero Backend y Especialista en Inteligencia Artificial Aplicada. Arquitecturas Medallion, sistemas RAG locales, pipelines ETL y agentes de software en producción." />
+  <meta name="keywords" content="Jesus Cantillo, Yisus0708, Ingeniero Backend, IA Aplicada, RAG Local, Ollama, LangChain, FastAPI, Arquitectura Medallion, Python, PostgreSQL, MILA" />
   <meta name="author" content="Jesus Cantillo" />
 
   <!-- Open Graph / Meta Social -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Jesus Cantillo — Backend &amp; Applied AI Engineer" />
+  <meta property="og:title" content="Jesus Cantillo — Ingeniero Backend e IA Aplicada" />
   <meta property="og:description" content="Construyo arquitecturas backend de alto rendimiento, sistemas RAG y agentes de IA que funcionan en producción." />
   <meta property="og:url" content="https://github.com/Yisus0708" />
 
@@ -27,11 +27,11 @@
 </head>
 <body>
 
-  <!-- Preloader Screen (Inspired by camilamarrugo.com) -->
+  <!-- Preloader Screen (Inspirado en camilamarrugo.com) -->
   <div id="site-preloader" class="site-preloader" aria-live="polite">
     <div class="preloader-inner">
       <div class="preloader-crest-wrap">
-        <svg class="preloader-crest-svg" viewBox="0 0 120 120" width="84" height="84" fill="none">
+        <svg class="preloader-crest-svg" viewBox="0 0 120 120" width="84" height="84" fill="none" aria-hidden="true">
           <circle cx="60" cy="60" r="54" stroke="currentColor" stroke-width="1.2" stroke-dasharray="4 3" opacity="0.4" />
           <polygon points="60,18 96,78 24,78" stroke="currentColor" stroke-width="1.4" opacity="0.7" />
           <polygon points="60,102 24,42 96,42" stroke="currentColor" stroke-width="1.4" opacity="0.7" />
@@ -40,32 +40,34 @@
         </svg>
       </div>
       <div class="preloader-name">Jesus Cantillo</div>
-      <div class="preloader-sub">Backend &amp; Applied AI · Portfolio 2026</div>
+      <div class="preloader-sub">Backend e IA Aplicada · Portafolio 2026</div>
       <div class="preloader-line-track">
         <div class="preloader-line-bar" id="preloader-bar"></div>
       </div>
     </div>
   </div>
 
-  <!-- Scroll Progress Indicator -->
+  <!-- Barra de Progreso de Desplazamiento -->
   <div class="scroll-progress-bar" id="scroll-progress" aria-hidden="true"></div>
 
-  <!-- Ambient Micro-Texture Canvas & Glows -->
+  <!-- Luces Ambientales y Micro-Textura -->
   <div class="ambient-glow glow-1" aria-hidden="true"></div>
   <div class="ambient-glow glow-2" aria-hidden="true"></div>
   <div class="ambient-glow glow-3" aria-hidden="true"></div>
   <canvas id="bg-canvas" aria-hidden="true"></canvas>
   <div class="grain" aria-hidden="true"></div>
 
-  <!-- Skip link for Accessibility -->
+  <!-- Enlace accesible de salto -->
   <a class="skip-link" href="#main">Saltar al contenido principal</a>
 
-  <!-- Slide-out Menu Drawer (Inspired by camilamarrugo.com) -->
+  <!-- Cajón de Navegación Lateral Desplegable (Inspirado en camilamarrugo.com) -->
   <div id="menu-drawer" class="menu-drawer" aria-hidden="true">
     <div class="menu-drawer-backdrop" id="menu-backdrop"></div>
     <div class="menu-drawer-content" role="dialog" aria-modal="true" aria-label="Menú de Navegación">
       <div class="drawer-header">
-        <button class="menu-close-btn" id="menu-close-btn" aria-label="Cerrar menú">&times;</button>
+        <button class="menu-close-btn" id="menu-close-btn" aria-label="Cerrar menú">
+          <span class="close-icon-symbol">&times;</span>
+        </button>
         <div class="menu-brand">jesus cantillo</div>
       </div>
       <nav class="drawer-nav">
@@ -75,7 +77,7 @@
           <li><a href="#elegance" class="drawer-link"><span class="link-num">03</span> <span class="link-label">Rigor &amp; Filosofía</span> <span class="link-arrow">&rarr;</span></a></li>
           <li><a href="#projects" class="drawer-link"><span class="link-num">04</span> <span class="link-label">Proyectos &amp; Arquitectura</span> <span class="link-arrow">&rarr;</span></a></li>
           <li><a href="#skills" class="drawer-link"><span class="link-num">05</span> <span class="link-label">Habilidades Técnicas</span> <span class="link-arrow">&rarr;</span></a></li>
-          <li><a href="#terminal-section" class="drawer-link"><span class="link-num">06</span> <span class="link-label">Consola &amp; MILA AI</span> <span class="link-arrow">&rarr;</span></a></li>
+          <li><a href="#terminal-section" class="drawer-link"><span class="link-num">06</span> <span class="link-label">Consola &amp; Asistente MILA</span> <span class="link-arrow">&rarr;</span></a></li>
           <li><a href="#stats" class="drawer-link"><span class="link-num">07</span> <span class="link-label">GitHub &amp; Métricas</span> <span class="link-arrow">&rarr;</span></a></li>
           <li><a href="#contact" class="drawer-link"><span class="link-num">08</span> <span class="link-label">Contacto</span> <span class="link-arrow">&rarr;</span></a></li>
         </ul>
@@ -83,35 +85,37 @@
       <div class="drawer-footer">
         <a href="mailto:jesucantillo30@gmail.com" class="drawer-email">jesucantillo30@gmail.com</a>
         <div class="drawer-location">Barranquilla, Colombia 🇨🇴</div>
-        <div class="drawer-copy">&copy; Jesus Cantillo 2026</div>
+        <div class="drawer-copy">&copy; Jesus Cantillo 2026 · Todos los derechos reservados</div>
       </div>
     </div>
   </div>
 
-  <!-- Header / Navigation Bar (Inspired by camilamarrugo.com) -->
+  <!-- Cabecera Superior Minimalista (Inspirada en camilamarrugo.com) -->
   <header class="site-header" id="topbar">
     <div class="site-header-inner">
       <a href="#hero" class="nav-inicio" id="nav-inicio">inicio</a>
       <div class="header-name">jesus cantillo</div>
       
       <div class="header-right-tools">
-        <!-- Search & Command Palette Trigger -->
-        <button class="cmd-palette-trigger" id="cmd-palette-trigger" type="button" aria-label="Buscar en portafolio (Ctrl+K)" title="Buscar (Ctrl+K)">
-          <svg class="cmd-trigger-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <!-- Gatillo de Paleta de Comandos (Ctrl+K) -->
+        <button class="cmd-palette-trigger" id="cmd-palette-trigger" type="button" aria-label="Buscar en el portafolio (Ctrl+K)" title="Buscar (Ctrl+K)">
+          <svg class="cmd-trigger-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
           <span class="cmd-shortcut-tag">Ctrl K</span>
         </button>
 
-        <!-- Ambient Sound FX Toggle -->
-        <button class="audio-fx-toggle" id="audio-fx-toggle" aria-label="Música ambiental" title="Música ambiental suave">
-          <svg class="audio-icon-off" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
-          <svg class="audio-icon-on hidden" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+        <!-- Conmutador de Sonido Ambiental -->
+        <button class="audio-fx-toggle" id="audio-fx-toggle" aria-label="Música ambiental suave" title="Música ambiental">
+          <svg class="audio-icon-off" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+          <svg class="audio-icon-on hidden" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
         </button>
 
-        <!-- Slide-out Menu Trigger Button -->
-        <button class="nav-menu" id="nav-menu-btn" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-drawer">
-          <span class="nav-menu-bar"></span>
-          <span class="nav-menu-bar"></span>
-          <span class="nav-menu-label">menu</span>
+        <!-- Botón de Menú de Alta Gama (Rediseñado con máxima precisión y estética) -->
+        <button class="nav-menu-btn" id="nav-menu-btn" type="button" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="menu-drawer">
+          <span class="menu-btn-icon" aria-hidden="true">
+            <span class="menu-bar bar-top"></span>
+            <span class="menu-bar bar-bottom"></span>
+          </span>
+          <span class="menu-btn-text">Menú</span>
         </button>
       </div>
     </div>
@@ -119,13 +123,13 @@
 
   <main id="main" class="portfolio-canvas">
 
-    <!-- SECTION 1: HERO CANVAS (Inspired by camilamarrugo.com) -->
+    <!-- SECCIÓN 1: LIENZO PRINCIPAL / HERO (Inspirado en camilamarrugo.com) -->
     <section class="section-hero" id="hero">
       <div class="hero-canvas">
         
-        <!-- Emblema / Heraldic Crest Decorativo -->
+        <!-- Emblema Heráldico Decorativo -->
         <div class="hero-crest-wrap reveal">
-          <svg class="hero-crest-svg" viewBox="0 0 160 160" width="110" height="110" fill="none">
+          <svg class="hero-crest-svg" viewBox="0 0 160 160" width="105" height="105" fill="none" aria-hidden="true">
             <circle cx="80" cy="80" r="74" stroke="currentColor" stroke-width="1" stroke-dasharray="5 4" opacity="0.35" />
             <circle cx="80" cy="80" r="64" stroke="currentColor" stroke-width="0.8" opacity="0.25" />
             <polygon points="80,24 128,108 32,108" stroke="currentColor" stroke-width="1.2" opacity="0.6" />
@@ -135,7 +139,7 @@
           </svg>
         </div>
 
-        <!-- Tagline de Especialidad -->
+        <!-- Especialidad Técnica -->
         <div class="hero-eyebrow reveal" style="--d: .05s">
           <span class="eyebrow-accent">&loz;</span>
           <span>Arquitectura Backend &amp; Inteligencia Artificial Aplicada</span>
@@ -144,7 +148,7 @@
 
         <!-- Título Editorial Principal -->
         <h1 class="hero-title reveal" style="--d: .12s">
-          <span class="hero-title-top">Architecture &amp; Intelligence</span>
+          <span class="hero-title-top">Arquitectura &amp; Sistemas de Inteligencia</span>
           <span class="hero-title-main">Jesus Cantillo</span>
         </h1>
 
@@ -152,15 +156,15 @@
         <div class="hero-subtitle reveal" style="--d: .18s">
           <span>Barranquilla, Colombia</span>
           <span class="bullet-dot">&bull;</span>
-          <span class="font-script">Engineering Portfolio 2026</span>
+          <span class="font-script">Portafolio de Ingeniería 2026</span>
         </div>
 
         <!-- Propuesta de Valor Ejecutiva -->
         <p class="hero-lead reveal" style="--d: .24s">
-          Diseño pipelines de datos de alto rendimiento con arquitectura <strong>Medallion</strong>, sistemas <strong>RAG locales y seguros</strong>, y agentes autónomos multimodales construidos para <em>funcionar en producción</em>, no solo en demostraciones de tutorial.
+          Diseño pipelines de datos de alto rendimiento con arquitectura <strong>Medallion</strong>, sistemas <strong>RAG locales y privados</strong>, y agentes autónomos multimodales construidos para <em>funcionar en producción</em>, no solo en demostraciones de tutorial.
         </p>
 
-        <!-- CTAs Principales -->
+        <!-- Botones de Acción -->
         <div class="hero-actions reveal" style="--d: .30s">
           <a class="btn btn-editorial" href="#projects">
             <span>Explorar Proyectos</span>
@@ -168,30 +172,30 @@
           </a>
 
           <button class="btn btn-editorial-outline copy-email-btn" data-email="jesucantillo30@gmail.com" title="Copiar correo a portapapeles">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-            <span>Copiar Email</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            <span>Copiar Correo</span>
           </button>
 
           <a class="btn btn-editorial-ghost" href="https://github.com/Yisus0708" target="_blank" rel="noopener" title="Ver perfil en GitHub @Yisus0708">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
             <span>GitHub</span>
           </a>
         </div>
 
-        <!-- Ticker de Filosofía -->
+        <!-- Filosofía de Ingeniería -->
         <div class="hero-ticker reveal" style="--d: .36s">
-          <span class="ticker-badge">DEV.PHILOSOPHY</span>
-          <span class="ticker-text" id="typed">while(learning) { build(something_real); }</span>
+          <span class="ticker-badge">FILOSOFÍA DE DESARROLLO</span>
+          <span class="ticker-text" id="typed">while(aprendiendo) { construir(algo_real); }</span>
         </div>
 
       </div>
     </section>
 
-    <!-- SECTION 2: ABOUT ME (Inspired by camilamarrugo.com) -->
+    <!-- SECCIÓN 2: SOBRE MÍ (Inspirado en camilamarrugo.com) -->
     <section class="section-about" id="about">
       <div class="about-container">
         
-        <!-- Portrait / Seal Card -->
+        <!-- Tarjeta con Monograma Editorial -->
         <div class="about-portrait-wrap reveal">
           <div class="about-frame">
             <div class="about-monogram-circle">
@@ -202,21 +206,21 @@
               <div class="frame-tag">Ingeniero de Software &amp; IA</div>
               <div class="frame-status">
                 <span class="status-pulse-dot"></span>
-                <span>Disponible para proyectos &amp; roles</span>
+                <span>Disponible para proyectos y roles</span>
               </div>
               <div class="frame-meta">
-                <span>🇨🇴 Colombia</span>
-                <span>⚡ Backend + RAG + Medallion</span>
+                <span>🇨🇴 Barranquilla, Colombia</span>
+                <span>⚡ Backend + RAG Local + Medallion</span>
               </div>
             </div>
           </div>
-          <!-- Live Views Badge from GitHub profile -->
+          <!-- Contador de Visitas de GitHub -->
           <div class="about-views-badge">
-            <img src="https://komarev.com/ghpvc/?username=Yisus0708&label=Profile%20views&color=d4af37&style=flat-square" alt="Contador de visitas del perfil" loading="lazy" />
+            <img src="https://komarev.com/ghpvc/?username=Yisus0708&label=Visitas%20al%20perfil&color=d4af37&style=flat-square" alt="Contador de visitas del perfil" loading="lazy" />
           </div>
         </div>
 
-        <!-- Editorial Bio Content -->
+        <!-- Biografía Editorial -->
         <div class="about-content-wrap reveal" style="--d: .15s">
           <div class="section-eyebrow">
             <span class="num">02</span>
@@ -240,15 +244,15 @@
             </p>
           </div>
 
-          <!-- Highlight metrics row -->
+          <!-- Métricas Destacadas -->
           <div class="about-highlights-row">
             <div class="ah-item">
               <div class="ah-num">10+</div>
-              <div class="ah-lbl">Repositorios &amp; Proyectos Públicos</div>
+              <div class="ah-lbl">Repositorios y Proyectos Públicos</div>
             </div>
             <div class="ah-item">
               <div class="ah-num">100%</div>
-              <div class="ah-lbl">Local-First &amp; Privacidad en IA</div>
+              <div class="ah-lbl">Local-First y Privacidad en IA</div>
             </div>
             <div class="ah-item">
               <div class="ah-num">&lt; 20ms</div>
@@ -260,11 +264,11 @@
       </div>
     </section>
 
-    <!-- SECTION 3: STATEMENT / ELEGANCE & RIGOR (Directly inspired by camilamarrugo.com) -->
+    <!-- SECCIÓN 3: RIGOR, ARQUITECTURA & FILOSOFÍA (Inspirado en camilamarrugo.com) -->
     <section class="section-elegance" id="elegance">
       <div class="elegance-canvas reveal">
         <div class="elegance-crest-wrap">
-          <svg class="elegance-crest" viewBox="0 0 100 100" width="70" height="70" fill="none">
+          <svg class="elegance-crest" viewBox="0 0 100 100" width="70" height="70" fill="none" aria-hidden="true">
             <circle cx="50" cy="50" r="46" stroke="currentColor" stroke-width="1.2" opacity="0.4" />
             <circle cx="50" cy="50" r="38" stroke="currentColor" stroke-width="0.8" stroke-dasharray="3 3" opacity="0.3" />
             <path d="M50 15 L50 85 M15 50 L85 50" stroke="currentColor" stroke-width="0.8" opacity="0.5" />
@@ -274,8 +278,8 @@
         </div>
 
         <h2 class="elegance-headline">
-          <span>For Rigor, Architecture</span>
-          <span>and Real-World Intelligence</span>
+          <span>Rigor, Arquitectura</span>
+          <span>e Inteligencia en Producción</span>
         </h2>
 
         <p class="elegance-quote">
@@ -283,12 +287,12 @@
         </p>
 
         <div class="elegance-subline">
-          <span>Backend</span> &bull; <span>Data Pipelines</span> &bull; <span>Applied AI</span> &bull; <span>Automation</span>
+          <span>Backend</span> &bull; <span>Pipelines de Datos</span> &bull; <span>IA Aplicada</span> &bull; <span>Automatización</span>
         </div>
       </div>
     </section>
 
-    <!-- SECTION 4: PROJECTS SHOWCASE (REAL GITHUB WORK Yisus0708) -->
+    <!-- SECCIÓN 4: PROYECTOS & CASOS DE ESTUDIO (GitHub Oficial Yisus0708) -->
     <section class="section-projects" id="projects">
       <div class="section-head reveal">
         <div class="section-eyebrow">
@@ -300,7 +304,7 @@
         <p class="section-sub">Software real diseñado para resolver necesidades concretas de personas, instituciones y empresas.</p>
       </div>
 
-      <!-- Filter Tabs -->
+      <!-- Filtros de Proyectos -->
       <div class="project-filters reveal" style="--d: .1s">
         <button class="filter-btn active" data-filter="all">Todos los Proyectos (8)</button>
         <button class="filter-btn" data-filter="ai">IA Aplicada &amp; RAG</button>
@@ -308,16 +312,16 @@
         <button class="filter-btn" data-filter="desktop">Escritorio &amp; Automatización</button>
       </div>
 
-      <!-- Projects Grid -->
+      <!-- Cuadrícula de Proyectos -->
       <div class="projects-grid">
         
-        <!-- PROJECT 1: MILA -->
+        <!-- PROYECTO 1: MILA -->
         <article class="project-card spotlight-card reveal" data-category="ai desktop" style="--d: .05s">
           <div class="card-top-row">
             <span class="card-symbol">🎙️</span>
             <div class="card-badges">
               <span class="badge-status">Producción</span>
-              <span class="badge-type">Desktop &amp; Multimodal</span>
+              <span class="badge-type">Escritorio &amp; Multimodal</span>
             </div>
           </div>
 
@@ -337,71 +341,71 @@
             <span class="tag">Python 3.11</span>
             <span class="tag">PyQt6</span>
             <span class="tag">Gemini API</span>
-            <span class="tag">Speech-to-Text</span>
-            <span class="tag">OS Subprocesses</span>
+            <span class="tag">Voz a Texto</span>
+            <span class="tag">Subprocesos SO</span>
           </div>
 
           <div class="card-footer">
             <button class="btn-card-arch open-arch-modal" data-project="mila" type="button" aria-label="Ver arquitectura de MILA">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
               <span>Arquitectura</span>
             </button>
             <a href="https://github.com/Yisus0708/MILA" target="_blank" rel="noopener" class="card-gh-link">
               <span>GitHub</span>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
             </a>
           </div>
         </article>
 
-        <!-- PROJECT 2: ARQUITECTURA / MEDALLION PIPELINE -->
+        <!-- PROYECTO 2: PIPELINE DE CALIFICACIONES (ARQUITECTURA MEDALLION) -->
         <article class="project-card spotlight-card reveal" data-category="data" style="--d: .10s">
           <div class="card-top-row">
             <span class="card-symbol">🎓</span>
             <div class="card-badges">
-              <span class="badge-status">Data Engineering</span>
-              <span class="badge-type">Medallion Pipeline</span>
+              <span class="badge-status">Ingeniería de Datos</span>
+              <span class="badge-type">Arquitectura Medallion</span>
             </div>
           </div>
 
-          <h3 class="card-title">School Grades Pipeline</h3>
-          <div class="card-subtitle">Arquitectura Medallion End-to-End</div>
+          <h3 class="card-title">Pipeline de Calificaciones</h3>
+          <div class="card-subtitle">Arquitectura Medallion de Extremo a Extremo</div>
           <p class="card-desc">
-            Pipeline integral de ingeniería de datos para sistema de calificaciones y rendimiento escolar. Estructura el ciclo de vida de los datos académicos a través de capas Bronze (Raw), Silver (Curated) y Gold (Aggregated Business Analytics).
+            Pipeline integral de ingeniería de datos para sistema de calificaciones y rendimiento escolar. Estructura el ciclo de vida de los datos académicos a través de capas Bronze (Crudo), Silver (Curado) y Gold (Analítica Predictiva de Negocio).
           </p>
 
           <div class="card-spec-list">
             <div class="c-spec"><span class="c-dot">&bull;</span> Ingestión y limpieza automatizada de registros escolares.</div>
-            <div class="c-spec"><span class="c-dot">&bull;</span> Modelado relacional optimizado en PostgreSQL con constraints.</div>
-            <div class="c-spec"><span class="c-dot">&bull;</span> Capa Gold con vistas materializadas para analítica predictiva.</div>
+            <div class="c-spec"><span class="c-dot">&bull;</span> Modelado relacional optimizado en PostgreSQL con restricciones.</div>
+            <div class="c-spec"><span class="c-dot">&bull;</span> Capa Gold con vistas materializadas para analítica avanzada.</div>
           </div>
 
           <div class="card-tags">
             <span class="tag">Python 3.10+</span>
             <span class="tag">PostgreSQL</span>
-            <span class="tag">Medallion ETL</span>
-            <span class="tag">Data Analytics</span>
+            <span class="tag">ETL Medallion</span>
+            <span class="tag">Analítica de Datos</span>
             <span class="tag">SQLAlchemy</span>
           </div>
 
           <div class="card-footer">
             <button class="btn-card-arch open-arch-modal" data-project="arquitectura" type="button" aria-label="Ver arquitectura del pipeline escolar">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
               <span>Arquitectura</span>
             </button>
             <a href="https://github.com/Yisus0708/arquitectura" target="_blank" rel="noopener" class="card-gh-link">
               <span>GitHub</span>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
             </a>
           </div>
         </article>
 
-        <!-- PROJECT 3: VIVAIDIOMAS-RAG -->
+        <!-- PROYECTO 3: VIVAIDIOMAS-RAG -->
         <article class="project-card spotlight-card reveal" data-category="ai" style="--d: .15s">
           <div class="card-top-row">
             <span class="card-symbol">🏛️</span>
             <div class="card-badges">
               <span class="badge-status">100% Local</span>
-              <span class="badge-type">Full-Stack RAG</span>
+              <span class="badge-type">RAG Integral</span>
             </div>
           </div>
 
@@ -413,7 +417,7 @@
 
           <div class="card-spec-list">
             <div class="c-spec"><span class="c-dot">&bull;</span> Inferencia local garantizando privacidad total de los datos.</div>
-            <div class="c-spec"><span class="c-dot">&bull;</span> Vector store con ChromaDB y embeddings semánticos en español.</div>
+            <div class="c-spec"><span class="c-dot">&bull;</span> Base de datos vectorial con ChromaDB y embeddings en español.</div>
             <div class="c-spec"><span class="c-dot">&bull;</span> API REST asíncrona construida en FastAPI con streaming.</div>
           </div>
 
@@ -422,33 +426,33 @@
             <span class="tag">LangChain</span>
             <span class="tag">Ollama Local</span>
             <span class="tag">ChromaDB</span>
-            <span class="tag">RAG Pipeline</span>
+            <span class="tag">Pipeline RAG</span>
           </div>
 
           <div class="card-footer">
             <button class="btn-card-arch open-arch-modal" data-project="vivaidiomas" type="button" aria-label="Ver arquitectura de VivaIdiomas RAG">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
               <span>Arquitectura</span>
             </button>
             <a href="https://github.com/Yisus0708/vivaidiomas-rag" target="_blank" rel="noopener" class="card-gh-link">
               <span>GitHub</span>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
             </a>
           </div>
         </article>
 
-        <!-- PROJECT 4: OCR-PDF -->
+        <!-- PROYECTO 4: OCR-PDF -->
         <article class="project-card spotlight-card reveal" data-category="ai data" style="--d: .20s">
           <div class="card-top-row">
             <span class="card-symbol">📄</span>
             <div class="card-badges">
               <span class="badge-status">Visión &amp; QA</span>
-              <span class="badge-type">Semantic PDF QA</span>
+              <span class="badge-type">IA para Documentos</span>
             </div>
           </div>
 
-          <h3 class="card-title">Smart OCR &amp; Semantic PDF</h3>
-          <div class="card-subtitle">Plataforma de Digitalización y Bounding Boxes</div>
+          <h3 class="card-title">OCR Inteligente &amp; PDF Semántico</h3>
+          <div class="card-subtitle">Digitalización Híbrida y Bounding Boxes Espaciales</div>
           <p class="card-desc">
             Plataforma de digitalización híbrida, búsqueda espacial sobre documentos con coordenadas bounding boxes y asistente conversacional (Chat QA) con IA local y grounding visual exacto en pantalla.
           </p>
@@ -469,30 +473,30 @@
 
           <div class="card-footer">
             <button class="btn-card-arch open-arch-modal" data-project="ocr-pdf" type="button" aria-label="Ver arquitectura de OCR PDF">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
               <span>Arquitectura</span>
             </button>
             <a href="https://github.com/Yisus0708/OCR-PDF" target="_blank" rel="noopener" class="card-gh-link">
               <span>GitHub</span>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
             </a>
           </div>
         </article>
 
-        <!-- PROJECT 5: NEURONFORGE -->
+        <!-- PROYECTO 5: NEURONFORGE -->
         <article class="project-card spotlight-card reveal" data-category="ai" style="--d: .25s">
           <div class="card-top-row">
             <span class="card-symbol">⚡</span>
             <div class="card-badges">
               <span class="badge-status">Fundamentos Puros</span>
-              <span class="badge-type">Neural Engine</span>
+              <span class="badge-type">Motor de IA</span>
             </div>
           </div>
 
           <h3 class="card-title">NeuronForge</h3>
           <div class="card-subtitle">Motor de Redes Neuronales desde Cero Matemático</div>
           <p class="card-desc">
-            Framework educativo y motor de Deep Learning implementado desde fundamentos matemáticos en Python puro (cálculo de gradientes, backpropagation y optimizadores sin librerías de caja negra como TensorFlow o PyTorch). Creado en Barranquilla, Colombia.
+            Framework educativo y motor de Deep Learning implementado desde fundamentos matemáticos en Python puro (cálculo de gradientes, backpropagation y optimizadores sin librerías externas de caja negra). Creado en Barranquilla, Colombia.
           </p>
 
           <div class="card-spec-list">
@@ -511,23 +515,23 @@
 
           <div class="card-footer">
             <button class="btn-card-arch open-arch-modal" data-project="neuronforge" type="button" aria-label="Ver arquitectura de NeuronForge">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
               <span>Arquitectura</span>
             </button>
             <a href="https://github.com/Yisus0708/neuronforge" target="_blank" rel="noopener" class="card-gh-link">
               <span>GitHub</span>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
             </a>
           </div>
         </article>
 
-        <!-- PROJECT 6: MENTIA -->
+        <!-- PROYECTO 6: MENTIA -->
         <article class="project-card spotlight-card reveal" data-category="ai" style="--d: .30s">
           <div class="card-top-row">
             <span class="card-symbol">🧠</span>
             <div class="card-badges">
               <span class="badge-status">Producción</span>
-              <span class="badge-type">EdTech &amp; LLMs</span>
+              <span class="badge-type">EdTech con IA</span>
             </div>
           </div>
 
@@ -553,17 +557,17 @@
 
           <div class="card-footer">
             <button class="btn-card-arch open-arch-modal" data-project="mentia" type="button" aria-label="Ver arquitectura de Mentia">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
               <span>Arquitectura</span>
             </button>
             <a href="https://github.com/Yisus0708" target="_blank" rel="noopener" class="card-gh-link">
               <span>GitHub</span>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
             </a>
           </div>
         </article>
 
-        <!-- PROJECT 7: MEDICAL RECORDS AUTOMATION -->
+        <!-- PROYECTO 7: AUTOMATIZACIÓN DE HISTORIAS CLÍNICAS -->
         <article class="project-card spotlight-card reveal" data-category="data desktop" style="--d: .35s">
           <div class="card-top-row">
             <span class="card-symbol">🏥</span>
@@ -573,7 +577,7 @@
             </div>
           </div>
 
-          <h3 class="card-title">Medical Records Automation</h3>
+          <h3 class="card-title">Automatización de Historias Clínicas</h3>
           <div class="card-subtitle">Extracción Multimodal de Documentos Clínicos</div>
           <p class="card-desc">
             Pipeline desatendido de extracción de datos médicos desde historiales clínicos escaneados en PDF sincronizados en Google Drive. Limpieza, estructuración y exportación hacia Excel y bases de datos con 85% de ahorro en digitación.
@@ -594,29 +598,29 @@
           </div>
 
           <div class="card-footer">
-            <button class="btn-card-arch open-arch-modal" data-project="medical" type="button" aria-label="Ver arquitectura de Medical Records">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+            <button class="btn-card-arch open-arch-modal" data-project="medical" type="button" aria-label="Ver arquitectura de Automatización Clínica">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
               <span>Arquitectura</span>
             </button>
             <a href="https://github.com/Yisus0708" target="_blank" rel="noopener" class="card-gh-link">
               <span>GitHub</span>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
             </a>
           </div>
         </article>
 
-        <!-- PROJECT 8: FAMILYBOT -->
+        <!-- PROYECTO 8: FAMILYBOT -->
         <article class="project-card spotlight-card reveal" data-category="desktop" style="--d: .40s">
           <div class="card-top-row">
             <span class="card-symbol">🏠</span>
             <div class="card-badges">
               <span class="badge-status">Full-Stack</span>
-              <span class="badge-type">Home Management</span>
+              <span class="badge-type">Gestión Familiar</span>
             </div>
           </div>
 
           <h3 class="card-title">FamilyBot</h3>
-          <div class="card-subtitle">Asistente Inteligente de Organización Familiar</div>
+          <div class="card-subtitle">Asistente Inteligente para el Hogar</div>
           <p class="card-desc">
             Aplicación integral para la gestión del hogar: finanzas compartidas, horarios familiares, recordatorios automáticos, listas de compras y un asistente de IA integrado con Gemini para planificación doméstica.
           </p>
@@ -637,12 +641,12 @@
 
           <div class="card-footer">
             <button class="btn-card-arch open-arch-modal" data-project="familybot" type="button" aria-label="Ver arquitectura de FamilyBot">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
               <span>Arquitectura</span>
             </button>
             <a href="https://github.com/Yisus0708/FamilyBot" target="_blank" rel="noopener" class="card-gh-link">
               <span>GitHub</span>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
             </a>
           </div>
         </article>
@@ -650,7 +654,7 @@
       </div>
     </section>
 
-    <!-- SECTION 5: TECHNICAL SKILLS (Signature Symmetrical Layout of camilamarrugo.com) -->
+    <!-- SECCIÓN 5: HABILIDADES TÉCNICAS (Rejilla Simétrica de camilamarrugo.com) -->
     <section class="section-skills" id="skills">
       <div class="section-head reveal">
         <div class="section-eyebrow">
@@ -658,30 +662,30 @@
           <span class="sep">/</span>
           <span>COMPETENCIAS CLAVE</span>
         </div>
-        <h2 class="skills-title">Technical Skills</h2>
+        <h2 class="skills-title">Habilidades Técnicas</h2>
         <p class="skills-subtitle">Matriz simétrica de tecnologías y disciplinas dominadas para entornos de producción.</p>
       </div>
       
-      <!-- Symmetrical 3-Column Grid directly inspired by camilamarrugo.com -->
+      <!-- Rejilla Simétrica de 3 Columnas inspirada en camilamarrugo.com -->
       <div class="skills-symmetric-grid reveal" style="--d: .15s">
         
-        <!-- Col 1: Backend & Bases de Datos -->
+        <!-- Columna 1: Backend y Nube -->
         <div class="skills-col col-left">
-          <div class="col-heading">Backend &amp; Cloud</div>
+          <div class="col-heading">Backend &amp; Nube</div>
           <ul>
             <li>Python (Avanzado)</li>
             <li>FastAPI</li>
             <li>Flask</li>
             <li>PostgreSQL</li>
             <li>SQLAlchemy</li>
-            <li>RESTful APIs</li>
+            <li>APIs RESTful</li>
             <li>Docker</li>
             <li>Linux &amp; Bash</li>
             <li>MongoDB</li>
           </ul>
         </div>
 
-        <!-- Divider 1 -->
+        <!-- Divisor 1 -->
         <div class="skills-divider divider-left" aria-hidden="true">
           <svg class="divider-icon-svg" viewBox="0 0 30 180" width="22" height="130" fill="none">
             <line x1="15" y1="0" x2="15" y2="60" stroke="currentColor" stroke-width="0.8" opacity="0.3" />
@@ -691,23 +695,23 @@
           </svg>
         </div>
 
-        <!-- Col 2: IA Aplicada & RAG (Mathematically Centered) -->
+        <!-- Columna 2: IA Aplicada & RAG (Matemáticamente Centrada) -->
         <div class="skills-col col-center">
           <div class="col-heading">IA Aplicada &amp; RAG</div>
           <ul>
             <li>LangChain</li>
             <li>Ollama (100% Local)</li>
             <li>Google Gemini API</li>
-            <li>RAG Architectures</li>
+            <li>Arquitecturas RAG</li>
             <li>ChromaDB &amp; pgvector</li>
-            <li>Vector Embeddings</li>
+            <li>Embeddings Vectoriales</li>
             <li>PyMuPDF &amp; OCR</li>
-            <li>Prompt Engineering</li>
+            <li>Ingeniería de Prompts</li>
             <li>Grounding Multimodal</li>
           </ul>
         </div>
 
-        <!-- Divider 2 -->
+        <!-- Divisor 2 -->
         <div class="skills-divider divider-right" aria-hidden="true">
           <svg class="divider-icon-svg" viewBox="0 0 30 180" width="22" height="130" fill="none">
             <line x1="15" y1="0" x2="15" y2="60" stroke="currentColor" stroke-width="0.8" opacity="0.3" />
@@ -717,12 +721,12 @@
           </svg>
         </div>
 
-        <!-- Col 3: Datos, Arquitectura & Sistemas -->
+        <!-- Columna 3: Datos, Arquitectura & Sistemas -->
         <div class="skills-col col-right">
-          <div class="col-heading">Data &amp; Arquitectura</div>
+          <div class="col-heading">Datos &amp; Arquitectura</div>
           <ul>
-            <li>Medallion Architecture</li>
-            <li>ETL Pipelines</li>
+            <li>Arquitectura Medallion</li>
+            <li>Pipelines ETL</li>
             <li>Pandas &amp; NumPy</li>
             <li>Git &amp; GitHub</li>
             <li>PyQt6 GUI Nativa</li>
@@ -735,7 +739,7 @@
 
       </div>
 
-      <!-- Skill Icons Banner Bar -->
+      <!-- Barra de Iconos de Tecnologías -->
       <div class="skills-banner-wrap reveal" style="--d: .25s">
         <div class="skills-banner-inner">
           <img src="https://skillicons.dev/icons?i=python,fastapi,flask,postgres,mysql,mongodb,js,react,tensorflow,git,vscode,docker&perline=12" alt="Stack tecnológico" loading="lazy" />
@@ -743,7 +747,7 @@
       </div>
     </section>
 
-    <!-- SECTION 6: INTERACTIVE CONSOLE & MILA AI DEMO -->
+    <!-- SECCIÓN 6: CONSOLA TÉCNICA & ASISTENTE MILA -->
     <section class="section-terminal" id="terminal-section">
       <div class="section-head reveal">
         <div class="section-eyebrow">
@@ -751,8 +755,8 @@
           <span class="sep">/</span>
           <span>INTERACCIÓN EN VIVO</span>
         </div>
-        <h2 class="section-title">Consola Técnica &amp; MILA Assistant</h2>
-        <p class="section-sub">Interactúa directamente con la CLI o consulta al asistente sobre decisiones de arquitectura y stack.</p>
+        <h2 class="section-title">Consola Técnica &amp; Asistente MILA</h2>
+        <p class="section-sub">Interactúa directamente con la consola o consulta al asistente sobre decisiones de arquitectura y stack.</p>
       </div>
 
       <div class="terminal-container reveal" style="--d: .15s">
@@ -770,41 +774,41 @@
           <div class="terminal-tabs">
             <button class="t-tab active" data-tab="cli">Consola CLI</button>
             <button class="t-tab" data-tab="ai-chat"><span class="tab-dot-ai"></span> Asistente MILA</button>
-            <button class="t-tab" data-tab="arch">Especificaciones Core</button>
-            <button class="t-tab" data-tab="stack">Stack Rápido</button>
+            <button class="t-tab" data-tab="arch">Ficha Técnica Core</button>
+            <button class="t-tab" data-tab="stack">Stack Resumido</button>
           </div>
 
-          <!-- TAB 1: CLI -->
+          <!-- PESTAÑA 1: CLI -->
           <div class="t-content active" id="tab-cli">
             <div class="terminal-screen" id="terminal-screen">
               <div class="t-line dim">Jesus Cantillo Core CLI [Versión 2.6.0-release · Barranquilla, Colombia]</div>
               <div class="t-line dim">Inicializado con entorno Python 3.12, FastAPI y LLMs locales.</div>
               <div class="t-line accent">Escribe un comando o haz clic en los accesos rápidos:</div>
               <div class="t-line output" id="t-default-output">
-                <span class="t-highlight">&bull; Comandos disponibles:</span> <span class="badge-cmd">projects</span>, <span class="badge-cmd">skills</span>, <span class="badge-cmd">philosophy</span>, <span class="badge-cmd">hire</span>, <span class="badge-cmd">contact</span> o <span class="badge-cmd">clear</span>.
+                <span class="t-highlight">&bull; Comandos disponibles:</span> <span class="badge-cmd">proyectos</span>, <span class="badge-cmd">habilidades</span>, <span class="badge-cmd">filosofia</span>, <span class="badge-cmd">contratar</span>, <span class="badge-cmd">contacto</span> o <span class="badge-cmd">limpiar</span>.
               </div>
             </div>
 
-            <!-- Quick Command Chips -->
+            <!-- Accesos Rápidos de Comandos -->
             <div class="terminal-chips">
-              <button class="chip" data-cmd="projects">🚀 projects</button>
-              <button class="chip" data-cmd="skills">🧠 skills</button>
-              <button class="chip" data-cmd="philosophy">⚡ philosophy</button>
-              <button class="chip" data-cmd="hire">💼 hire</button>
-              <button class="chip" data-cmd="clear">🧹 clear</button>
+              <button class="chip" data-cmd="proyectos">🚀 proyectos</button>
+              <button class="chip" data-cmd="habilidades">🧠 habilidades</button>
+              <button class="chip" data-cmd="filosofia">⚡ filosofía</button>
+              <button class="chip" data-cmd="contratar">💼 contratar</button>
+              <button class="chip" data-cmd="limpiar">🧹 limpiar</button>
             </div>
 
-            <!-- Terminal Input Form -->
+            <!-- Entrada de la Consola -->
             <form class="terminal-input-wrap" id="terminal-form" autocomplete="off">
-              <span class="t-prompt">visitor@jc:~$</span>
-              <input type="text" id="terminal-input" class="t-input" placeholder="Escribe 'help' o un comando..." aria-label="Terminal command input" />
+              <span class="t-prompt">visitante@jc:~$</span>
+              <input type="text" id="terminal-input" class="t-input" placeholder="Escribe 'help' o un comando..." aria-label="Entrada de comandos de consola" />
               <button type="submit" class="t-submit" aria-label="Ejecutar comando">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </button>
             </form>
           </div>
 
-          <!-- TAB 2: MILA Assistant -->
+          <!-- PESTAÑA 2: ASISTENTE MILA -->
           <div class="t-content" id="tab-ai-chat">
             <div class="ai-chat-header">
               <div class="ai-status-badge">
@@ -822,30 +826,30 @@
               </div>
             </div>
 
-            <!-- Quick Prompt Chips -->
+            <!-- Píldoras de Preguntas Frecuentes -->
             <div class="ai-prompts-chips">
-              <button type="button" class="ai-chip" data-prompt="¿Cómo diseñas una arquitectura Medallion para datos?">🎓 Medallion Pipeline</button>
-              <button type="button" class="ai-chip" data-prompt="¿Por qué implementar RAG local con Ollama en vez de solo cloud?">🔒 RAG Local vs Cloud</button>
+              <button type="button" class="ai-chip" data-prompt="¿Cómo diseñas una arquitectura Medallion para datos?">🎓 Pipeline Medallion</button>
+              <button type="button" class="ai-chip" data-prompt="¿Por qué implementar RAG local con Ollama en vez de solo cloud?">🔒 RAG Local vs Nube</button>
               <button type="button" class="ai-chip" data-prompt="¿Cómo funciona el asistente de voz y visión MILA en PyQt6?">🎙️ Arquitectura MILA</button>
               <button type="button" class="ai-chip" data-prompt="¿Por qué deberíamos incorporar a Jesus a nuestro equipo de ingeniería?">💼 ¿Por qué contratarlo?</button>
             </div>
 
-            <!-- AI Input Form -->
+            <!-- Entrada de Chat IA -->
             <form class="terminal-input-wrap ai-input-wrap" id="ai-chat-form" autocomplete="off">
               <span class="ai-prompt-lbl">mila@chat:</span>
               <input type="text" id="ai-chat-input" class="t-input" placeholder="Pregunta sobre su perfil o arquitectura..." aria-label="Pregunta al Asistente MILA" />
               <button type="submit" class="t-submit" aria-label="Enviar pregunta">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
               </button>
             </form>
           </div>
 
-          <!-- TAB 3: Specs -->
+          <!-- PESTAÑA 3: FICHA TÉCNICA -->
           <div class="t-content" id="tab-arch">
             <div class="specs-grid">
               <div class="spec-item">
                 <span class="spec-label">ENFOQUE PRINCIPAL</span>
-                <span class="spec-val">Backend + RAG + Medallion Architecture</span>
+                <span class="spec-val">Backend + RAG + Arquitectura Medallion</span>
               </div>
               <div class="spec-item">
                 <span class="spec-label">LENGUAJE DOMINANTE</span>
@@ -870,7 +874,7 @@
             </div>
           </div>
 
-          <!-- TAB 4: Quick Stack -->
+          <!-- PESTAÑA 4: STACK RÁPIDO -->
           <div class="t-content" id="tab-stack">
             <div class="quick-stack-tags">
               <span class="qst-badge"><span class="q-dot py"></span> Python 3.12</span>
@@ -890,7 +894,7 @@
       </div>
     </section>
 
-    <!-- SECTION 7: GITHUB ACTIVITY & METRICS -->
+    <!-- SECCIÓN 7: ACTIVIDAD EN GITHUB & MÉTRICAS -->
     <section class="section-stats" id="stats">
       <div class="section-head reveal">
         <div class="section-eyebrow">
@@ -923,13 +927,13 @@
       </div>
     </section>
 
-    <!-- SECTION 8: CONTACT (Directly inspired by camilamarrugo.com) -->
+    <!-- SECCIÓN 8: CONTACTO (Inspirado en camilamarrugo.com) -->
     <section class="section-contact" id="contact">
       <div class="contact-canvas reveal">
         
-        <!-- Sello de contacto (Contact Seal) -->
+        <!-- Sello de contacto -->
         <div class="contact-seal-wrap">
-          <svg class="contact-seal" viewBox="0 0 120 120" width="86" height="86" fill="none">
+          <svg class="contact-seal" viewBox="0 0 120 120" width="86" height="86" fill="none" aria-hidden="true">
             <circle cx="60" cy="60" r="56" stroke="currentColor" stroke-width="1.2" opacity="0.4" />
             <circle cx="60" cy="60" r="48" stroke="currentColor" stroke-width="0.8" stroke-dasharray="3 3" opacity="0.3" />
             <polygon points="60,20 95,80 25,80" stroke="currentColor" stroke-width="1.2" opacity="0.6" />
@@ -947,13 +951,13 @@
         <h2 class="contact-headline">¿Tienes un proyecto en mente?</h2>
         <p class="contact-tagline">Transformo problemas complejos en arquitecturas escalables y modelos de IA en producción.</p>
 
-        <!-- Enlace de Correo Directo de Alto Impacto -->
+        <!-- Enlace de Correo Directo -->
         <a href="mailto:jesucantillo30@gmail.com" class="contact-email">jesucantillo30@gmail.com</a>
 
         <div class="contact-buttons-row">
           <button class="btn btn-editorial copy-email-btn" data-email="jesucantillo30@gmail.com">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-            <span>Copiar Email</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            <span>Copiar Correo</span>
           </button>
           <a href="https://github.com/Yisus0708" target="_blank" rel="noopener" class="btn btn-editorial-outline">
             <span>Visitar GitHub</span>
@@ -963,7 +967,7 @@
           </a>
         </div>
 
-        <!-- Quick Message Composer -->
+        <!-- Compositor de Mensaje Rápido -->
         <div class="contact-composer">
           <div class="composer-title">
             <span class="composer-icon">⚡</span>
@@ -980,10 +984,10 @@
               <span class="composer-subject-label">Asunto:</span>
               <span class="composer-subject" id="composer-subject">Oportunidad Laboral — Ingeniero Backend / IA</span>
             </div>
-            <p class="composer-body" id="composer-body">"Hola Jesus, revisé tu portafolio y proyectos en FastAPI, Medallion Architecture y RAG. Nos gustaría conversar sobre una oportunidad en nuestro equipo técnico."</p>
+            <p class="composer-body" id="composer-body">"Hola Jesus, revisé tu portafolio y proyectos en FastAPI, Arquitectura Medallion y RAG. Nos gustaría conversar sobre una oportunidad en nuestro equipo técnico."</p>
           </div>
           <div class="composer-actions">
-            <a id="contact-direct-btn" href="mailto:jesucantillo30@gmail.com?subject=Oportunidad%20Laboral%20%E2%80%94%20Ingeniero%20Backend%20/%20IA&body=Hola%20Jesus,%20revis%C3%A9%20tu%20portafolio%20y%20proyectos%20en%20FastAPI,%20Medallion%20Architecture%20y%20RAG.%20Nos%20gustar%C3%ADa%20conversar%20sobre%20una%20oportunidad%20en%20nuestro%20equipo%20t%C3%A9cnico." class="btn btn-editorial">
+            <a id="contact-direct-btn" href="mailto:jesucantillo30@gmail.com?subject=Oportunidad%20Laboral%20%E2%80%94%20Ingeniero%20Backend%20/%20IA&body=Hola%20Jesus,%20revis%C3%A9%20tu%20portafolio%20y%20proyectos%20en%20FastAPI,%20Arquitectura%20Medallion%20y%20RAG.%20Nos%20gustar%C3%ADa%20conversar%20sobre%20una%20oportunidad%20en%20nuestro%20equipo%20t%C3%A9cnico." class="btn btn-editorial">
               <span>Abrir en tu Cliente de Correo</span>
             </a>
             <button type="button" id="copy-draft-btn" class="btn btn-editorial-outline">
@@ -995,7 +999,7 @@
       </div>
     </section>
 
-    <!-- SECTION 9: FOOTER (Inspired by camilamarrugo.com) -->
+    <!-- SECCIÓN 9: PIE DE PÁGINA (Inspirado en camilamarrugo.com) -->
     <footer class="site-footer">
       <div class="footer-signature-wrap">
         <span class="footer-signature">Jesus Cantillo</span>
@@ -1014,32 +1018,32 @@
 
   </main>
 
-  <!-- Floating Next-Section Indicator (Directly from camilamarrugo.com!) -->
+  <!-- Indicador Flotante de Siguiente Sección (Sello de camilamarrugo.com) -->
   <aside id="next-section-indicator" class="next-section-indicator" aria-label="Siguiente sección" role="complementary">
     <button class="next-indicator-btn" id="next-indicator-btn" aria-label="Ir a la siguiente sección">
-      <span class="next-indicator-eyebrow">next up</span>
+      <span class="next-indicator-eyebrow">siguiente</span>
       <span class="next-indicator-label" id="next-indicator-text">Sobre mí</span>
       <span class="next-indicator-arrow">&darr;</span>
     </button>
   </aside>
 
-  <!-- Floating Back to Top Button -->
+  <!-- Botón Flotante para Volver Arriba -->
   <button id="back-to-top" class="back-to-top" aria-label="Volver arriba">
-    <svg class="progress-ring" width="44" height="44" viewBox="0 0 48 48">
+    <svg class="progress-ring" width="44" height="44" viewBox="0 0 48 48" aria-hidden="true">
       <circle class="progress-ring-bg" cx="24" cy="24" r="20" stroke-width="2.5" fill="none" />
       <circle class="progress-ring-fill" cx="24" cy="24" r="20" stroke-width="2.5" fill="none" />
     </svg>
-    <svg class="arrow-up" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+    <svg class="arrow-up" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
   </button>
 
-  <!-- Toast Notification Container -->
+  <!-- Contenedor de Notificaciones Toast -->
   <div id="toast-container" class="toast-container" aria-live="polite"></div>
 
-  <!-- COMMAND PALETTE MODAL (Ctrl+K) -->
+  <!-- PALETA DE COMANDOS MODAL (Ctrl+K) -->
   <dialog id="cmd-palette-dialog" class="cmd-palette-dialog" aria-label="Paleta de Comandos y Búsqueda">
     <div class="cmd-dialog-content">
       <div class="cmd-dialog-header">
-        <svg class="cmd-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <svg class="cmd-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
         <input type="text" id="cmd-palette-input" class="cmd-input" placeholder="Buscar proyecto, sección o comando..." autocomplete="off" />
         <button type="button" class="cmd-close-btn" id="cmd-close-btn" aria-label="Cerrar paleta">&times;</button>
       </div>
@@ -1088,18 +1092,18 @@
               <div class="cmd-item-desc">PyQt6 + Gemini + Voz + Visión + Automatización</div>
             </div>
           </div>
-          <span class="cmd-kbd">Specs</span>
+          <span class="cmd-kbd">Ficha Técnica</span>
         </div>
 
         <div class="cmd-item" data-action="open-arch" data-project="arquitectura">
           <div class="cmd-item-left">
             <span class="cmd-icon-box">🎓</span>
             <div>
-              <div class="cmd-item-title">School Grades Pipeline (Medallion)</div>
+              <div class="cmd-item-title">Pipeline de Calificaciones (Medallion)</div>
               <div class="cmd-item-desc">Bronze &rarr; Silver &rarr; Gold ETL con PostgreSQL</div>
             </div>
           </div>
-          <span class="cmd-kbd">Specs</span>
+          <span class="cmd-kbd">Ficha Técnica</span>
         </div>
 
         <div class="cmd-item" data-action="open-arch" data-project="vivaidiomas">
@@ -1110,18 +1114,18 @@
               <div class="cmd-item-desc">Ollama Local + LangChain + FastAPI + ChromaDB</div>
             </div>
           </div>
-          <span class="cmd-kbd">Specs</span>
+          <span class="cmd-kbd">Ficha Técnica</span>
         </div>
 
         <div class="cmd-item" data-action="open-arch" data-project="ocr-pdf">
           <div class="cmd-item-left">
             <span class="cmd-icon-box">📄</span>
             <div>
-              <div class="cmd-item-title">Smart OCR &amp; Semantic PDF</div>
+              <div class="cmd-item-title">OCR Inteligente &amp; PDF Semántico</div>
               <div class="cmd-item-desc">Digitalización con Bounding Boxes y Chat QA</div>
             </div>
           </div>
-          <span class="cmd-kbd">Specs</span>
+          <span class="cmd-kbd">Ficha Técnica</span>
         </div>
 
         <div class="cmd-item" data-action="open-arch" data-project="neuronforge">
@@ -1132,7 +1136,7 @@
               <div class="cmd-item-desc">Redes neuronales desde fundamentos matemáticos</div>
             </div>
           </div>
-          <span class="cmd-kbd">Specs</span>
+          <span class="cmd-kbd">Ficha Técnica</span>
         </div>
 
         <div class="cmd-group-label">Navegación</div>
@@ -1162,7 +1166,7 @@
     </div>
   </dialog>
 
-  <!-- ARCHITECTURE & DEEP-DIVE MODAL DIALOG -->
+  <!-- MODAL DE FICHA TÉCNICA Y ARQUITECTURA -->
   <dialog id="arch-modal" class="arch-modal-dialog" aria-label="Detalles de Arquitectura Técnica">
     <div class="arch-modal-content">
       <div class="arch-modal-header">
@@ -1177,12 +1181,12 @@
       </div>
 
       <div class="arch-modal-body" id="arch-modal-body">
-        <!-- Content inserted dynamically by JavaScript -->
+        <!-- Contenido generado dinámicamente por JavaScript -->
       </div>
 
       <div class="arch-modal-footer">
         <a href="https://github.com/Yisus0708" target="_blank" rel="noopener" class="btn btn-editorial" id="arch-github-link">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
           <span>Ver Repositorio en GitHub</span>
         </a>
         <button type="button" class="btn btn-editorial-outline" id="arch-modal-close-action">Cerrar</button>
@@ -1190,7 +1194,7 @@
     </div>
   </dialog>
 
-  <!-- Main JavaScript File -->
+  <!-- Archivo JavaScript Principal -->
   <script src="js/main.js"></script>
 </body>
 </html>

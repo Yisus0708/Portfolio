@@ -2,6 +2,7 @@
    JESUS CANTILLO — PORTFOLIO STYLESHEET
    High-Fidelity Editorial & Architectural Design System
    Inspired by the Editorial Precision and Symmetry of camilamarrugo.com
+   Fully Responsive (Mobile-First Ergonomics & Fluid Scalability)
    ========================================================================== */
 
 /* ---------- 1. DESIGN TOKENS & CSS VARIABLES ---------- */
@@ -11,9 +12,9 @@
   --color-bg-subtle: #0d121c;
   --color-surface: #111827;
   --color-surface-hover: #162033;
-  --color-card: rgba(13, 18, 28, 0.75);
+  --color-card: rgba(13, 18, 28, 0.78);
   --color-card-border: rgba(255, 255, 255, 0.08);
-  --color-card-border-gold: rgba(212, 175, 55, 0.35);
+  --color-card-border-gold: rgba(212, 175, 55, 0.32);
 
   --color-text-main: #f8fafc;
   --color-text-body: #94a3b8;
@@ -97,6 +98,7 @@ button {
   cursor: pointer;
   font-family: inherit;
   outline: none;
+  touch-action: manipulation;
 }
 
 ul, ol {
@@ -125,7 +127,7 @@ img, svg {
   transform: translateY(0);
 }
 
-/* ---------- 3. PRELOADER SCREEN (camilamarrugo.com pattern) ---------- */
+/* ---------- 3. PRELOADER SCREEN ---------- */
 .site-preloader {
   position: fixed;
   inset: 0;
@@ -135,6 +137,7 @@ img, svg {
   align-items: center;
   justify-content: center;
   transition: opacity 0.7s ease, visibility 0.7s ease;
+  padding: 20px;
 }
 
 .site-preloader.fade-out {
@@ -149,6 +152,7 @@ img, svg {
   flex-direction: column;
   align-items: center;
   gap: 14px;
+  max-width: 90vw;
 }
 
 .preloader-crest-wrap {
@@ -163,7 +167,7 @@ img, svg {
 
 .preloader-name {
   font-family: var(--font-serif);
-  font-size: 1.5rem;
+  font-size: clamp(1.3rem, 4vw, 1.7rem);
   letter-spacing: 0.15em;
   text-transform: lowercase;
   color: var(--color-text-main);
@@ -171,14 +175,14 @@ img, svg {
 }
 
 .preloader-sub {
-  font-size: 0.75rem;
-  letter-spacing: 0.25em;
+  font-size: clamp(0.7rem, 2.5vw, 0.82rem);
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--color-text-muted);
 }
 
 .preloader-line-track {
-  width: 140px;
+  width: min(160px, 60vw);
   height: 2px;
   background: rgba(255, 255, 255, 0.1);
   position: relative;
@@ -215,28 +219,28 @@ img, svg {
   filter: blur(120px);
   pointer-events: none;
   z-index: -2;
-  opacity: 0.45;
+  opacity: 0.42;
 }
 
 .glow-1 {
-  width: 450px;
-  height: 450px;
+  width: min(450px, 80vw);
+  height: min(450px, 80vw);
   top: -100px;
-  left: 15%;
+  left: 10%;
   background: radial-gradient(circle, rgba(212, 175, 55, 0.12) 0%, transparent 70%);
 }
 
 .glow-2 {
-  width: 500px;
-  height: 500px;
+  width: min(500px, 85vw);
+  height: min(500px, 85vw);
   top: 35%;
   right: 5%;
   background: radial-gradient(circle, rgba(0, 240, 255, 0.08) 0%, transparent 70%);
 }
 
 .glow-3 {
-  width: 480px;
-  height: 480px;
+  width: min(480px, 80vw);
+  height: min(480px, 80vw);
   bottom: 10%;
   left: 10%;
   background: radial-gradient(circle, rgba(212, 175, 55, 0.09) 0%, transparent 70%);
@@ -261,7 +265,7 @@ img, svg {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
-/* ---------- 5. MINIMALIST HEADER (camilamarrugo.com pattern) ---------- */
+/* ---------- 5. CABECERA & BOTÓN DE MENÚ DE ALTA GAMA ---------- */
 .site-header {
   position: fixed;
   top: 0;
@@ -278,6 +282,7 @@ img, svg {
 .site-header.scrolled {
   background-color: rgba(7, 9, 14, 0.88);
   backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
@@ -289,6 +294,7 @@ img, svg {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 16px;
 }
 
 .nav-inicio {
@@ -297,8 +303,8 @@ img, svg {
   letter-spacing: 0.12em;
   color: var(--color-text-main);
   text-transform: lowercase;
-  opacity: 0.8;
-  position: relative;
+  opacity: 0.85;
+  padding: 6px 0;
 }
 
 .nav-inicio:hover {
@@ -308,26 +314,27 @@ img, svg {
 
 .header-name {
   font-family: var(--font-serif);
-  font-size: 1.25rem;
+  font-size: clamp(1.05rem, 3.5vw, 1.3rem);
   font-weight: 500;
   letter-spacing: 0.18em;
   text-transform: lowercase;
   color: var(--color-text-main);
   text-align: center;
   user-select: none;
+  white-space: nowrap;
 }
 
 .header-right-tools {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 14px;
 }
 
 .cmd-palette-trigger {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 6px 12px;
+  padding: 7px 14px;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-full);
@@ -351,8 +358,8 @@ img, svg {
 }
 
 .audio-fx-toggle {
-  width: 34px;
-  height: 34px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -378,37 +385,75 @@ img, svg {
   display: none;
 }
 
-.nav-menu {
+/* ---------- BOTÓN DE MENÚ DE PRECISIÓN & ALTA GAMA ---------- */
+.nav-menu-btn {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 6px 14px;
+  gap: 10px;
+  padding: 8px 18px;
+  min-height: 42px;
   border-radius: var(--radius-full);
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(17, 24, 39, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 175, 55, 0.32);
   color: var(--color-text-main);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.nav-menu-btn:hover {
+  background: rgba(212, 175, 55, 0.14);
+  border-color: var(--gold-primary);
+  color: var(--gold-light);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.28);
+  transform: translateY(-1px);
+}
+
+.nav-menu-btn:active {
+  transform: translateY(1px);
+}
+
+.menu-btn-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 20px;
+  height: 14px;
+}
+
+.menu-bar {
+  display: block;
+  height: 1.8px;
+  background-color: var(--gold-primary);
+  border-radius: var(--radius-full);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bar-top {
+  width: 19px;
+}
+
+.bar-bottom {
+  width: 13px;
+  align-self: flex-end;
+}
+
+.nav-menu-btn:hover .bar-bottom {
+  width: 19px;
+}
+
+.menu-btn-text {
   font-family: var(--font-serif);
   font-size: 1.05rem;
-  letter-spacing: 0.1em;
-  text-transform: lowercase;
-  transition: all var(--transition-fast);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  line-height: 1;
 }
 
-.nav-menu:hover {
-  background: rgba(212, 175, 55, 0.12);
-  border-color: var(--gold-primary);
-  color: var(--gold-primary);
-}
-
-.nav-menu-bar {
-  display: block;
-  width: 14px;
-  height: 1.5px;
-  background-color: currentColor;
-  transition: transform var(--transition-fast);
-}
-
-/* ---------- 6. SLIDE-OUT MENU DRAWER (camilamarrugo.com pattern) ---------- */
+/* ---------- 6. CAJÓN DE NAVEGACIÓN DESPLEGABLE (DRAWER) ---------- */
 .menu-drawer {
   position: fixed;
   inset: 0;
@@ -424,8 +469,9 @@ img, svg {
 .menu-drawer-backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.65);
-  backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   opacity: 0;
   transition: opacity 0.4s ease;
 }
@@ -439,18 +485,19 @@ img, svg {
   top: 0;
   right: 0;
   width: 100%;
-  max-width: 440px;
+  max-width: min(440px, 92vw);
   height: 100%;
   background: #090c13;
   border-left: 1px solid rgba(212, 175, 55, 0.25);
-  padding: 44px 40px;
+  padding: clamp(28px, 6vw, 44px) clamp(22px, 5vw, 40px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   transform: translateX(100%);
   transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: -15px 0 40px rgba(0, 0, 0, 0.7);
+  box-shadow: -15px 0 40px rgba(0, 0, 0, 0.75);
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .menu-drawer.open .menu-drawer-content {
@@ -461,35 +508,47 @@ img, svg {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: 24px;
+  padding-bottom: 20px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .menu-brand {
   font-family: var(--font-serif);
-  font-size: 1.35rem;
+  font-size: clamp(1.2rem, 4vw, 1.45rem);
   letter-spacing: 0.15em;
   text-transform: lowercase;
   color: var(--color-text-main);
 }
 
 .menu-close-btn {
-  font-size: 2rem;
-  line-height: 1;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.12);
   color: var(--color-text-muted);
-  transition: color var(--transition-fast), transform var(--transition-fast);
+  transition: all var(--transition-fast);
+}
+
+.close-icon-symbol {
+  font-size: 1.6rem;
+  line-height: 1;
 }
 
 .menu-close-btn:hover {
   color: var(--gold-primary);
+  border-color: var(--gold-primary);
+  box-shadow: 0 0 12px var(--gold-glow);
   transform: rotate(90deg);
 }
 
 .drawer-nav ul {
   display: flex;
   flex-direction: column;
-  gap: 18px;
-  margin: 36px 0;
+  gap: 14px;
+  margin: 30px 0;
 }
 
 .drawer-link {
@@ -497,18 +556,19 @@ img, svg {
   align-items: center;
   justify-content: space-between;
   font-family: var(--font-serif);
-  font-size: 1.45rem;
+  font-size: clamp(1.2rem, 4vw, 1.45rem);
   color: var(--color-text-main);
-  padding: 8px 0;
+  padding: 10px 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.04);
   transition: all var(--transition-fast);
+  min-height: 44px;
 }
 
 .drawer-link .link-num {
   font-family: var(--font-mono);
   font-size: 0.85rem;
   color: var(--gold-primary);
-  opacity: 0.8;
+  opacity: 0.85;
   margin-right: 14px;
 }
 
@@ -536,7 +596,7 @@ img, svg {
 }
 
 .drawer-footer {
-  padding-top: 24px;
+  padding-top: 22px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   font-size: 0.88rem;
   color: var(--color-text-muted);
@@ -545,8 +605,9 @@ img, svg {
 .drawer-email {
   display: block;
   color: var(--gold-primary);
-  font-size: 1rem;
+  font-size: 0.98rem;
   margin-bottom: 6px;
+  overflow-wrap: anywhere;
 }
 
 .drawer-location {
@@ -555,7 +616,7 @@ img, svg {
 }
 
 .drawer-copy {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: var(--color-text-muted);
   opacity: 0.7;
 }
@@ -570,14 +631,14 @@ section {
   width: 100%;
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 110px 32px;
+  padding: clamp(70px, 9vw, 115px) clamp(18px, 4vw, 32px);
   position: relative;
 }
 
 .section-head {
   text-align: center;
   max-width: 780px;
-  margin: 0 auto 64px auto;
+  margin: 0 auto clamp(36px, 6vw, 64px) auto;
 }
 
 .section-eyebrow {
@@ -598,7 +659,7 @@ section {
 
 .section-title {
   font-family: var(--font-serif);
-  font-size: clamp(2rem, 3.8vw, 3rem);
+  font-size: clamp(2rem, 4vw, 3.1rem);
   font-weight: 500;
   color: var(--color-text-main);
   letter-spacing: -0.01em;
@@ -607,21 +668,21 @@ section {
 }
 
 .section-sub {
-  font-size: 1.05rem;
+  font-size: clamp(0.95rem, 2vw, 1.08rem);
   color: var(--color-text-body);
   max-width: 620px;
   margin: 0 auto;
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
-/* ---------- 8. SECTION 1: HERO CANVAS (camilamarrugo.com pattern) ---------- */
+/* ---------- 8. SECCIÓN 1: LIENZO PRINCIPAL / HERO ---------- */
 .section-hero {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: calc(var(--header-height) + 40px);
-  padding-bottom: 80px;
+  padding-top: calc(var(--header-height) + 30px);
+  padding-bottom: 60px;
   text-align: center;
 }
 
@@ -631,11 +692,12 @@ section {
   align-items: center;
   max-width: 920px;
   margin: 0 auto;
+  width: 100%;
 }
 
 .hero-crest-wrap {
   color: var(--gold-primary);
-  margin-bottom: 24px;
+  margin-bottom: 20px;
   transition: transform var(--transition-slow);
 }
 
@@ -643,16 +705,24 @@ section {
   transform: rotate(45deg);
 }
 
+.hero-crest-svg {
+  width: clamp(75px, 12vw, 105px);
+  height: clamp(75px, 12vw, 105px);
+}
+
 .hero-eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   font-family: var(--font-display);
-  font-size: 0.85rem;
+  font-size: clamp(0.72rem, 2vw, 0.85rem);
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--gold-primary);
-  margin-bottom: 20px;
+  margin-bottom: 16px;
+  max-width: 90vw;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .eyebrow-accent {
@@ -665,11 +735,12 @@ section {
   flex-direction: column;
   gap: 8px;
   margin-bottom: 16px;
+  width: 100%;
 }
 
 .hero-title-top {
   font-family: var(--font-serif);
-  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+  font-size: clamp(1.4rem, 3.2vw, 2.5rem);
   font-style: italic;
   font-weight: 400;
   color: var(--color-text-body);
@@ -678,7 +749,7 @@ section {
 
 .hero-title-main {
   font-family: var(--font-serif);
-  font-size: clamp(3rem, 6.5vw, 5.2rem);
+  font-size: clamp(2.4rem, 7vw, 5.2rem);
   font-weight: 600;
   color: var(--color-text-main);
   letter-spacing: 0.02em;
@@ -692,14 +763,16 @@ section {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  font-size: 1.05rem;
+  font-size: clamp(0.9rem, 2.5vw, 1.05rem);
   color: var(--color-text-muted);
   margin-bottom: 24px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .font-script {
   font-family: var(--font-script);
-  font-size: 1.6rem;
+  font-size: clamp(1.35rem, 3.5vw, 1.7rem);
   color: var(--gold-light);
   letter-spacing: 0.05em;
 }
@@ -709,11 +782,12 @@ section {
 }
 
 .hero-lead {
-  font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+  font-size: clamp(0.98rem, 2vw, 1.18rem);
   color: var(--color-text-body);
   max-width: 740px;
-  margin: 0 auto 36px auto;
+  margin: 0 auto clamp(24px, 4vw, 36px) auto;
   line-height: 1.75;
+  padding: 0 10px;
 }
 
 .hero-lead strong {
@@ -731,23 +805,26 @@ section {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 16px;
-  margin-bottom: 40px;
+  gap: 14px;
+  margin-bottom: 36px;
+  width: 100%;
 }
 
-/* Editorial Button Styles */
+/* Botones de Estilo Editorial */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 12px 28px;
+  padding: 12px 26px;
+  min-height: 46px;
   font-size: 0.95rem;
   font-weight: 500;
   border-radius: var(--radius-full);
   transition: all var(--transition-fast);
   cursor: pointer;
   letter-spacing: 0.03em;
+  white-space: nowrap;
 }
 
 .btn-editorial {
@@ -798,22 +875,30 @@ section {
   border: 1px solid rgba(212, 175, 55, 0.2);
   border-radius: var(--radius-full);
   font-family: var(--font-mono);
-  font-size: 0.82rem;
+  font-size: clamp(0.74rem, 2vw, 0.82rem);
+  max-width: 94vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .ticker-badge {
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   letter-spacing: 0.15em;
   color: var(--gold-primary);
   padding-right: 8px;
   border-right: 1px solid rgba(212, 175, 55, 0.3);
+  white-space: nowrap;
 }
 
 .ticker-text {
   color: var(--cyan-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-/* ---------- 9. SECTION 2: ABOUT ME (camilamarrugo.com pattern) ---------- */
+/* ---------- 9. SECCIÓN 2: SOBRE MÍ ---------- */
 .section-about {
   border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
@@ -821,7 +906,7 @@ section {
 .about-container {
   display: grid;
   grid-template-columns: 340px 1fr;
-  gap: 60px;
+  gap: clamp(32px, 5vw, 60px);
   align-items: center;
 }
 
@@ -830,22 +915,24 @@ section {
   flex-direction: column;
   align-items: center;
   gap: 18px;
+  width: 100%;
 }
 
 .about-frame {
   width: 100%;
+  max-width: 360px;
   background: linear-gradient(145deg, rgba(17, 24, 39, 0.9), rgba(10, 14, 22, 0.9));
   border: 1px solid var(--color-card-border-gold);
   border-radius: var(--radius-md);
-  padding: 40px 24px;
+  padding: clamp(28px, 5vw, 40px) 24px;
   text-align: center;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   position: relative;
 }
 
 .about-monogram-circle {
-  width: 130px;
-  height: 130px;
+  width: 125px;
+  height: 125px;
   border-radius: 50%;
   margin: 0 auto 20px auto;
   border: 1.5px solid var(--gold-primary);
@@ -859,7 +946,7 @@ section {
 
 .monogram-txt {
   font-family: var(--font-serif);
-  font-size: 3rem;
+  font-size: 2.8rem;
   font-weight: 700;
   color: var(--color-text-main);
   line-height: 1;
@@ -867,7 +954,7 @@ section {
 
 .monogram-sub {
   font-family: var(--font-display);
-  font-size: 0.65rem;
+  font-size: 0.62rem;
   letter-spacing: 0.22em;
   color: var(--gold-primary);
   margin-top: 4px;
@@ -916,6 +1003,7 @@ section {
 .about-views-badge img {
   opacity: 0.9;
   border-radius: 4px;
+  max-width: 100%;
 }
 
 .about-content-wrap {
@@ -926,7 +1014,7 @@ section {
 
 .about-title {
   font-family: var(--font-serif);
-  font-size: clamp(2.4rem, 4vw, 3.4rem);
+  font-size: clamp(2.2rem, 4.2vw, 3.4rem);
   font-weight: 500;
   color: var(--color-text-main);
   line-height: 1.15;
@@ -936,7 +1024,7 @@ section {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  font-size: 1.08rem;
+  font-size: clamp(0.98rem, 1.8vw, 1.08rem);
   line-height: 1.8;
   color: var(--color-text-body);
 }
@@ -957,7 +1045,7 @@ section {
 
 .ah-num {
   font-family: var(--font-serif);
-  font-size: 2rem;
+  font-size: clamp(1.8rem, 3vw, 2.3rem);
   font-weight: 600;
   color: var(--color-text-main);
   margin-bottom: 4px;
@@ -969,10 +1057,10 @@ section {
   line-height: 1.4;
 }
 
-/* ---------- 10. SECTION 3: ELEGANCE & RIGOR (Directly from camilamarrugo.com) ---------- */
+/* ---------- 10. SECCIÓN 3: RIGOR & FILOSOFÍA ---------- */
 .section-elegance {
   text-align: center;
-  padding: 130px 32px;
+  padding: clamp(80px, 12vw, 130px) clamp(18px, 4vw, 32px);
   border-top: 1px solid rgba(255, 255, 255, 0.06);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   background: radial-gradient(circle at center, rgba(17, 24, 39, 0.4) 0%, transparent 70%);
@@ -984,7 +1072,7 @@ section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 24px;
+  gap: 20px;
 }
 
 .elegance-crest-wrap {
@@ -994,11 +1082,11 @@ section {
 
 .elegance-headline {
   font-family: var(--font-serif);
-  font-size: clamp(2.2rem, 4.4vw, 3.6rem);
+  font-size: clamp(2rem, 4.4vw, 3.6rem);
   font-weight: 400;
   color: var(--color-text-main);
   line-height: 1.25;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.02em;
   display: flex;
   flex-direction: column;
 }
@@ -1009,7 +1097,7 @@ section {
 }
 
 .elegance-quote {
-  font-size: 1.15rem;
+  font-size: clamp(1rem, 2.2vw, 1.18rem);
   font-style: italic;
   color: var(--color-text-body);
   max-width: 600px;
@@ -1018,15 +1106,19 @@ section {
 
 .elegance-subline {
   font-family: var(--font-display);
-  font-size: 0.78rem;
-  letter-spacing: 0.25em;
+  font-size: clamp(0.72rem, 1.8vw, 0.8rem);
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--color-text-muted);
+  flex-wrap: wrap;
+  display: inline-flex;
+  justify-content: center;
+  gap: 6px;
 }
 
-/* ---------- 11. SECTION 4: PROJECTS SHOWCASE ---------- */
+/* ---------- 11. SECCIÓN 4: PROYECTOS ---------- */
 .section-projects {
-  padding-top: 100px;
+  padding-top: clamp(70px, 8vw, 100px);
 }
 
 .project-filters {
@@ -1034,11 +1126,12 @@ section {
   flex-wrap: wrap;
   justify-content: center;
   gap: 10px;
-  margin-bottom: 50px;
+  margin-bottom: 45px;
 }
 
 .filter-btn {
   padding: 8px 18px;
+  min-height: 38px;
   border-radius: var(--radius-full);
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -1046,6 +1139,7 @@ section {
   font-size: 0.85rem;
   letter-spacing: 0.03em;
   transition: all var(--transition-fast);
+  white-space: nowrap;
 }
 
 .filter-btn:hover {
@@ -1062,15 +1156,15 @@ section {
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-  gap: 28px;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 330px), 1fr));
+  gap: 26px;
 }
 
 .project-card {
   background: var(--color-card);
   border: 1px solid var(--color-card-border);
   border-radius: var(--radius-md);
-  padding: 30px;
+  padding: clamp(22px, 4vw, 30px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -1107,6 +1201,8 @@ section {
   align-items: center;
   justify-content: space-between;
   margin-bottom: 18px;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .card-symbol {
@@ -1116,7 +1212,8 @@ section {
 
 .card-badges {
   display: flex;
-  gap: 8px;
+  flex-wrap: wrap;
+  gap: 6px;
 }
 
 .badge-status {
@@ -1143,7 +1240,7 @@ section {
 
 .card-title {
   font-family: var(--font-serif);
-  font-size: 1.65rem;
+  font-size: clamp(1.45rem, 3vw, 1.7rem);
   font-weight: 600;
   color: var(--color-text-main);
   margin-bottom: 4px;
@@ -1200,16 +1297,18 @@ section {
   justify-content: space-between;
   padding-top: 18px;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
+  min-height: 44px;
 }
 
 .btn-card-arch {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 0.85rem;
+  font-size: 0.88rem;
   color: var(--gold-primary);
   font-weight: 500;
   transition: all var(--transition-fast);
+  padding: 6px 0;
 }
 
 .btn-card-arch:hover {
@@ -1221,24 +1320,25 @@ section {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 0.85rem;
+  font-size: 0.88rem;
   color: var(--color-text-muted);
   transition: color var(--transition-fast);
+  padding: 6px 0;
 }
 
 .card-gh-link:hover {
   color: var(--color-text-main);
 }
 
-/* ---------- 12. SECTION 5: TECHNICAL SKILLS (camilamarrugo.com SYMMETRIC GRID) ---------- */
+/* ---------- 12. SECCIÓN 5: HABILIDADES TÉCNICAS (REJILLA SIMÉTRICA) ---------- */
 .section-skills {
-  padding-top: 120px;
+  padding-top: clamp(80px, 10vw, 120px);
   border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .skills-title {
   font-family: var(--font-serif);
-  font-size: clamp(2.4rem, 4.2vw, 3.4rem);
+  font-size: clamp(2.2rem, 4.2vw, 3.4rem);
   font-weight: 500;
   color: var(--color-text-main);
   text-align: center;
@@ -1249,16 +1349,17 @@ section {
   text-align: center;
   color: var(--color-text-muted);
   max-width: 600px;
-  margin: 0 auto 60px auto;
+  margin: 0 auto clamp(36px, 6vw, 60px) auto;
+  font-size: clamp(0.95rem, 2vw, 1.05rem);
 }
 
-/* Exact Symmetrical Layout inspired by camilamarrugo.com */
+/* Rejilla Simétrica Adaptativa */
 .skills-symmetric-grid {
   display: grid;
   grid-template-columns: 1fr 60px 1fr 60px 1fr;
   align-items: start;
   max-width: 1060px;
-  margin: 0 auto 60px auto;
+  margin: 0 auto clamp(36px, 6vw, 60px) auto;
 }
 
 .skills-col {
@@ -1284,7 +1385,7 @@ section {
 
 .skills-col li {
   font-family: var(--font-serif);
-  font-size: 1.25rem;
+  font-size: clamp(1.1rem, 2vw, 1.25rem);
   color: var(--color-text-main);
   letter-spacing: 0.02em;
   transition: transform var(--transition-fast), color var(--transition-fast);
@@ -1295,7 +1396,7 @@ section {
   transform: translateX(4px);
 }
 
-/* Symmetrical Dividers */
+/* Divisores Simétricos */
 .skills-divider {
   display: flex;
   align-items: center;
@@ -1307,12 +1408,13 @@ section {
 
 .skills-banner-wrap {
   text-align: center;
-  padding: 30px;
+  padding: clamp(20px, 4vw, 30px);
   background: rgba(13, 18, 28, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: var(--radius-md);
   max-width: 900px;
   margin: 0 auto;
+  overflow-x: auto;
 }
 
 .skills-banner-inner img {
@@ -1320,9 +1422,9 @@ section {
   height: auto;
 }
 
-/* ---------- 13. SECTION 6: INTERACTIVE CONSOLE & MILA ASSISTANT ---------- */
+/* ---------- 13. SECCIÓN 6: CONSOLA & ASISTENTE MILA ---------- */
 .section-terminal {
-  padding-top: 110px;
+  padding-top: clamp(70px, 9vw, 110px);
   border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
@@ -1366,6 +1468,9 @@ section {
   font-family: var(--font-mono);
   font-size: 0.8rem;
   color: var(--color-text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .terminal-status {
@@ -1375,6 +1480,7 @@ section {
   font-family: var(--font-mono);
   font-size: 0.72rem;
   color: var(--cyan-primary);
+  white-space: nowrap;
 }
 
 .live-dot {
@@ -1390,10 +1496,12 @@ section {
   background: rgba(0, 0, 0, 0.2);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .t-tab {
-  padding: 10px 20px;
+  padding: 11px 18px;
+  min-height: 44px;
   font-family: var(--font-mono);
   font-size: 0.8rem;
   color: var(--color-text-muted);
@@ -1424,7 +1532,7 @@ section {
 
 .t-content {
   display: none;
-  padding: 24px;
+  padding: clamp(16px, 4vw, 24px);
 }
 
 .t-content.active {
@@ -1432,7 +1540,7 @@ section {
 }
 
 .terminal-screen {
-  min-height: 200px;
+  min-height: 180px;
   max-height: 320px;
   overflow-y: auto;
   font-family: var(--font-mono);
@@ -1442,6 +1550,7 @@ section {
   gap: 8px;
   line-height: 1.6;
   margin-bottom: 18px;
+  -webkit-overflow-scrolling: touch;
 }
 
 .t-line.dim { color: var(--color-text-muted); }
@@ -1464,7 +1573,8 @@ section {
 }
 
 .chip {
-  padding: 5px 12px;
+  padding: 6px 14px;
+  min-height: 34px;
   border-radius: var(--radius-full);
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -1485,6 +1595,7 @@ section {
   align-items: center;
   gap: 10px;
   padding: 8px 14px;
+  min-height: 46px;
   background: rgba(0, 0, 0, 0.4);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-sm);
@@ -1504,19 +1615,20 @@ section {
   outline: none;
   color: var(--color-text-main);
   font-family: var(--font-mono);
-  font-size: 0.88rem;
+  font-size: 16px; /* Evita zoom automático en Safari iOS */
 }
 
 .t-submit {
   color: var(--gold-primary);
   transition: transform var(--transition-fast);
+  padding: 6px;
 }
 
 .t-submit:hover {
   transform: translateX(2px);
 }
 
-/* AI Chat Tab Styles */
+/* Pestaña de Chat con IA */
 .ai-chat-header {
   display: flex;
   align-items: center;
@@ -1524,6 +1636,8 @@ section {
   padding-bottom: 14px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .ai-status-badge {
@@ -1549,13 +1663,14 @@ section {
 }
 
 .ai-chat-screen {
-  min-height: 200px;
+  min-height: 180px;
   max-height: 280px;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
   gap: 12px;
   margin-bottom: 16px;
+  -webkit-overflow-scrolling: touch;
 }
 
 .ai-bubble-wrap {
@@ -1573,7 +1688,7 @@ section {
   border-radius: var(--radius-sm);
   font-size: 0.9rem;
   line-height: 1.6;
-  max-width: 80%;
+  max-width: 85%;
 }
 
 .ai-bubble-wrap.bot .ai-bubble {
@@ -1596,7 +1711,8 @@ section {
 }
 
 .ai-chip {
-  padding: 6px 12px;
+  padding: 6px 13px;
+  min-height: 34px;
   border-radius: var(--radius-full);
   background: rgba(0, 240, 255, 0.05);
   border: 1px solid rgba(0, 240, 255, 0.15);
@@ -1617,11 +1733,11 @@ section {
   color: var(--cyan-primary);
 }
 
-/* Specs Tab Styles */
+/* Pestaña de Ficha Técnica */
 .specs-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
+  gap: 14px;
 }
 
 .spec-item {
@@ -1646,7 +1762,7 @@ section {
   color: var(--color-text-main);
 }
 
-/* Quick Stack Tab */
+/* Pestaña de Stack */
 .quick-stack-tags {
   display: flex;
   flex-wrap: wrap;
@@ -1658,6 +1774,7 @@ section {
   align-items: center;
   gap: 6px;
   padding: 6px 14px;
+  min-height: 36px;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-full);
@@ -1673,9 +1790,9 @@ section {
   background: var(--gold-primary);
 }
 
-/* ---------- 14. SECTION 7: GITHUB ACTIVITY & METRICS ---------- */
+/* ---------- 14. SECCIÓN 7: GITHUB & TELEMETRÍA ---------- */
 .section-stats {
-  padding-top: 110px;
+  padding-top: clamp(70px, 9vw, 110px);
   border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
@@ -1710,10 +1827,10 @@ section {
   display: block;
 }
 
-/* ---------- 15. SECTION 8: CONTACT (camilamarrugo.com pattern) ---------- */
+/* ---------- 15. SECCIÓN 8: CONTACTO ---------- */
 .section-contact {
   text-align: center;
-  padding: 130px 32px 100px 32px;
+  padding: clamp(80px, 12vw, 130px) clamp(18px, 4vw, 32px) clamp(60px, 8vw, 100px) clamp(18px, 4vw, 32px);
   border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
@@ -1724,6 +1841,7 @@ section {
   flex-direction: column;
   align-items: center;
   gap: 20px;
+  width: 100%;
 }
 
 .contact-seal-wrap {
@@ -1733,27 +1851,31 @@ section {
 
 .contact-headline {
   font-family: var(--font-serif);
-  font-size: clamp(2.4rem, 4.4vw, 3.6rem);
+  font-size: clamp(2.1rem, 4.4vw, 3.6rem);
   font-weight: 500;
   color: var(--color-text-main);
   line-height: 1.2;
 }
 
 .contact-tagline {
-  font-size: 1.15rem;
+  font-size: clamp(0.98rem, 2vw, 1.15rem);
   color: var(--color-text-body);
   max-width: 580px;
+  line-height: 1.6;
 }
 
 .contact-email {
   font-family: var(--font-serif);
-  font-size: clamp(1.6rem, 3.2vw, 2.5rem);
+  font-size: clamp(1.2rem, 4vw, 2.4rem);
   font-style: italic;
   color: var(--gold-light);
   letter-spacing: 0.02em;
   padding-bottom: 4px;
   border-bottom: 1px dashed rgba(212, 175, 55, 0.4);
   transition: all var(--transition-fast);
+  overflow-wrap: anywhere;
+  word-break: break-all;
+  max-width: 100%;
 }
 
 .contact-email:hover {
@@ -1765,8 +1887,9 @@ section {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 14px;
-  margin: 10px 0 30px 0;
+  gap: 12px;
+  margin: 10px 0 24px 0;
+  width: 100%;
 }
 
 .contact-composer {
@@ -1774,7 +1897,7 @@ section {
   background: var(--color-card);
   border: 1px solid var(--color-card-border-gold);
   border-radius: var(--radius-md);
-  padding: 24px;
+  padding: clamp(18px, 4vw, 26px);
   text-align: left;
 }
 
@@ -1797,6 +1920,7 @@ section {
 
 .composer-chip {
   padding: 6px 14px;
+  min-height: 36px;
   border-radius: var(--radius-full);
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -1842,22 +1966,22 @@ section {
   gap: 12px;
 }
 
-/* ---------- 16. SECTION 9: FOOTER (camilamarrugo.com pattern) ---------- */
+/* ---------- 16. SECCIÓN 9: PIE DE PÁGINA ---------- */
 .site-footer {
   border-top: 1px solid rgba(255, 255, 255, 0.06);
-  padding: 80px 32px 50px 32px;
+  padding: clamp(50px, 8vw, 80px) clamp(18px, 4vw, 32px) 45px clamp(18px, 4vw, 32px);
   text-align: center;
   max-width: var(--max-width);
   margin: 0 auto;
 }
 
 .footer-signature-wrap {
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .footer-signature {
   font-family: var(--font-script);
-  font-size: 3.2rem;
+  font-size: clamp(2.4rem, 6vw, 3.4rem);
   color: var(--gold-light);
   letter-spacing: 0.03em;
   opacity: 0.9;
@@ -1876,17 +2000,19 @@ section {
   display: flex;
   align-items: center;
   gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .footer-links a:hover {
   color: var(--gold-primary);
 }
 
-/* ---------- 17. FLOATING NEXT-SECTION INDICATOR (camilamarrugo.com signature) ---------- */
+/* ---------- 17. INDICADOR FLOTANTE NEXT-SECTION & BOTÓN VOLVER ARRIBA ---------- */
 .next-section-indicator {
   position: fixed;
-  bottom: 30px;
-  right: 32px;
+  bottom: 26px;
+  right: 28px;
   z-index: 800;
   transition: opacity var(--transition-fast), transform var(--transition-fast);
 }
@@ -1902,17 +2028,19 @@ section {
   align-items: center;
   gap: 10px;
   padding: 8px 18px;
-  background: rgba(9, 14, 23, 0.85);
-  backdrop-filter: blur(12px);
+  min-height: 42px;
+  background: rgba(9, 14, 23, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border: 1px solid rgba(212, 175, 55, 0.35);
   border-radius: var(--radius-full);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.55);
   color: var(--color-text-main);
   transition: all var(--transition-fast);
 }
 
 .next-indicator-btn:hover {
-  background: rgba(212, 175, 55, 0.15);
+  background: rgba(212, 175, 55, 0.16);
   border-color: var(--gold-primary);
   box-shadow: 0 10px 30px var(--gold-dim);
   transform: translateY(-2px);
@@ -1944,17 +2072,19 @@ section {
   50% { transform: translateY(3px); }
 }
 
-/* Floating Back-To-Top Button */
+/* Botón flotante Volver Arriba */
 .back-to-top {
   position: fixed;
-  bottom: 30px;
-  left: 32px;
+  bottom: 26px;
+  left: 28px;
   width: 44px;
   height: 44px;
   z-index: 800;
   border-radius: 50%;
-  background: rgba(9, 14, 23, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(9, 14, 23, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1991,40 +2121,44 @@ section {
   transition: stroke-dashoffset 0.1s linear;
 }
 
-/* ---------- 18. MODALS & DIALOGS (HTML5 <dialog>) ---------- */
-/* Architecture Modal */
+/* ---------- 18. MODALES & DIÁLOGOS (<dialog>) ---------- */
 .arch-modal-dialog {
   border: none;
   border-radius: var(--radius-md);
   background: transparent;
   padding: 0;
   max-width: 780px;
-  width: calc(100% - 40px);
+  width: calc(100% - 32px);
   margin: auto;
   z-index: 10000;
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85);
 }
 
 .arch-modal-dialog::backdrop {
-  background: rgba(0, 0, 0, 0.75);
-  backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.78);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .arch-modal-content {
   background: #090e17;
   border: 1px solid var(--color-card-border-gold);
   border-radius: var(--radius-md);
-  padding: 32px;
+  padding: clamp(20px, 4vw, 32px);
   color: var(--color-text-body);
+  max-height: 90vh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .arch-modal-header {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  padding-bottom: 20px;
+  padding-bottom: 18px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  margin-bottom: 24px;
+  margin-bottom: 22px;
+  gap: 12px;
 }
 
 .arch-title-group {
@@ -2039,7 +2173,7 @@ section {
 
 .arch-modal-title {
   font-family: var(--font-serif);
-  font-size: 1.6rem;
+  font-size: clamp(1.35rem, 3vw, 1.65rem);
   color: var(--color-text-main);
   margin-bottom: 4px;
 }
@@ -2051,14 +2185,23 @@ section {
 }
 
 .arch-close-btn {
-  font-size: 1.8rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
   line-height: 1;
   color: var(--color-text-muted);
-  transition: color var(--transition-fast);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all var(--transition-fast);
 }
 
 .arch-close-btn:hover {
   color: var(--gold-primary);
+  border-color: var(--gold-primary);
+  transform: rotate(90deg);
 }
 
 .arch-flow-diagram {
@@ -2066,8 +2209,9 @@ section {
   align-items: center;
   gap: 10px;
   overflow-x: auto;
-  padding: 16px 0;
-  margin-bottom: 24px;
+  padding: 14px 0;
+  margin-bottom: 22px;
+  -webkit-overflow-scrolling: touch;
 }
 
 .arch-node {
@@ -2101,7 +2245,7 @@ section {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
-  margin-bottom: 24px;
+  margin-bottom: 22px;
 }
 
 .arch-spec-card {
@@ -2137,25 +2281,27 @@ section {
   align-items: center;
   justify-content: flex-end;
   gap: 12px;
-  padding-top: 20px;
+  padding-top: 18px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
+  flex-wrap: wrap;
 }
 
-/* Command Palette Dialog */
+/* Paleta de Comandos */
 .cmd-palette-dialog {
   border: none;
   background: transparent;
   padding: 0;
   max-width: 620px;
-  width: calc(100% - 32px);
+  width: calc(100% - 28px);
   margin: auto;
   z-index: 10000;
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8);
 }
 
 .cmd-palette-dialog::backdrop {
-  background: rgba(0, 0, 0, 0.75);
-  backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.78);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .cmd-dialog-content {
@@ -2169,12 +2315,13 @@ section {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 16px 20px;
+  padding: 14px 18px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .cmd-search-icon {
   color: var(--gold-primary);
+  flex-shrink: 0;
 }
 
 .cmd-input {
@@ -2183,7 +2330,7 @@ section {
   border: none;
   outline: none;
   color: var(--color-text-main);
-  font-size: 1rem;
+  font-size: 16px;
   font-family: var(--font-body);
 }
 
@@ -2191,12 +2338,14 @@ section {
   font-size: 1.5rem;
   line-height: 1;
   color: var(--color-text-muted);
+  padding: 4px;
 }
 
 .cmd-dialog-body {
-  max-height: 340px;
+  max-height: 320px;
   overflow-y: auto;
-  padding: 12px;
+  padding: 10px;
+  -webkit-overflow-scrolling: touch;
 }
 
 .cmd-group-label {
@@ -2216,6 +2365,7 @@ section {
   border-radius: var(--radius-sm);
   cursor: pointer;
   transition: background var(--transition-fast);
+  min-height: 44px;
 }
 
 .cmd-item:hover, .cmd-item.selected {
@@ -2254,14 +2404,14 @@ section {
 .cmd-dialog-footer {
   display: flex;
   gap: 16px;
-  padding: 10px 20px;
+  padding: 10px 18px;
   background: rgba(0, 0, 0, 0.35);
   border-top: 1px solid rgba(255, 255, 255, 0.06);
   font-size: 0.75rem;
   color: var(--color-text-muted);
 }
 
-/* Toast Notifications */
+/* Notificaciones Toast */
 .toast-container {
   position: fixed;
   bottom: 24px;
@@ -2272,6 +2422,7 @@ section {
   flex-direction: column;
   gap: 8px;
   pointer-events: none;
+  max-width: 90vw;
 }
 
 .toast {
@@ -2284,6 +2435,7 @@ section {
   font-size: 0.88rem;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
   animation: toastIn 0.3s ease, toastOut 0.3s ease 2.7s forwards;
+  text-align: center;
 }
 
 @keyframes toastIn {
@@ -2309,20 +2461,31 @@ section {
   transform: translateY(0);
 }
 
-/* ---------- 20. RESPONSIVE BREAKPOINTS ---------- */
+/* ---------- 20. RESPONSIVE BREAKPOINTS EXHAUSTIVOS ---------- */
 @media (max-width: 992px) {
   .about-container {
     grid-template-columns: 1fr;
     gap: 40px;
   }
+
+  .about-portrait-wrap {
+    order: -1;
+  }
   
   .skills-symmetric-grid {
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: 28px;
   }
   
   .skills-divider {
     display: none;
+  }
+
+  .skills-col {
+    background: rgba(13, 18, 28, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: var(--radius-md);
+    padding: 24px;
   }
   
   .specs-grid {
@@ -2336,23 +2499,24 @@ section {
 
 @media (max-width: 768px) {
   :root {
-    --header-height: 64px;
+    --header-height: 66px;
   }
 
   section {
-    padding: 70px 20px;
+    padding: 60px 18px;
   }
 
   .site-header-inner {
-    padding: 0 20px;
+    padding: 0 16px;
   }
 
   .cmd-palette-trigger {
     display: none;
   }
 
-  .hero-title-main {
-    font-size: 2.8rem;
+  .header-name {
+    font-size: 1.05rem;
+    letter-spacing: 0.12em;
   }
 
   .about-highlights-row {
@@ -2360,14 +2524,12 @@ section {
     gap: 16px;
   }
 
-  .next-section-indicator {
-    right: 16px;
-    bottom: 20px;
+  .ah-item {
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   }
-
-  .back-to-top {
-    left: 16px;
-    bottom: 20px;
+  .ah-item:last-child {
+    border-bottom: none;
   }
 
   .arch-specs-grid {
@@ -2375,6 +2537,53 @@ section {
   }
 
   .contact-email {
-    font-size: 1.4rem;
+    font-size: clamp(1.15rem, 5vw, 1.8rem);
+  }
+
+  .next-section-indicator {
+    right: 14px;
+    bottom: 18px;
+  }
+
+  .back-to-top {
+    left: 14px;
+    bottom: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-menu-btn {
+    padding: 7px 14px;
+    min-height: 38px;
+    gap: 8px;
+  }
+
+  .menu-btn-text {
+    font-size: 0.95rem;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+  }
+
+  .contact-buttons-row .btn {
+    width: 100%;
+  }
+
+  .composer-actions .btn {
+    width: 100%;
+  }
+
+  .next-indicator-btn {
+    padding: 6px 12px;
+    gap: 6px;
+  }
+
+  .next-indicator-eyebrow {
+    display: none;
+  }
+
+  .next-indicator-label {
+    font-size: 0.85rem;
   }
 }
