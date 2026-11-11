@@ -4,34 +4,6 @@
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   /* ==========================================================================
-     1. PANTALLA DE CARGA / PRELOADER (Inspirado en camilamarrugo.com)
-     ========================================================================== */
-  const preloader = document.getElementById("site-preloader");
-  const preloaderBar = document.getElementById("preloader-bar");
-
-  let progress = 0;
-  const progressInterval = setInterval(() => {
-    progress += Math.floor(Math.random() * 20) + 15;
-    if (progress > 95) progress = 95;
-    if (preloaderBar) preloaderBar.style.width = `${progress}%`;
-  }, 90);
-
-  function dismissPreloader() {
-    clearInterval(progressInterval);
-    if (preloaderBar) preloaderBar.style.width = "100%";
-    setTimeout(() => {
-      if (preloader) preloader.classList.add("fade-out");
-    }, 300);
-  }
-
-  if (document.readyState === "complete") {
-    dismissPreloader();
-  } else {
-    window.addEventListener("load", dismissPreloader);
-    setTimeout(dismissPreloader, 2500);
-  }
-
-  /* ==========================================================================
      2. CAJÓN DE NAVEGACIÓN DESPLEGABLE / MENU DRAWER (Inspirado en camilamarrugo.com)
      ========================================================================== */
   const navMenuBtn = document.getElementById("nav-menu-btn");

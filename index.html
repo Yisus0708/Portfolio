@@ -24,28 +24,9 @@
 
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/studio.css" />
 </head>
 <body>
-
-  <!-- Preloader Screen (Inspirado en camilamarrugo.com) -->
-  <div id="site-preloader" class="site-preloader" aria-live="polite">
-    <div class="preloader-inner">
-      <div class="preloader-crest-wrap">
-        <svg class="preloader-crest-svg" viewBox="0 0 120 120" width="84" height="84" fill="none" aria-hidden="true">
-          <circle cx="60" cy="60" r="54" stroke="currentColor" stroke-width="1.2" stroke-dasharray="4 3" opacity="0.4" />
-          <polygon points="60,18 96,78 24,78" stroke="currentColor" stroke-width="1.4" opacity="0.7" />
-          <polygon points="60,102 24,42 96,42" stroke="currentColor" stroke-width="1.4" opacity="0.7" />
-          <circle cx="60" cy="60" r="8" fill="currentColor" opacity="0.9" />
-          <text x="60" y="65" text-anchor="middle" font-family="'Cinzel', serif" font-size="12" fill="#07090e" font-weight="700">JC</text>
-        </svg>
-      </div>
-      <div class="preloader-name">Jesus Cantillo</div>
-      <div class="preloader-sub">Backend e IA Aplicada · Portafolio 2026</div>
-      <div class="preloader-line-track">
-        <div class="preloader-line-bar" id="preloader-bar"></div>
-      </div>
-    </div>
-  </div>
 
   <!-- Barra de Progreso de Desplazamiento -->
   <div class="scroll-progress-bar" id="scroll-progress" aria-hidden="true"></div>
@@ -94,7 +75,7 @@
   <header class="site-header" id="topbar">
     <div class="site-header-inner">
       <a href="#hero" class="nav-inicio" id="nav-inicio">inicio</a>
-      <div class="header-name">jesus cantillo</div>
+      <a href="#hero" class="header-name">JC<span class="brand-dot">.</span></a><nav class="desktop-nav" aria-label="Navegación principal"><a href="#projects">Proyectos</a><a href="#about">Sobre mí</a><a href="#skills">Stack</a><a href="#contact">Contacto ↗</a></nav>
       
       <div class="header-right-tools">
         <!-- Gatillo de Paleta de Comandos (Ctrl+K) -->
@@ -125,69 +106,30 @@
 
     <!-- SECCIÓN 1: LIENZO PRINCIPAL / HERO (Inspirado en camilamarrugo.com) -->
     <section class="section-hero" id="hero">
-      <div class="hero-canvas">
-        
-        <!-- Emblema Heráldico Decorativo -->
-        <div class="hero-crest-wrap reveal">
-          <svg class="hero-crest-svg" viewBox="0 0 160 160" width="105" height="105" fill="none" aria-hidden="true">
-            <circle cx="80" cy="80" r="74" stroke="currentColor" stroke-width="1" stroke-dasharray="5 4" opacity="0.35" />
-            <circle cx="80" cy="80" r="64" stroke="currentColor" stroke-width="0.8" opacity="0.25" />
-            <polygon points="80,24 128,108 32,108" stroke="currentColor" stroke-width="1.2" opacity="0.6" />
-            <polygon points="80,136 32,52 128,52" stroke="currentColor" stroke-width="1.2" opacity="0.6" />
-            <circle cx="80" cy="80" r="14" stroke="currentColor" stroke-width="1.5" />
-            <circle cx="80" cy="80" r="4" fill="currentColor" />
-          </svg>
+      <div class="hero-layout">
+        <div class="hero-canvas">
+          <div class="availability"><span></span> Disponible para nuevos proyectos</div>
+          <p class="hero-eyebrow">JESUS CANTILLO / BACKEND &amp; IA</p>
+          <h1 class="studio-title">Ideas complejas.<br>Sistemas <em>que funcionan.</em></h1>
+          <p class="hero-lead">Transformo datos, código e inteligencia artificial en herramientas reales. Backend sólido, IA local y automatización desde Barranquilla, Colombia.</p>
+          <div class="hero-actions">
+            <a class="btn btn-editorial" href="#projects">Explorar proyectos <span aria-hidden="true">↗</span></a>
+            <a class="btn btn-editorial-outline" href="#contact">Hablemos <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="hero-stack"><span>Python</span><span>FastAPI</span><span>PostgreSQL</span><span>Ollama</span></div>
         </div>
-
-        <!-- Especialidad Técnica -->
-        <div class="hero-eyebrow reveal" style="--d: .05s">
-          <span class="eyebrow-accent">&loz;</span>
-          <span>Arquitectura Backend &amp; Inteligencia Artificial Aplicada</span>
-          <span class="eyebrow-accent">&loz;</span>
+        <div class="system-lab" aria-label="Explorador de arquitecturas">
+          <div class="lab-top"><span><i></i> ARCHITECTURE LAB</span><span>01 / 03</span></div>
+          <div class="lab-orbit" aria-hidden="true"><div class="orbit-ring"></div><div class="orbit-ring second"></div><div class="orbit-core">JC<span>SYSTEMS ENGINEER</span></div><span class="orbit-label label-one">INPUT</span><span class="orbit-label label-two">INTELLIGENCE</span><span class="orbit-label label-three">OUTPUT</span></div>
+          <div class="lab-options" role="group" aria-label="Elegir arquitectura">
+            <button type="button" data-lab="rag" aria-pressed="true">01 / RAG local</button>
+            <button type="button" data-lab="data" aria-pressed="false">02 / Datos</button>
+            <button type="button" data-lab="agents" aria-pressed="false">03 / Agentes</button>
+          </div>
+          <div class="lab-details" aria-live="polite"><h2 id="lab-title">Tu conocimiento. Tu infraestructura.</h2><p id="lab-description">Documentos → embeddings → contexto → respuesta. Una arquitectura de IA que mantiene tus datos en local.</p></div>
+          <a class="lab-link" id="lab-link" href="#projects">Explorar proyectos de IA <span aria-hidden="true">↗</span></a>
         </div>
-
-        <!-- Título Editorial Principal -->
-        <h1 class="hero-title reveal" style="--d: .12s">
-          <span class="hero-title-top">Arquitectura &amp; Sistemas de Inteligencia</span>
-          <span class="hero-title-main">Jesus Cantillo</span>
-        </h1>
-
-        <!-- Subtítulo de Autor & Ubicación -->
-        <div class="hero-subtitle reveal" style="--d: .18s">
-          <span>Barranquilla, Colombia</span>
-          <span class="bullet-dot">&bull;</span>
-          <span class="font-script">Portafolio de Ingeniería 2026</span>
-        </div>
-
-        <!-- Propuesta de Valor Ejecutiva -->
-        <p class="hero-lead reveal" style="--d: .24s">
-          Diseño pipelines de datos de alto rendimiento con arquitectura <strong>Medallion</strong>, sistemas <strong>RAG locales y privados</strong>, y agentes autónomos multimodales construidos para <em>funcionar en producción</em>, no solo en demostraciones de tutorial.
-        </p>
-
-        <!-- Botones de Acción -->
-        <div class="hero-actions reveal" style="--d: .30s">
-          <a class="btn btn-editorial" href="#projects">
-            <span>Explorar Proyectos</span>
-            <span class="btn-arrow">&rarr;</span>
-          </a>
-
-          <button class="btn btn-editorial-outline copy-email-btn" data-email="jesucantillo30@gmail.com" title="Copiar correo a portapapeles">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-            <span>Copiar Correo</span>
-          </button>
-
-          <a class="btn btn-editorial-ghost" href="https://github.com/Yisus0708" target="_blank" rel="noopener" title="Ver perfil en GitHub @Yisus0708">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-            <span>GitHub</span>
-          </a>
-        </div>
-
-        <!-- Filosofía de Ingeniería -->
-        <div class="hero-ticker reveal" style="--d: .36s">
-          <span class="ticker-badge">FILOSOFÍA DE DESARROLLO</span>
-          <span class="ticker-text" id="typed">while(aprendiendo) { construir(algo_real); }</span>
-        </div>
-
+        <div class="hero-bottom"><span>INGENIERÍA CON INTENCIÓN.</span><a href="#about">Conoce cómo trabajo ↓</a><span>CO · 2026</span></div>
       </div>
     </section>
 
@@ -300,7 +242,7 @@
           <span class="sep">/</span>
           <span>CASOS DE ESTUDIO &amp; SISTEMAS</span>
         </div>
-        <h2 class="section-title">Proyectos en Producción &amp; Repositorios</h2>
+        <h2 class="section-title">Código que resuelve problemas.</h2>
         <p class="section-sub">Software real diseñado para resolver necesidades concretas de personas, instituciones y empresas.</p>
       </div>
 
@@ -1196,5 +1138,6 @@
 
   <!-- Archivo JavaScript Principal -->
   <script src="js/main.js"></script>
+  <script src="js/studio.js"></script>
 </body>
 </html>

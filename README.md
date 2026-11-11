@@ -50,3 +50,9 @@ python -m http.server 8000
 2. En GitHub ve a **Settings** > **Pages**.
 3. Selecciona la fuente **Deploy from a branch** y elige `main` / `root`.
 4. ¡Listo! Tu portafolio estará online en `https://Yisus0708.github.io/portfolio`.
+
+## Actualización de diseño — Studio
+
+Identidad en verde lima y grafito, tipografía sans serif, portada en dos columnas y navegación directa en escritorio. El explorador de arquitecturas permite alternar RAG local, datos y agentes, y aplica la categoría correspondiente al abrir proyectos. Conserva terminal, fichas de arquitectura y contacto.
+
+Los ajustes visuales están en `css/studio.css` y las interacciones nuevas en `js/studio.js`. Incluye distribución móvil, estados de foco y soporte para movimiento reducido. No requiere instalación ni compilación.
