@@ -20,3 +20,13 @@ section { padding-top:110px; padding-bottom:110px; }.section-projects { max-widt
 .site-header .nav-menu-btn { background:transparent; box-shadow:none; border:1px solid #35422b40; border-radius:3px; }
 .site-header .menu-btn-text { color:#283321; }
 .site-header .nav-menu-btn:hover { background:#dfe3d4; }
+
+/* Shared monochrome SVG icon system. */
+.icon-definitions { position:absolute; width:0; height:0; overflow:hidden; pointer-events:none; }
+.ui-icon { display:inline-block; width:1.15em; height:1.15em; vertical-align:-.18em; fill:none; stroke:currentColor; stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round; flex-shrink:0; }
+.chip .ui-icon,.ai-chip .ui-icon,.composer-chip .ui-icon { margin-right:.4em; }
+.cmd-icon-box,.ai-avatar,.composer-icon { display:inline-flex; align-items:center; justify-content:center; }
+.cmd-icon-box .ui-icon,.ai-avatar .ui-icon { width:20px; height:20px; }
+.arch-icon { display:inline-flex; color:var(--gold-primary); }
+.arch-icon .ui-icon { width:34px; height:34px; }
+.toast .ui-icon { margin-right:6px; }

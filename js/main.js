@@ -1,6 +1,9 @@
 (() => {
   "use strict";
 
+  // Icon names are internal constants, never visitor input.
+  const icon = (name) => `<svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#icon-${name}"></use></svg>`;
+
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   /* ==========================================================================
@@ -163,11 +166,12 @@
      ========================================================================== */
   const toastContainer = document.getElementById("toast-container");
 
-  function showToast(message) {
+  function showToast(message, iconName = "check") {
     if (!toastContainer) return;
     const toast = document.createElement("div");
     toast.className = "toast";
-    toast.textContent = message;
+    toast.innerHTML = icon(iconName);
+    toast.appendChild(document.createTextNode(" " + message));
     toastContainer.appendChild(toast);
     setTimeout(() => {
       if (toast.parentNode) toast.parentNode.removeChild(toast);
@@ -182,7 +186,7 @@
     btn.addEventListener("click", () => {
       const email = btn.getAttribute("data-email") || "jesucantillo30@gmail.com";
       navigator.clipboard.writeText(email).then(() => {
-        showToast("✓ Correo copiado: " + email);
+        showToast("Correo copiado: " + email);
       }).catch(() => {
         showToast("Correo: " + email);
       });
@@ -289,7 +293,7 @@
       if (audioIconOff) audioIconOff.classList.add("hidden");
       if (audioIconOn) audioIconOn.classList.remove("hidden");
       if (cmdSoundStatus) cmdSoundStatus.textContent = "Reproduciendo sonido ambiental";
-      showToast("🎵 Música ambiental activada");
+      showToast("Música ambiental activada", "music");
     } else {
       stopAmbientDrone();
       if (audioToggle) audioToggle.classList.remove("playing");
@@ -331,7 +335,7 @@
      10. DATOS DE ARQUITECTURA DE PROYECTOS & MODAL DE FICHA TÉCNICA
      ========================================================================== */
   const archModal = document.getElementById("arch-modal");
-  const archModalEmoji = document.getElementById("arch-modal-emoji");
+  const archModalIcon = document.getElementById("arch-modal-icon");
   const archModalTitle = document.getElementById("arch-modal-title");
   const archModalSubtitle = document.getElementById("arch-modal-subtitle");
   const archModalBody = document.getElementById("arch-modal-body");
@@ -342,7 +346,7 @@
 
   const projectArchitectures = {
     mila: {
-      emoji: "🎙️",
+      icon: "mic",
       title: "M.I.L.A — Mi Inteligencia de Lenguaje Avanzada",
       subtitle: "PyQt6 · Reconocimiento por Voz · Visión Artificial · Gemini API · Automatización del SO",
       github: "https://github.com/Yisus0708/MILA",
@@ -366,7 +370,7 @@
       ]
     },
     arquitectura: {
-      emoji: "🎓",
+      icon: "layers",
       title: "Pipeline de Calificaciones — Arquitectura Medallion",
       subtitle: "Python 3.10+ · PostgreSQL · Capas Bronze, Silver y Gold · ETL de Extremo a Extremo",
       github: "https://github.com/Yisus0708/arquitectura",
@@ -390,7 +394,7 @@
       ]
     },
     vivaidiomas: {
-      emoji: "🏛️",
+      icon: "building",
       title: "VivaIdiomas Colombia — Asistente RAG Local",
       subtitle: "FastAPI · LangChain · Ollama (100% Local) · ChromaDB · Backend en Python",
       github: "https://github.com/Yisus0708/vivaidiomas-rag",
@@ -414,7 +418,7 @@
       ]
     },
     "ocr-pdf": {
-      emoji: "📄",
+      icon: "file",
       title: "OCR Inteligente & PDF Semántico",
       subtitle: "Python 3.12 · PyMuPDF · Tesseract OCR · Búsqueda Espacial · Chat QA Visual",
       github: "https://github.com/Yisus0708/OCR-PDF",
@@ -438,7 +442,7 @@
       ]
     },
     neuronforge: {
-      emoji: "⚡",
+      icon: "bolt",
       title: "NeuronForge — Redes Neuronales desde Cero",
       subtitle: "Python Puro · NumPy · Matemáticas de IA · Grafos Computacionales Propios",
       github: "https://github.com/Yisus0708/neuronforge",
@@ -462,7 +466,7 @@
       ]
     },
     mentia: {
-      emoji: "🧠",
+      icon: "cpu",
       title: "Mentia — Plataforma EdTech de Revisión de Código",
       subtitle: "FastAPI · Gemini API · PostgreSQL · Analizador Sintáctico AST",
       github: "https://github.com/Yisus0708",
@@ -486,7 +490,7 @@
       ]
     },
     medical: {
-      emoji: "🏥",
+      icon: "medical",
       title: "Automatización de Historias Clínicas — Pipeline ETL",
       subtitle: "Flask · Visión Multimodal con Gemini · API de Google Drive · Pandas",
       github: "https://github.com/Yisus0708",
@@ -510,7 +514,7 @@
       ]
     },
     familybot: {
-      emoji: "🏠",
+      icon: "home",
       title: "FamilyBot — Asistente de Gestión Familiar",
       subtitle: "JavaScript · Node.js · Express · Gemini API · CSS3 Moderno",
       github: "https://github.com/Yisus0708/FamilyBot",
@@ -539,7 +543,7 @@
     const data = projectArchitectures[projectKey];
     if (!data || !archModal) return;
 
-    if (archModalEmoji) archModalEmoji.textContent = data.emoji;
+    if (archModalIcon) archModalIcon.innerHTML = icon(data.icon);
     if (archModalTitle) archModalTitle.textContent = data.title;
     if (archModalSubtitle) archModalSubtitle.textContent = data.subtitle;
     if (archGithubLink) archGithubLink.href = data.github;
@@ -662,24 +666,24 @@
         break;
       case "projects":
       case "proyectos":
-        appendTerminalLine("🚀 <strong>Proyectos destacados:</strong><br>1. <strong>MILA</strong>: Asistente multimodal de escritorio (PyQt6 + Gemini).<br>2. <strong>Pipeline de Calificaciones</strong>: Arquitectura Medallion Bronze/Silver/Gold ETL.<br>3. <strong>VivaIdiomas Colombia RAG</strong>: Asistente RAG local con Ollama y FastAPI.<br>4. <strong>OCR Inteligente &amp; PDF</strong>: Digitalización espacial con Bounding Boxes.<br>5. <strong>NeuronForge</strong>: Motor de redes neuronales desde fundamentos matemáticos.");
+        appendTerminalLine("<svg class='ui-icon' viewBox='0 0 24 24' aria-hidden='true' focusable='false'><use href='#icon-rocket'></use></svg> <strong>Proyectos destacados:</strong><br>1. <strong>MILA</strong>: Asistente multimodal de escritorio (PyQt6 + Gemini).<br>2. <strong>Pipeline de Calificaciones</strong>: Arquitectura Medallion Bronze/Silver/Gold ETL.<br>3. <strong>VivaIdiomas Colombia RAG</strong>: Asistente RAG local con Ollama y FastAPI.<br>4. <strong>OCR Inteligente &amp; PDF</strong>: Digitalización espacial con Bounding Boxes.<br>5. <strong>NeuronForge</strong>: Motor de redes neuronales desde fundamentos matemáticos.");
         break;
       case "skills":
       case "habilidades":
-        appendTerminalLine("🧠 <strong>Stack Tecnológico:</strong><br>&bull; <em>Backend:</em> Python 3.12, FastAPI, Flask, PostgreSQL, SQLAlchemy, REST APIs.<br>&bull; <em>IA &amp; RAG:</em> LangChain, Ollama (100% Local), Gemini API, ChromaDB, Embeddings.<br>&bull; <em>Datos &amp; Sistemas:</em> Arquitectura Medallion, Pandas, NumPy, Docker, PyQt6, Linux.");
+        appendTerminalLine("<svg class='ui-icon' viewBox='0 0 24 24' aria-hidden='true' focusable='false'><use href='#icon-cpu'></use></svg> <strong>Stack Tecnológico:</strong><br>&bull; <em>Backend:</em> Python 3.12, FastAPI, Flask, PostgreSQL, SQLAlchemy, REST APIs.<br>&bull; <em>IA &amp; RAG:</em> LangChain, Ollama (100% Local), Gemini API, ChromaDB, Embeddings.<br>&bull; <em>Datos &amp; Sistemas:</em> Arquitectura Medallion, Pandas, NumPy, Docker, PyQt6, Linux.");
         break;
       case "philosophy":
       case "filosofia":
       case "filosofía":
-        appendTerminalLine("⚡ <em>'Hecho es mejor que perfecto.'</em><br>No construyo demos para tutoriales; diseño software que funciona en entornos reales con restricciones de latencia, seguridad y concurrencia.");
+        appendTerminalLine("<svg class='ui-icon' viewBox='0 0 24 24' aria-hidden='true' focusable='false'><use href='#icon-bolt'></use></svg> <em>'Hecho es mejor que perfecto.'</em><br>No construyo demos para tutoriales; diseño software que funciona en entornos reales con restricciones de latencia, seguridad y concurrencia.");
         break;
       case "hire":
       case "contratar":
-        appendTerminalLine("💼 <strong>Propuesta de valor:</strong><br>&bull; Autonomía para liderar desde el diseño de datos hasta APIs en producción.<br>&bull; Capacidad probada de integrar IA local (Ollama) garantizando privacidad.<br>&bull; Enfoque pragmático orientado a resolver dolores de negocio medibles.");
+        appendTerminalLine("<svg class='ui-icon' viewBox='0 0 24 24' aria-hidden='true' focusable='false'><use href='#icon-briefcase'></use></svg> <strong>Propuesta de valor:</strong><br>&bull; Autonomía para liderar desde el diseño de datos hasta APIs en producción.<br>&bull; Capacidad probada de integrar IA local (Ollama) garantizando privacidad.<br>&bull; Enfoque pragmático orientado a resolver dolores de negocio medibles.");
         break;
       case "contact":
       case "contacto":
-        appendTerminalLine("✉️ Correo: <a href='mailto:jesucantillo30@gmail.com' style='color: var(--gold-primary); text-decoration: underline;'>jesucantillo30@gmail.com</a><br>🐙 GitHub: <a href='https://github.com/Yisus0708' target='_blank' style='color: var(--gold-primary); text-decoration: underline;'>github.com/Yisus0708</a><br>🇨🇴 Ubicación: Barranquilla, Colombia");
+        appendTerminalLine("<svg class='ui-icon' viewBox='0 0 24 24' aria-hidden='true' focusable='false'><use href='#icon-mail'></use></svg> Correo: <a href='mailto:jesucantillo30@gmail.com' style='color: var(--gold-primary); text-decoration: underline;'>jesucantillo30@gmail.com</a><br><svg class='ui-icon' viewBox='0 0 24 24' aria-hidden='true' focusable='false'><use href='#icon-code'></use></svg> GitHub: <a href='https://github.com/Yisus0708' target='_blank' style='color: var(--gold-primary); text-decoration: underline;'>github.com/Yisus0708</a><br><svg class='ui-icon' viewBox='0 0 24 24' aria-hidden='true' focusable='false'><use href='#icon-pin'></use></svg> Ubicación: Barranquilla, Colombia");
         break;
       case "clear":
       case "limpiar":
@@ -741,7 +745,7 @@
 
     const avatar = document.createElement("span");
     avatar.className = "ai-avatar";
-    avatar.textContent = role === "bot" ? "🎙️" : "👤";
+    avatar.innerHTML = icon(role === "bot" ? "mic" : "user");
 
     const bubble = document.createElement("div");
     bubble.className = "ai-bubble";
@@ -759,7 +763,7 @@
 
     const typingWrap = document.createElement("div");
     typingWrap.className = "ai-bubble-wrap bot";
-    typingWrap.innerHTML = `<span class="ai-avatar">🎙️</span><div class="ai-bubble"><em>MILA analizando respuesta...</em></div>`;
+    typingWrap.innerHTML = `<span class="ai-avatar">${icon("mic")}</span><div class="ai-bubble"><em>MILA analizando respuesta...</em></div>`;
     aiChatScreen.appendChild(typingWrap);
     aiChatScreen.scrollTop = aiChatScreen.scrollHeight;
 
@@ -866,7 +870,7 @@
 
       if (action === "copy-email") {
         navigator.clipboard.writeText("jesucantillo30@gmail.com").then(() => {
-          showToast("✓ Correo copiado: jesucantillo30@gmail.com");
+          showToast("Correo copiado: jesucantillo30@gmail.com");
         });
       } else if (action === "toggle-audio") {
         toggleAudio();
@@ -944,7 +948,7 @@
       const bdy = composerBody ? composerBody.textContent.replace(/^"|"$/g, "") : "";
       const fullText = `Asunto: ${sub}\n\n${bdy}`;
       navigator.clipboard.writeText(fullText).then(() => {
-        showToast("✓ Borrador de mensaje copiado");
+        showToast("Borrador de mensaje copiado");
       });
     });
   }
