@@ -55,7 +55,7 @@
   const nextIndicatorText = document.getElementById("next-indicator-text");
 
   const orderedSections = [
-    { id: "hero", nextLabel: "Sobre mí", nextTarget: "#about" },
+    { id: "hero", nextLabel: "Proyectos", nextTarget: "#projects" },
     { id: "about", nextLabel: "Rigor & Filosofía", nextTarget: "#elegance" },
     { id: "elegance", nextLabel: "Proyectos", nextTarget: "#projects" },
     { id: "projects", nextLabel: "Habilidades Técnicas", nextTarget: "#skills" },

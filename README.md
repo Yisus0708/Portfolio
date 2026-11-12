@@ -56,3 +56,7 @@ python -m http.server 8000
 Identidad en verde lima y grafito, tipografía sans serif, portada en dos columnas y navegación directa en escritorio. El explorador de arquitecturas permite alternar RAG local, datos y agentes, y aplica la categoría correspondiente al abrir proyectos. Conserva terminal, fichas de arquitectura y contacto.
 
 Los ajustes visuales están en `css/studio.css` y las interacciones nuevas en `js/studio.js`. Incluye distribución móvil, estados de foco y soporte para movimiento reducido. No requiere instalación ni compilación.
+
+## Dirección visual Atelier
+
+Rediseño integral con portada marfil, naranja terracota y verde oliva, tipografías Space Grotesk / DM Sans y galería oscura. Ocho ilustraciones CSS originales identifican los proyectos sin imágenes pesadas. Proyectos antes del perfil, secciones con superficies contrastantes, filtros, laboratorio interactivo y fichas técnicas conservados. Animaciones respetan `prefers-reduced-motion`.
