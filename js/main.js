@@ -683,7 +683,7 @@
         break;
       case "contact":
       case "contacto":
-        appendTerminalLine("<svg class='ui-icon' viewBox='0 0 24 24' aria-hidden='true' focusable='false'><use href='#icon-mail'></use></svg> Correo: <a href='mailto:jesucantillo30@gmail.com' style='color: var(--gold-primary); text-decoration: underline;'>jesucantillo30@gmail.com</a><br><svg class='ui-icon' viewBox='0 0 24 24' aria-hidden='true' focusable='false'><use href='#icon-code'></use></svg> GitHub: <a href='https://github.com/Yisus0708' target='_blank' style='color: var(--gold-primary); text-decoration: underline;'>github.com/Yisus0708</a><br><svg class='ui-icon' viewBox='0 0 24 24' aria-hidden='true' focusable='false'><use href='#icon-pin'></use></svg> Ubicación: Barranquilla, Colombia");
+        appendTerminalLine("<svg class='ui-icon' viewBox='0 0 24 24' aria-hidden='true' focusable='false'><use href='#icon-mail'></use></svg> Correo: <a href='https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=jesucantillo30%40gmail.com' target='_blank' rel='noopener noreferrer' style='color: var(--gold-primary); text-decoration: underline;'>jesucantillo30@gmail.com</a><br><svg class='ui-icon' viewBox='0 0 24 24' aria-hidden='true' focusable='false'><use href='#icon-code'></use></svg> GitHub: <a href='https://github.com/Yisus0708' target='_blank' style='color: var(--gold-primary); text-decoration: underline;'>github.com/Yisus0708</a><br><svg class='ui-icon' viewBox='0 0 24 24' aria-hidden='true' focusable='false'><use href='#icon-pin'></use></svg> Ubicación: Barranquilla, Colombia");
         break;
       case "clear":
       case "limpiar":
@@ -929,7 +929,7 @@
     if (composerBody) composerBody.textContent = `"${data.body}"`;
 
     if (contactDirectBtn) {
-      contactDirectBtn.href = `mailto:jesucantillo30@gmail.com?subject=${encodeURIComponent(data.subject)}&body=${encodeURIComponent(data.body)}`;
+      contactDirectBtn.href = `https://mail.google.com/mail/?view=cm&fs=1&to=jesucantillo30%40gmail.com&su=${encodeURIComponent(data.subject)}&body=${encodeURIComponent(data.body)}`;
     }
   }
 
