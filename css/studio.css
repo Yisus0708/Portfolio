@@ -76,3 +76,11 @@ section { padding-top:110px; padding-bottom:110px; }.section-projects { max-widt
 .system-lab:not(.motion-visible) .orbit-ring,
 .project-art:not(.motion-visible) .waveform i,
 .motion-paused *, .motion-paused *::before, .motion-paused *::after { animation-play-state:paused!important; }
+
+/* Full-width section backgrounds; inner containers retain readable line lengths. */
+.section-hero,
+.section-elegance,
+.section-terminal,
+.section-contact {
+  max-width:none;
+}
