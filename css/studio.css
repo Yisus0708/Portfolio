@@ -30,3 +30,49 @@ section { padding-top:110px; padding-bottom:110px; }.section-projects { max-widt
 .arch-icon { display:inline-flex; color:var(--gold-primary); }
 .arch-icon .ui-icon { width:34px; height:34px; }
 .toast .ui-icon { margin-right:6px; }
+
+/* Motion direction: staggered entrances, slow technical diagrams, tactile controls. */
+@keyframes studio-enter {
+  from { opacity:0; transform:translateY(22px); }
+  to { opacity:1; transform:translateY(0); }
+}
+@keyframes studio-float {
+  0%,100% { translate:0 0; }
+  50% { translate:0 -9px; }
+}
+@keyframes studio-signal {
+  0%,100% { box-shadow:0 0 0 0 #59744300; }
+  50% { box-shadow:0 0 0 5px #59744316; }
+}
+@media(prefers-reduced-motion:no-preference) {
+  .hero-signature { animation:studio-enter .7s both; }
+  .hero-eyebrow { animation:studio-enter .7s .08s both; }
+  .studio-title { animation:studio-enter .9s .15s both; }
+  .hero-lead { animation:studio-enter .8s .25s both; }
+  .hero-actions { animation:studio-enter .8s .34s both; }
+  .hero-stack,.availability { animation:studio-enter .8s .42s both; }
+  .hero-bottom { animation:studio-enter .8s .5s both; }
+  .availability>span { animation:studio-signal 3s ease-in-out infinite; }
+  .motion-visible .orbit-core { animation:studio-float 6s ease-in-out infinite; }
+  .motion-visible .orbit-label { animation:studio-float 7s ease-in-out infinite; }
+  .motion-visible .label-two { animation-delay:-2s; }
+  .motion-visible .label-three { animation-delay:-4s; }
+  .motion-visible .document-stack,.motion-visible .node-map { animation:studio-float 6s ease-in-out infinite; }
+  .motion-visible .waveform i { animation:wave 1.8s ease-in-out infinite alternate; animation-delay:calc(var(--i)*-.15s); }
+  .project-art .document-stack,.project-art .data-layers,.project-art .node-map { transition:scale .6s cubic-bezier(.2,.7,.2,1); }
+  .project-card:hover .document-stack,.project-card:hover .data-layers,.project-card:hover .node-map { scale:1.07; }
+  .project-card { transition:opacity .4s,transform .6s; }
+  .project-card.reveal { transition-delay:0s; }
+  .btn,.filter-btn,.chip,.ai-chip,.composer-chip { transition:background .25s,color .25s,border-color .25s,transform .25s; }
+  .btn:active,.filter-btn:active,.chip:active,.ai-chip:active,.composer-chip:active { transform:translateY(1px) scale(.98); }
+  .hero-actions .btn>span { transition:transform .25s; }
+  .hero-actions .btn:hover>span { transform:translate(3px,-3px); }
+  .desktop-nav a { position:relative; }
+  .desktop-nav a::after { content:''; position:absolute; bottom:-7px; left:0; width:100%; height:1px; background:currentColor; transform:scaleX(0); transform-origin:left; transition:transform .25s; }
+  .desktop-nav a:hover::after,.desktop-nav a[aria-current]::after { transform:scaleX(1); }
+  .arch-modal-dialog[open] .arch-modal-content,.cmd-palette-dialog[open] .cmd-dialog-content { animation:studio-enter .25s both; }
+}
+/* Stop decorative work outside the viewport or while the tab is hidden. */
+.system-lab:not(.motion-visible) .orbit-ring,
+.project-art:not(.motion-visible) .waveform i,
+.motion-paused *, .motion-paused *::before, .motion-paused *::after { animation-play-state:paused!important; }
