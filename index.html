@@ -121,7 +121,15 @@
         </div>
         <div class="system-lab" aria-label="Explorador de arquitecturas">
           <div class="lab-top"><span><i></i> ARCHITECTURE LAB</span><span>01 / 03</span></div>
-          <div class="lab-orbit" aria-hidden="true"><div class="orbit-ring"></div><div class="orbit-ring second"></div><div class="orbit-core">JC<span>SYSTEMS ENGINEER</span></div><span class="orbit-label label-one">INPUT</span><span class="orbit-label label-two">INTELLIGENCE</span><span class="orbit-label label-three">OUTPUT</span></div>
+          <div class="architecture-preview" aria-label="Flujo de arquitectura seleccionado">
+            <div class="preview-heading"><span>DISEÑADO PARA CONECTAR</span><span class="preview-kind">IA LOCAL</span></div>
+            <div class="flow-node flow-source"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-file"></use></svg><span id="flow-source">Documentos</span><small>01 / ENTRADA</small></div>
+            <div class="flow-connector" aria-hidden="true"><span></span></div>
+            <div class="flow-engine"><div class="engine-mark"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-cpu"></use></svg></div><div><small>MOTOR DE PROCESAMIENTO</small><strong id="flow-engine">Contexto + LLM</strong></div><span class="engine-indicator" aria-hidden="true"></span></div>
+            <div class="flow-connector" aria-hidden="true"><span></span></div>
+            <div class="flow-node flow-result"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-check"></use></svg><span id="flow-result">Respuesta con contexto</span><small>03 / RESULTADO</small></div>
+            <div class="preview-footnote">ESQUEMA CONCEPTUAL <span>PRIVACIDAD POR DISEÑO</span></div>
+          </div>
           <div class="lab-options" role="group" aria-label="Elegir arquitectura">
             <button type="button" data-lab="rag" aria-pressed="true">01 / RAG local</button>
             <button type="button" data-lab="data" aria-pressed="false">02 / Datos</button>
@@ -503,20 +511,14 @@
         <!-- Tarjeta con Monograma Editorial -->
         <div class="about-portrait-wrap reveal">
           <div class="about-frame">
-            <div class="about-monogram-circle">
-              <span class="monogram-txt">JC</span>
-              <span class="monogram-sub">BARRANQUILLA</span>
-            </div>
+            <div class="profile-card-top"><span>CONOCE AL INGENIERO</span><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-code"></use></svg></div>
+            <div class="profile-identity"><div class="profile-monogram" aria-hidden="true">JC<span>.</span></div><span class="profile-discipline">BACKEND<br>&amp; INTELIGENCIA<br>ARTIFICIAL</span></div>
             <div class="about-frame-details">
+              <h3 class="profile-name">Jesus Cantillo</h3>
               <div class="frame-tag">Ingeniero de Software &amp; IA</div>
-              <div class="frame-status">
-                <span class="status-pulse-dot"></span>
-                <span>Disponible para proyectos y roles</span>
-              </div>
-              <div class="frame-meta">
-                <span><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#icon-pin"></use></svg> Barranquilla, Colombia</span>
-                <span><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#icon-bolt"></use></svg> Backend + RAG Local + Medallion</span>
-              </div>
+              <div class="frame-status"><span class="status-pulse-dot"></span><span>Disponible para proyectos y roles</span></div>
+              <div class="profile-specialties"><span>Backend</span><span>RAG local</span><span>Datos</span></div>
+              <div class="profile-card-bottom"><span><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-pin"></use></svg> Barranquilla, Colombia</span><a href="#contact" aria-label="Contactar a Jesus Cantillo">Hablemos <span aria-hidden="true">↗</span></a></div>
             </div>
           </div>
           <!-- Contador de Visitas de GitHub -->

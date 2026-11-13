@@ -30,13 +30,25 @@
     data: ['Del dato crudo a una decisión clara.', 'Bronze → Silver → Gold. Pipelines Medallion que convierten datos dispersos en información estructurada.', 'Explorar ingeniería de datos', 'data', '02'],
     agents: ['Inteligencia que se convierte en acción.', 'Voz → interpretación → herramientas → acción. Asistentes que conectan IA con tareas del escritorio.', 'Explorar automatización', 'desktop', '03']
   };
+  const flows = {
+    rag: ['Documentos', 'Contexto + LLM', 'Respuesta con contexto', 'IA LOCAL', 'PRIVACIDAD POR DISEÑO'],
+    data: ['Registros originales', 'Bronze → Silver → Gold', 'Datos listos para analizar', 'PIPELINE ETL', 'CALIDAD EN CADA CAPA'],
+    agents: ['Voz o instrucción', 'IA + herramientas', 'Acción en el escritorio', 'AGENTES', 'DEL LENGUAJE A LA ACCIÓN']
+  };
   let selected = 'ai';
   document.querySelectorAll('[data-lab]').forEach(button => {
     button.addEventListener('click', () => {
       const [title, description, label, category, number] = architectures[button.dataset.lab];
       selected = category;
+      const flow = flows[button.dataset.lab];
+      ['flow-source', 'flow-engine', 'flow-result'].forEach((id, index) => {
+        document.getElementById(id).textContent = flow[index];
+      });
+      document.querySelector('.preview-kind').textContent = flow[3];
+      document.querySelector('.preview-footnote span').textContent = flow[4];
       runningAnimations.forEach(animation => animation.cancel());
       animateEntrance(document.querySelector('.lab-details'));
+      animateEntrance(document.querySelector('.architecture-preview'));
       document.querySelectorAll('[data-lab]').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
       document.getElementById('lab-title').textContent = title;
       document.getElementById('lab-description').textContent = description;
