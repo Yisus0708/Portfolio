@@ -63,9 +63,14 @@
     button.addEventListener('click', () => {
       filters.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
       runningAnimations.forEach(animation => animation.cancel());
+      let visibleCount = 0;
       document.querySelectorAll('.project-card').forEach(card => {
-        if (card.style.display !== 'none') animateEntrance(card);
+        if (card.style.display !== 'none') {
+          visibleCount += 1;
+          animateEntrance(card);
+        }
       });
+      document.getElementById('project-count').textContent = `${String(visibleCount).padStart(2, '0')} proyectos para explorar`;
     });
   });
   const links = document.querySelectorAll('.desktop-nav a');
